@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
+expect fun PlatformBackHandler(enabled: Boolean = true, onBack: () -> Unit)
+
+@Composable
 expect fun ScannerCamera(
     torchEnabled: Boolean,
     modifier: Modifier,
@@ -17,6 +20,7 @@ expect fun rememberImageImporter(
     onImage: (ByteArray) -> Unit,
     onError: (String) -> Unit = {},
     onStart: () -> Unit = {},
+    onCancel: () -> Unit = {},
 ): () -> Unit
 
 @Composable

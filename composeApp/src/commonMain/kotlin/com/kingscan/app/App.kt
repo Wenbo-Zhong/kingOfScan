@@ -18,6 +18,7 @@ import com.kingscan.app.ui.FilterScreen
 import com.kingscan.app.ui.KingScanTheme
 import com.kingscan.app.ui.LibraryScreen
 import com.kingscan.app.ui.Navigator
+import com.kingscan.app.ui.PlatformBackHandler
 import kotlinx.coroutines.launch
 
 @Composable
@@ -27,6 +28,13 @@ fun App() {
     val scope = rememberCoroutineScope()
     fun message(text: String) {
         scope.launch { snackbar.showSnackbar(text) }
+    }
+    PlatformBackHandler(enabled = navigator.current != Screen.Library) {
+        when (navigator.current) {
+            Screen.Capture, is Screen.Detail -> AppGraph.session.cancel()
+            else -> Unit
+        }
+        navigator.pop()
     }
     KingScanTheme {
         Scaffold(

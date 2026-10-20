@@ -3,7 +3,10 @@
 build/
 local.properties
 *.iml
-.idea/
+.idea/*
+!.idea/runConfigurations/
+.idea/runConfigurations/*
+!.idea/runConfigurations/Build_Android_Debug_APK.xml
 .DS_Store
 captures/
 xcuserdata/

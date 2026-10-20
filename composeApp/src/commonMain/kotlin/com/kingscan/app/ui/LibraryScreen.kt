@@ -66,6 +66,7 @@ fun LibraryScreen(
             onMessage(message)
         },
         onStart = { importing = true },
+        onCancel = { importing = false },
     )
 
     Box(Modifier.fillMaxSize()) {

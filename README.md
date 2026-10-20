@@ -34,14 +34,14 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 ## 运行
 
-Android：用 Android Studio 打开仓库，运行 `composeApp`。或：
+Android：用 Android Studio 打开仓库并完成 Gradle Sync，然后在运行配置下拉框选择 **Build Android Debug APK**，点击 Run 即可编译 Debug APK。也可以从 Gradle 工具窗口运行 `composeApp > Tasks > build > assembleDebug`。
+
+APK 输出在 `composeApp/build/outputs/apk/debug/composeApp-debug.apk`。命令行方式：
 
 ```bash
 ./gradlew :composeApp:assembleDebug
 ./gradlew :composeApp:testDebugUnitTest
 ```
-
-调试包在 `composeApp/build/outputs/apk/debug/`。
 
 iOS：用 Xcode 打开 `iosApp/iosApp.xcodeproj`，选择模拟器或真机后运行。模拟器只编 arm64，工程排除了 Intel 模拟器。真机需要在 `iosApp/Configuration/Config.xcconfig` 里填写 `TEAM_ID`。Xcode 的构建脚本会调用：
 

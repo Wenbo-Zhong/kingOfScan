@@ -53,6 +53,9 @@ import platform.UIKit.UIApplication
 import platform.UIKit.UIColor
 import platform.UIKit.UIImage
 import platform.UIKit.UIImageJPEGRepresentation
+
+@Composable
+actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) = Unit
 import platform.UIKit.UIImagePickerController
 import platform.UIKit.UIImagePickerControllerDelegateProtocol
 import platform.UIKit.UIImagePickerControllerOriginalImage
@@ -113,14 +116,17 @@ actual fun rememberImageImporter(
     onImage: (ByteArray) -> Unit,
     onError: (String) -> Unit,
     onStart: () -> Unit,
+    onCancel: () -> Unit,
 ): () -> Unit {
     val latest = rememberUpdatedState(onImage)
     val latestError = rememberUpdatedState(onError)
     val latestStart = rememberUpdatedState(onStart)
+    val latestCancel = rememberUpdatedState(onCancel)
     val delegate = remember {
         GalleryDelegate(
             onImage = { latest.value.invoke(it) },
             onError = { latestError.value.invoke(it) },
+            onCancel = { latestCancel.value.invoke() },
         )
     }
     return { latestStart.value.invoke(); delegate.present() }
@@ -270,6 +276,7 @@ private class PhotoDelegate(
 private class GalleryDelegate(
     private val onImage: (ByteArray) -> Unit,
     private val onError: (String) -> Unit,
+    private val onCancel: () -> Unit,
 ) : platform.darwin.NSObject(), UIImagePickerControllerDelegateProtocol, UINavigationControllerDelegateProtocol {
     private var picker: UIImagePickerController? = null
 
@@ -297,6 +304,7 @@ private class GalleryDelegate(
     override fun imagePickerControllerDidCancel(picker: UIImagePickerController) {
         picker.dismissViewControllerAnimated(true, null)
         retainedGallery = null
+        onCancel()
     }
 }
 

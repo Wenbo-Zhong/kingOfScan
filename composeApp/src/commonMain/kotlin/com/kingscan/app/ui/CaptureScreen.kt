@@ -55,6 +55,7 @@ fun CaptureScreen(
         onImage = { bytes -> openEditor(bytes, scope, { busy = it }, navigator, onMessage) },
         onError = { message -> busy = false; onMessage(message) },
         onStart = { busy = true },
+        onCancel = { busy = false },
     )
 
     Box(Modifier.fillMaxSize().background(Color.Black)) {

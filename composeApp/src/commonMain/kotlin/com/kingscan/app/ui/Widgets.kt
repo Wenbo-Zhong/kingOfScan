@@ -1,5 +1,9 @@
 package com.kingscan.app.ui
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -127,15 +131,21 @@ fun JpegThumb(
 
 @Composable
 fun BusyOverlay(visible: Boolean, label: String) {
-    if (!visible) return
-    Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
-        contentAlignment = Alignment.Center,
+    AnimatedVisibility(
+        visible = visible,
+        modifier = Modifier.fillMaxSize(),
+        enter = fadeIn(animationSpec = tween(durationMillis = 100)),
+        exit = fadeOut(animationSpec = tween(durationMillis = 180)),
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            CircularProgressIndicator(color = Color.White)
-            Spacer(Modifier.height(12.dp))
-            Text(label, color = Color.White)
+        Box(
+            modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                CircularProgressIndicator(color = Color.White)
+                Spacer(Modifier.height(12.dp))
+                Text(label, color = Color.White)
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.compose.BackHandler
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
@@ -38,6 +39,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.concurrent.Executors
+
+@Composable
+actual fun PlatformBackHandler(enabled: Boolean, onBack: () -> Unit) {
+    BackHandler(enabled = enabled, onBack = onBack)
+}
 
 @Composable
 actual fun ScannerCamera(
@@ -148,14 +154,19 @@ actual fun rememberImageImporter(
     onImage: (ByteArray) -> Unit,
     onError: (String) -> Unit,
     onStart: () -> Unit,
+    onCancel: () -> Unit,
 ): () -> Unit {
     val context = LocalContext.current
     val latest = rememberUpdatedState(onImage)
     val latestError = rememberUpdatedState(onError)
     val latestStart = rememberUpdatedState(onStart)
+    val latestCancel = rememberUpdatedState(onCancel)
     val scope = androidx.compose.runtime.rememberCoroutineScope()
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-        if (uri == null) return@rememberLauncherForActivityResult
+        if (uri == null) {
+            latestCancel.value.invoke()
+            return@rememberLauncherForActivityResult
+        }
         scope.launch(Dispatchers.IO) {
             val bytes = runCatching { context.contentResolver.openInputStream(uri)?.use { it.readBytes() } }.getOrNull()
             kotlinx.coroutines.withContext(Dispatchers.Main) {
@@ -166,7 +177,9 @@ actual fun rememberImageImporter(
     }
     return {
         latestStart.value.invoke()
-        launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        runCatching {
+            launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }.onFailure { latestError.value.invoke("无法打开相册") }
     }
 }
 
