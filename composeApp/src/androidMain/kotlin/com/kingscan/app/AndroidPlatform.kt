@@ -8,8 +8,10 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
+import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -32,6 +34,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.kingscan.app.imaging.DocumentDetector
+import com.kingscan.app.imaging.RgbaImage
+import com.kingscan.app.imaging.ScanLimits
+import com.kingscan.app.model.Quad
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -52,6 +58,7 @@ actual fun ScannerCamera(
     onBind: (capture: () -> Unit) -> Unit,
     onPhoto: (ByteArray) -> Unit,
     onError: (String) -> Unit,
+    onDetection: (Quad?) -> Unit,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -88,7 +95,9 @@ actual fun ScannerCamera(
     val latestPhoto = rememberUpdatedState(onPhoto)
     val latestError = rememberUpdatedState(onError)
     val latestBind = rememberUpdatedState(onBind)
+    val latestDetection = rememberUpdatedState(onDetection)
     val executor = remember { Executors.newSingleThreadExecutor() }
+    val analysisExecutor = remember { Executors.newSingleThreadExecutor() }
 
     DisposableEffect(lifecycleOwner, granted) {
         val future = ProcessCameraProvider.getInstance(context)
@@ -102,6 +111,24 @@ actual fun ScannerCamera(
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
                 .setJpegQuality(92)
                 .build()
+            val imageAnalysis = ImageAnalysis.Builder()
+                .setTargetResolution(android.util.Size(640, 480))
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .build()
+            var lastAnalysisAt = 0L
+            imageAnalysis.setAnalyzer(analysisExecutor) { proxy ->
+                val now = android.os.SystemClock.elapsedRealtime()
+                if (now - lastAnalysisAt < 120L) {
+                    proxy.close()
+                    return@setAnalyzer
+                }
+                lastAnalysisAt = now
+                val quad = runCatching { detectPreviewQuad(proxy) }.getOrNull()
+                android.os.Handler(android.os.Looper.getMainLooper()).post {
+                    latestDetection.value.invoke(quad)
+                }
+                proxy.close()
+            }
             try {
                 provider.unbindAll()
                 val camera = provider.bindToLifecycle(
@@ -109,6 +136,7 @@ actual fun ScannerCamera(
                     CameraSelector.DEFAULT_BACK_CAMERA,
                     preview,
                     imageCapture,
+                    imageAnalysis,
                 )
                 cameraState.value = camera
                 latestBind.value.invoke {
@@ -140,6 +168,7 @@ actual fun ScannerCamera(
         onDispose {
             if (future.isDone) runCatching { future.get().unbindAll() }
             executor.shutdown()
+            analysisExecutor.shutdown()
         }
     }
 
@@ -147,6 +176,33 @@ actual fun ScannerCamera(
         runCatching { cameraState.value?.cameraControl?.enableTorch(torchEnabled) }
     }
     AndroidView(factory = { previewView }, modifier = modifier)
+}
+
+private fun detectPreviewQuad(proxy: ImageProxy): Quad? {
+    val plane = proxy.planes.firstOrNull() ?: return null
+    val sourceWidth = proxy.width
+    val sourceHeight = proxy.height
+    val scale = minOf(1f, ScanLimits.DETECT_EDGE.toFloat() / maxOf(sourceWidth, sourceHeight))
+    val width = (sourceWidth * scale).toInt().coerceAtLeast(2)
+    val height = (sourceHeight * scale).toInt().coerceAtLeast(2)
+    val bytes = plane.buffer
+    val pixels = IntArray(width * height)
+    for (y in 0 until height) {
+        val sy = (y * sourceHeight / height).coerceAtMost(sourceHeight - 1)
+        for (x in 0 until width) {
+            val sx = (x * sourceWidth / width).coerceAtMost(sourceWidth - 1)
+            val offset = sy * plane.rowStride + sx * plane.pixelStride
+            val value = (bytes.get(offset).toInt() and 0xFF).coerceIn(0, 255)
+            pixels[y * width + x] = (0xFF shl 24) or (value shl 16) or (value shl 8) or value
+        }
+    }
+    val detected = DocumentDetector.detectOrNull(RgbaImage(width, height, pixels)) ?: return null
+    return when ((proxy.imageInfo.rotationDegrees % 360 + 360) % 360) {
+        90 -> detected.rotate90CW()
+        180 -> detected.rotate90CW().rotate90CW()
+        270 -> detected.rotate90CW().rotate90CW().rotate90CW()
+        else -> detected
+    }
 }
 
 @Composable

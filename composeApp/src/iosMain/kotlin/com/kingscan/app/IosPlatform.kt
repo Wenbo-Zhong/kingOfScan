@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.UIKitView
 import androidx.compose.ui.unit.dp
+import com.kingscan.app.model.Quad
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ObjCObjectVar
 import kotlinx.cinterop.alloc
@@ -76,6 +77,7 @@ actual fun ScannerCamera(
     onBind: (capture: () -> Unit) -> Unit,
     onPhoto: (ByteArray) -> Unit,
     onError: (String) -> Unit,
+    onDetection: (Quad?) -> Unit,
 ) {
     val latestPhoto = rememberUpdatedState(onPhoto)
     val latestBind = rememberUpdatedState(onBind)

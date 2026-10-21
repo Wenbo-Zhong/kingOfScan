@@ -11,6 +11,11 @@ object DocumentDetector {
      * stands out, a slightly inset rectangle is returned so the user can drag it.
      */
     fun detect(image: RgbaImage): Quad {
+        return detectOrNull(image) ?: Quad.inset(0.06f)
+    }
+
+    /** Returns null when the preview has no clear page-sized region. */
+    fun detectOrNull(image: RgbaImage): Quad? {
         val small = image.scaledDown(ScanLimits.DETECT_EDGE)
         val gray = grayscale(small)
         val blurred = boxBlur(gray, small.width, small.height, radius = 1)
@@ -22,7 +27,7 @@ object DocumentDetector {
             dark = largestComponent(dark, small.width, small.height),
             width = small.width,
             height = small.height,
-        ) ?: return Quad.inset(0.06f)
+        ) ?: return null
         return quadFromComponent(chosen, small.width, small.height)
     }
 

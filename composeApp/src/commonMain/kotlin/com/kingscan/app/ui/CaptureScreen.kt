@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -31,12 +32,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.kingscan.app.AppGraph
 import com.kingscan.app.imaging.DocumentDetector
 import com.kingscan.app.imaging.ScanLimits
+import com.kingscan.app.model.Quad
 import com.kingscan.app.model.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,6 +56,7 @@ fun CaptureScreen(
     var torch by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     var capture by remember { mutableStateOf<(() -> Unit)?>(null) }
+    var detectedQuad by remember { mutableStateOf<Quad?>(null) }
     val importImage = rememberImageImporter(
         onImage = { bytes -> openEditor(bytes, scope, { busy = it }, navigator, onMessage) },
         onError = { message -> busy = false; onMessage(message) },
@@ -65,7 +71,37 @@ fun CaptureScreen(
             onBind = { capture = it },
             onPhoto = { bytes -> openEditor(bytes, scope, { busy = it }, navigator, onMessage) },
             onError = onMessage,
+            onDetection = { detectedQuad = it },
         )
+        detectedQuad?.let { quad ->
+            Canvas(Modifier.fillMaxSize()) {
+                // Camera preview uses FIT_CENTER; keep the outline in the same
+                // centered 4:3 camera-content rectangle instead of stretching it
+                // over the taller device viewport.
+                val contentWidth = minOf(size.width, size.height * 0.75f)
+                val contentHeight = minOf(size.height, size.width / 0.75f)
+                val left = (size.width - contentWidth) / 2f
+                val top = (size.height - contentHeight) / 2f
+                val points = listOf(quad.topLeft, quad.topRight, quad.bottomRight, quad.bottomLeft)
+                fun mapPoint(x: Float, y: Float) = Offset(left + x * contentWidth, top + y * contentHeight)
+                val path = Path().apply {
+                    val first = mapPoint(points.first().x, points.first().y)
+                    moveTo(first.x, first.y)
+                    points.drop(1).forEach {
+                        val mapped = mapPoint(it.x, it.y)
+                        lineTo(mapped.x, mapped.y)
+                    }
+                    close()
+                }
+                drawPath(path, Color(0xFF31D6A0).copy(alpha = 0.16f))
+                drawPath(path, Color(0xFF31D6A0), style = Stroke(width = 3.dp.toPx()))
+                points.forEach { point ->
+                    val mapped = mapPoint(point.x, point.y)
+                    drawCircle(Color.White, radius = 5.dp.toPx(), center = mapped)
+                    drawCircle(Color(0xFF31D6A0), radius = 3.dp.toPx(), center = mapped)
+                }
+            }
+        }
         Row(
             modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().statusBarsPadding().padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,

@@ -2,6 +2,7 @@ package com.kingscan.app.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.kingscan.app.model.Quad
 
 @Composable
 expect fun PlatformBackHandler(enabled: Boolean = true, onBack: () -> Unit)
@@ -13,6 +14,7 @@ expect fun ScannerCamera(
     onBind: (capture: () -> Unit) -> Unit,
     onPhoto: (ByteArray) -> Unit,
     onError: (String) -> Unit,
+    onDetection: (Quad?) -> Unit = {},
 )
 
 @Composable

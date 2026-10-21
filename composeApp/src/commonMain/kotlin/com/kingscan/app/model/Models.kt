@@ -9,6 +9,9 @@ enum class FilterType {
     Gray,
     BlackWhite,
     Soft,
+    Brighten,
+    Sharpen,
+    RemoveShadow,
 }
 
 fun FilterType.label(): String = when (this) {
@@ -17,6 +20,9 @@ fun FilterType.label(): String = when (this) {
     FilterType.Gray -> "灰度"
     FilterType.BlackWhite -> "黑白"
     FilterType.Soft -> "柔和"
+    FilterType.Brighten -> "提亮"
+    FilterType.Sharpen -> "锐化"
+    FilterType.RemoveShadow -> "去阴影"
 }
 
 @Serializable
