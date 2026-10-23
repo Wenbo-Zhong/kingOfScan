@@ -22,6 +22,10 @@ object ImageFilters {
         }
         FilterType.Sharpen -> sharpen(source)
         FilterType.RemoveShadow -> removeShadow(source)
+        FilterType.InkSaver -> inkSaver(source)
+        FilterType.Invert -> map(source) { pixel ->
+            argb(255, 255 - pixel.red(), 255 - pixel.green(), 255 - pixel.blue())
+        }
     }
 
     private fun enhance(source: RgbaImage): RgbaImage {
@@ -82,6 +86,25 @@ object ImageFilters {
             val originalLuma = luma(sourcePixel).coerceAtLeast(1)
             fun adjust(channel: Int) = (channel * corrected.toFloat() / originalLuma).roundToInt().coerceIn(0, 255)
             out[i] = argb(255, adjust(sourcePixel.red()), adjust(sourcePixel.green()), adjust(sourcePixel.blue()))
+        }
+        return RgbaImage(source.width, source.height, out)
+    }
+
+    /**
+     * Uses a local background estimate so uneven page lighting does not force
+     * one threshold across the whole image. Low-contrast paper is rendered
+     * white while darker strokes remain black for lower-ink printing.
+     */
+    private fun inkSaver(source: RgbaImage): RgbaImage {
+        val gray = IntArray(source.pixels.size) { luma(source.pixels[it]) }
+        val radius = (minOf(source.width, source.height) / 80).coerceIn(3, 18)
+        val localBackground = DocumentDetector.boxBlur(gray, source.width, source.height, radius)
+        val out = IntArray(source.pixels.size)
+        for (i in source.pixels.indices) {
+            val background = localBackground[i]
+            val threshold = background - maxOf(10, (background * 0.08f).roundToInt())
+            val value = if (gray[i] >= threshold) 255 else 0
+            out[i] = argb(255, value, value, value)
         }
         return RgbaImage(source.width, source.height, out)
     }

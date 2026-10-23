@@ -12,6 +12,8 @@ enum class FilterType {
     Brighten,
     Sharpen,
     RemoveShadow,
+    InkSaver,
+    Invert,
 }
 
 fun FilterType.label(): String = when (this) {
@@ -23,6 +25,8 @@ fun FilterType.label(): String = when (this) {
     FilterType.Brighten -> "提亮"
     FilterType.Sharpen -> "锐化"
     FilterType.RemoveShadow -> "去阴影"
+    FilterType.InkSaver -> "省墨"
+    FilterType.Invert -> "反色"
 }
 
 @Serializable

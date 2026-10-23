@@ -1,6 +1,6 @@
 # 离线扫描王
 
-一个用 Kotlin Multiplatform 和 Compose Multiplatform 写的文档扫描应用，界面和流程接近扫描全能王，但**没有账号、没有云同步、也没有网络权限**。同一套共享代码可以编译成 Android 和 iOS 应用。
+一个使用 Kotlin Multiplatform 和 Compose Multiplatform 构建的本地文档扫描应用，支持拍摄、页面裁切、图像滤镜和 PDF 导出。应用不包含账号或云同步；同一套共享代码可以编译成 Android 和 iOS 应用。
 
 ## 能做什么
 
