@@ -1,0 +1,6 @@
+
+com.kingscan.app.DocumentAiIntegrationTest:..
+
+Time: 440.125
+
+OK (2 tests)

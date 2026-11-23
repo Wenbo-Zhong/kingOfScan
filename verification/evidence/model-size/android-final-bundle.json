@@ -1,0 +1,32 @@
+{
+  "android": {
+    "apk_bytes": 198520679,
+    "model_sha256": {
+      "fingers": "6d4ae6ee82effb666d6bb03f29d00f1dab6d92581b47739b087142035f60e108",
+      "docres": "642407d7d8f18291604b35a41f7aabccfc7ae47dbe69619c240e176922f67854",
+      "esdnet": "7decb6e44c05e241aab44848ed7310cf48a504e20afa036a192e0dd107f66329",
+      "handwriting": "e4f50aaeae8a078a199938ba7f56fddd2b7ff001773ac1f38a3461769371c2df",
+      "watermark": "53f2e69206554bd510a5cbae1c80cbca9c87cbc0803953c81f19740ae2c49ce0"
+    },
+    "model_bytes": 194344100,
+    "packed_model_bytes": 169839770,
+    "gzip_weights_with_verified_cache_mmap": true,
+    "native_abis": [
+      "arm64-v8a"
+    ],
+    "native_library_bytes": 30556744,
+    "native_libraries_compressed": true,
+    "verification_entry_absent": true,
+    "compressed_payload_bytes": {
+      "models": 169839770,
+      "native_libraries": 11430320,
+      "dex": 2497084,
+      "other": 14665654
+    },
+    "apk_relative_path": "composeApp/build/outputs/apk/release/kingscan-small-arm64-test.apk",
+    "apk_sha256": "6a83758dc9b9186f53ae3c7fa2daac10bfffc5b5696da22f04ec64183ac8d68e",
+    "signature": "local Android debug keystore, ordinary minified release build",
+    "internet_permission_absent": true,
+    "release_install_and_launch_passed": true
+  }
+}

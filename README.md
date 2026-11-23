@@ -17,7 +17,7 @@
 - 图片保存到系统相册、扫描后自动存相册、PDF/JPEG 系统分享及系统打印；设备密码/生物识别保护，启动和后台返回重新锁定。
 - 从相机或图片识别二维码/条码，生成文字/链接二维码并保存或分享。
 
-自动处理使用 DocRes、DIS 手写分割、HandsWild EYTH、DocDiff 和 ESDNet。高清保留输入尺寸；手写/手指分割后补全纸面，可能漏选或误伤邻近印刷字；水印模型含五步扩散采样，与原始百步采样有差异。遮挡的文字无法可靠恢复。模型资源约 Android 731 MiB、iOS 366 MiB，首次加载和大图处理需等待；预处理逐行响应取消，已经开始的单次原生推理需等待结束。选型、许可与转换记录见 [模型说明](verification/models/README.md)。书页曲面需要调整边界，拼接需要足够清晰的重叠内容。没有进行与 CamScanner 同源实拍的质量、性能或像素级 UI 对比，不能据此声称全部效果等同。功能对照见 [本地功能分析第 13 章](KingOfScan-本地功能分析.md#13-对照-kingofscan本次实现与剩余差距)。
+自动处理使用 DocRes、DIS 手写分割、HandsWild EYTH、DocDiff 和 ESDNet。高清保留输入尺寸；手写/手指分割后补全纸面，可能漏选或误伤邻近印刷字；水印模型含五步扩散采样，与原始百步采样有差异。遮挡的文字无法可靠恢复。五模型采用 8 位权重量化：Android 解压后约 185 MiB，随包 gzip 约 162 MiB；iOS 源模型包约 185 MiB。Android 首次使用每个模型时流式解压并校验 SHA-256，完整可清理缓存约 185 MiB；之后复用，系统清理缓存后重新解压。量化不代表浮点推理内存或耗时按同等比例下降。首次加载和大图处理需等待；预处理逐行响应取消，已经开始的单次原生推理需等待结束。选型、许可与转换记录见 [模型说明](verification/models/README.md)。书页曲面需要调整边界，拼接需要足够清晰的重叠内容。没有进行与 CamScanner 同源实拍的质量、性能或像素级 UI 对比，不能据此声称全部效果等同。功能对照见 [本地功能分析第 13 章](KingOfScan-本地功能分析.md#13-对照-kingofscan本次实现与剩余差距)。
 
 ## 工程结构
 
@@ -62,6 +62,16 @@ APK 输出在 `composeApp/build/outputs/apk/debug/composeApp-debug.apk`。命令
 ./gradlew :composeApp:assembleDebug
 ./gradlew :composeApp:testDebugUnitTest
 ```
+
+需要接近实际手机安装体积的 APK，可构建 ARM64 release（启用代码/资源裁剪）：
+
+```bash
+./gradlew :composeApp:assembleRelease -PkingscanAbis=arm64-v8a
+```
+
+输出 `composeApp/build/outputs/apk/release/composeApp-release-unsigned.apk`，发布前使用自己的签名配置。省略 `kingscanAbis` 时保留全部依赖提供的 ABI；开发和模拟器支持不变。
+
+2026-11-23 的 ARM64 release 实测：本地测试签名 APK 198.52 MB（189.32 MiB）。五项离线模型保留，模型资源约 162 MiB；原生库随包压缩、安装时解压。完整包检查及实图量化差异见[小包验证](verification/evidence/model-size/RESULTS.md)。
 
 iOS：用 Xcode 打开 `iosApp/iosApp.xcodeproj`，选择模拟器或真机后运行。模拟器只编 arm64，工程排除了 Intel 模拟器。真机需要在 `iosApp/Configuration/Config.xcconfig` 里填写 `TEAM_ID`。Xcode 的构建脚本会调用：
 

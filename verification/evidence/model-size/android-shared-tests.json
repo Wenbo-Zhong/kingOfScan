@@ -1,0 +1,86 @@
+{
+  "target": "testDebugUnitTest",
+  "tests": 27,
+  "suites": [
+    {
+      "name": "com.kingscan.app.DocumentLifecycleTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:23",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.049"
+    },
+    {
+      "name": "com.kingscan.app.CaptureGeometryTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:23",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.243"
+    },
+    {
+      "name": "com.kingscan.app.DocumentAiCancellationTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:23",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.026"
+    },
+    {
+      "name": "com.kingscan.app.PageCompositionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:24",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.543"
+    },
+    {
+      "name": "com.kingscan.app.DocumentAiPersistenceTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:23",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.092"
+    },
+    {
+      "name": "com.kingscan.app.PageRetouchTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:24",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.142"
+    },
+    {
+      "name": "com.kingscan.app.ScanPipelineTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:24",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.042"
+    },
+    {
+      "name": "com.kingscan.app.PageEditingTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-23T15:04:24",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.008"
+    }
+  ]
+}

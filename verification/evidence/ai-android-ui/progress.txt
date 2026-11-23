@@ -1,7 +1,0 @@
-PASS actual in-flight cancellation saves no model edit
-PASS model undo and redo produce ready preview
-PASS docres button, compare, save, explicit parameters, original bytes and reopened preview
-PASS handwriting button, compare, save, explicit parameters, original bytes and reopened preview
-PASS fingers button, compare, save, explicit parameters, original bytes and reopened preview
-PASS watermark button, compare, save, explicit parameters, original bytes and reopened preview
-PASS esdnet button, compare, save, explicit parameters, original bytes and reopened preview

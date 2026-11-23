@@ -1,0 +1,83 @@
+{
+  "platform": "android",
+  "models": {
+    "docres": {
+      "native_vs_compressed_host": {
+        "mae": 3.85049361284473e-07,
+        "max": 8.404254913330078e-06,
+        "p99": 1.6391277313232422e-06,
+        "psnr_vs_original_model_db": 125.98770041036042
+      },
+      "native_vs_original_model": {
+        "mae": 0.0025078055914491415,
+        "max": 0.12679839134216309,
+        "p99": 0.01800941303372383,
+        "psnr_vs_original_model_db": 46.38452684443149
+      }
+    },
+    "esdnet": {
+      "native_vs_compressed_host": {
+        "mae": 1.8497244980153482e-07,
+        "max": 1.9073486328125e-06,
+        "p99": 8.344650268554688e-07,
+        "psnr_vs_original_model_db": 131.9259961214565
+      },
+      "native_vs_original_model": {
+        "mae": 0.006001857575029135,
+        "max": 0.04302871227264404,
+        "p99": 0.019227586686611176,
+        "psnr_vs_original_model_db": 42.39282237973307
+      }
+    },
+    "handwriting": {
+      "native_vs_compressed_host": {
+        "mae": 2.7182863959751558e-08,
+        "max": 2.473592758178711e-06,
+        "p99": 2.980232238769531e-07,
+        "threshold": 0.35,
+        "iou": 1.0,
+        "changed_fraction": 0.0
+      },
+      "native_vs_original_model": {
+        "mae": 0.00017325552471447736,
+        "max": 0.03625047206878662,
+        "p99": 0.004907413385808468,
+        "threshold": 0.35,
+        "iou": 0.9970614425645592,
+        "changed_fraction": 0.000125885009765625
+      }
+    },
+    "fingers": {
+      "native_vs_compressed_host": {
+        "mae": 5.697420419892296e-07,
+        "max": 7.748603820800781e-06,
+        "p99": 5.364418029785156e-06,
+        "threshold": 0.2,
+        "iou": 1.0,
+        "changed_fraction": 0.0
+      },
+      "native_vs_original_model": {
+        "mae": 0.008071497082710266,
+        "max": 0.11085009574890137,
+        "p99": 0.08097542822360992,
+        "threshold": 0.2,
+        "iou": 0.9516270690237586,
+        "changed_fraction": 0.0081939697265625
+      }
+    },
+    "watermark": {
+      "native_vs_compressed_host": {
+        "mae": 1.655622980933913e-07,
+        "max": 1.2516975402832031e-06,
+        "p99": 5.364418029785156e-07,
+        "psnr_vs_original_model_db": 133.61134279277445
+      },
+      "native_vs_original_model": {
+        "mae": 0.0053497180342674255,
+        "max": 0.04222828149795532,
+        "p99": 0.014241134747862816,
+        "psnr_vs_original_model_db": 44.356526344679665
+      }
+    }
+  }
+}

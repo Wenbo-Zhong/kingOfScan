@@ -80,11 +80,21 @@ android {
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // Device-sized APKs can select an ABI; ordinary builds retain emulator support.
+        providers.gradleProperty("kingscanAbis").orNull?.let { value ->
+            val selected = value.split(",").map(String::trim).filter(String::isNotEmpty)
+            require(selected.isNotEmpty() && selected.all {
+                it in setOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+            }) { "kingscanAbis must list supported Android ABIs" }
+            ndk { abiFilters += selected }
+        }
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -94,11 +104,14 @@ android {
     }
 
     packaging {
+        // Compress native libraries in APKs; Android extracts them during installation.
+        jniLibs { useLegacyPackaging = true }
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    androidResources { noCompress += "onnx" }
+    // AGP expands .gz assets during merging; .pack preserves our gzip stream.
+    androidResources { noCompress += listOf("onnx", "pack") }
 
     lint {
         abortOnError = false

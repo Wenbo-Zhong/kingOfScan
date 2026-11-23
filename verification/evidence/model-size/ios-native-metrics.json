@@ -1,0 +1,83 @@
+{
+  "platform": "ios",
+  "models": {
+    "docres": {
+      "native_vs_compressed_host": {
+        "mae": 0.0021146254148334265,
+        "max": 0.04349064826965332,
+        "p99": 0.007602524012327194,
+        "psnr_vs_original_model_db": 52.08947734452649
+      },
+      "native_vs_original_model": {
+        "mae": 0.003725403919816017,
+        "max": 0.1461085081100464,
+        "p99": 0.02027137391269207,
+        "psnr_vs_original_model_db": 44.93225760563269
+      }
+    },
+    "esdnet": {
+      "native_vs_compressed_host": {
+        "mae": 0.0009618392796255648,
+        "max": 0.01123046875,
+        "p99": 0.00439453125,
+        "psnr_vs_original_model_db": 57.62542695410232
+      },
+      "native_vs_original_model": {
+        "mae": 0.006719043478369713,
+        "max": 0.04426521062850952,
+        "p99": 0.020562853664159775,
+        "psnr_vs_original_model_db": 41.57388316082493
+      }
+    },
+    "handwriting": {
+      "native_vs_compressed_host": {
+        "mae": 0.000137433540658094,
+        "max": 0.046556681394577026,
+        "p99": 0.0032826154492795467,
+        "threshold": 0.35,
+        "iou": 0.9967040798147159,
+        "changed_fraction": 0.000141143798828125
+      },
+      "native_vs_original_model": {
+        "mae": 0.00018601307237986475,
+        "max": 0.05215120315551758,
+        "p99": 0.0054939305409789085,
+        "threshold": 0.35,
+        "iou": 0.9965314834578441,
+        "changed_fraction": 0.000148773193359375
+      }
+    },
+    "fingers": {
+      "native_vs_compressed_host": {
+        "mae": 0.002204827032983303,
+        "max": 0.05061015486717224,
+        "p99": 0.029666896909475327,
+        "threshold": 0.2,
+        "iou": 0.9799443778687227,
+        "changed_fraction": 0.003383636474609375
+      },
+      "native_vs_original_model": {
+        "mae": 0.006700704339891672,
+        "max": 0.09877681732177734,
+        "p99": 0.06896620988845825,
+        "threshold": 0.2,
+        "iou": 0.959582611865488,
+        "changed_fraction": 0.00676727294921875
+      }
+    },
+    "watermark": {
+      "native_vs_compressed_host": {
+        "mae": 0.0013384377816691995,
+        "max": 0.00997161865234375,
+        "p99": 0.004473846405744553,
+        "psnr_vs_original_model_db": 55.41209256172703
+      },
+      "native_vs_original_model": {
+        "mae": 0.002251473953947425,
+        "max": 0.024442315101623535,
+        "p99": 0.009054336696863174,
+        "psnr_vs_original_model_db": 50.51398266048353
+      }
+    }
+  }
+}

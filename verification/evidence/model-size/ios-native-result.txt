@@ -1,0 +1,14 @@
+PASS docres native reference MAE=0.002114625365787622 max=0.04349065
+PASS handwriting native reference MAE=1.3743353542325682E-4 max=0.04655668
+PASS fingers native reference MAE=0.0022048271744550003 max=0.050610155
+PASS watermark native reference MAE=0.0013384376715634971 max=0.009971619
+PASS esdnet native reference MAE=9.618393135800337E-4 max=0.011230469
+PASS docres full page dimensions preserved
+PASS esdnet full page dimensions preserved
+PASS handwriting unselected pixels preserved=294887/311910
+PASS fingers unselected pixels preserved=9512/22000
+PASS watermark full page dimensions preserved
+PASS original bytes, model parameters, rotated rerender and OCR invalidation survive repository reload
+PASS clean paper rejected by both segmentation operations
+PASS coordinate-stable watermark noise matches independent reference
+PASS unavailable model version and cancellation preserve saved original

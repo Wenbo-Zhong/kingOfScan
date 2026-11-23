@@ -12,11 +12,19 @@ if [ "${3:-}" != "--skip-framework" ]; then
 fi
 cp verification/ios/Info.plist "$ai_app/Info.plist"
 cp iosApp/iosApp/AIModels/models.json "$ai_app/models.json"
+ai_manifest_changed=false
+if ! cmp -s iosApp/iosApp/AIModels/models.json "$ai_output/compiled-models.json"; then
+    ai_manifest_changed=true
+fi
 for ai_model in fingers docres esdnet handwriting watermark; do
+    if [ "$ai_manifest_changed" = true ]; then
+        rm -rf "$ai_app/$ai_model.mlmodelc"
+    fi
     if [ ! -d "$ai_app/$ai_model.mlmodelc" ]; then
         xcrun coremlcompiler compile "iosApp/iosApp/AIModels/$ai_model.mlpackage" "$ai_app" >> "$ai_output/resources-build.log" 2>&1
     fi
 done
+cp iosApp/iosApp/AIModels/models.json "$ai_output/compiled-models.json"
 xcrun --sdk iphonesimulator swiftc verification/ios/DocumentAiHost.swift \
     -F composeApp/build/bin/iosSimulatorArm64/debugFramework -framework ComposeApp -Xlinker -dead_strip \
     -o "$ai_app/OfflineVerification" -target arm64-apple-ios17.2-simulator > "$ai_output/host-build.log" 2>&1

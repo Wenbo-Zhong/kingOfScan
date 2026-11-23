@@ -117,6 +117,8 @@ bash verification/ios/verify.sh 95759F50-ED05-4ED3-8670-8E45A6A24CBC
 
 ## 五项开源模型专项
 
+以下是压缩前版本的验证记录。当前五模型已采用 INT8 权重量化，ARM64 release 测试签名 APK 为 198.52 MB；两端原生实图及 Android 缓存恢复验证见[小包验证](evidence/model-size/RESULTS.md)。原始记录保留用于对照。
+
 已将 DocRes、DIS-Handwriting-Remover、HandsWild EYTH、DocDiff 和 ESDNet 转换并随包部署，Android ONNX Runtime / iOS Core ML 真正运行权重。共同预处理、选区恢复、重叠融合、可复现噪声、旋转和编辑历史见 [模型说明](models/README.md)。[实际前后对比图](evidence/ai-comparison.png)由 iOS 原生验收的输入/输出生成；[输入](evidence/ai-inputs/)与 [iOS 输出](evidence/ai-ios-native/)保留，图片来源和权利边界另见模型说明。
 
 | 项目 | Android ARM64 模拟器 | iOS 27 ARM64 UIApplication 宿主 |

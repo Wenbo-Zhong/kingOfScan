@@ -1,0 +1,233 @@
+{
+  "docres": {
+    "android": {
+      "onnxruntime": "1.32.0",
+      "original_sha256": "f48f1309bc9462c7d8b65f562e8450abb70709a829c2bd2c410901784c43971a",
+      "output_sha256": "642407d7d8f18291604b35a41f7aabccfc7ae47dbe69619c240e176922f67854",
+      "id": "docres",
+      "platform": "android",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 61397044,
+      "output_bytes": 16275304,
+      "cases": [
+        {
+          "input": "docres-256-reference.npz",
+          "mae": 0.0025077436584979296,
+          "max": 0.12679588794708252,
+          "p99": 0.01800992153584957,
+          "psnr_vs_original_model_db": 46.38473335960312
+        }
+      ]
+    },
+    "ios": {
+      "coremltools": "9.0",
+      "specification_version": 7,
+      "id": "docres",
+      "platform": "ios",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 30892614,
+      "output_bytes": 15916238,
+      "cases": [
+        {
+          "input": "docres-256-reference.npz",
+          "mae": 0.0027327982243150473,
+          "max": 0.16541457176208496,
+          "p99": 0.018760869279503822,
+          "psnr_vs_original_model_db": 45.91272769954435
+        }
+      ]
+    }
+  },
+  "esdnet": {
+    "android": {
+      "onnxruntime": "1.32.0",
+      "original_sha256": "ce114f857631b6db65e9739bf914d3231aa773357df077780ba80428392d510f",
+      "output_sha256": "7decb6e44c05e241aab44848ed7310cf48a504e20afa036a192e0dd107f66329",
+      "id": "esdnet",
+      "platform": "android",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 23895115,
+      "output_bytes": 6302213,
+      "cases": [
+        {
+          "input": "esdnet-512-reference.npz",
+          "mae": 0.0060018631629645824,
+          "max": 0.04302904009819031,
+          "p99": 0.019227754324674606,
+          "psnr_vs_original_model_db": 42.39281388229549
+        }
+      ]
+    },
+    "ios": {
+      "coremltools": "9.0",
+      "specification_version": 7,
+      "id": "esdnet",
+      "platform": "ios",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 12211379,
+      "output_bytes": 6382825,
+      "cases": [
+        {
+          "input": "esdnet-512-reference.npz",
+          "mae": 0.006282154005020857,
+          "max": 0.042359232902526855,
+          "p99": 0.019529905170202255,
+          "psnr_vs_original_model_db": 42.117059065472624
+        }
+      ]
+    }
+  },
+  "handwriting": {
+    "android": {
+      "onnxruntime": "1.32.0",
+      "original_sha256": "6a846d82efeba713008bccf76cb54f697b68df8b0a3867f5b52c1858266dcd86",
+      "output_sha256": "e4f50aaeae8a078a199938ba7f56fddd2b7ff001773ac1f38a3461769371c2df",
+      "id": "handwriting",
+      "platform": "android",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 176123577,
+      "output_bytes": 44259967,
+      "cases": [
+        {
+          "input": "handwriting-512-reference.npz",
+          "mae": 0.00017325655790045857,
+          "max": 0.036248743534088135,
+          "p99": 0.0049072266556322575,
+          "threshold": 0.35,
+          "iou": 0.9970614425645592,
+          "changed_fraction": 0.000125885009765625
+        }
+      ]
+    },
+    "ios": {
+      "coremltools": "9.0",
+      "specification_version": 7,
+      "id": "handwriting",
+      "platform": "ios",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 88257814,
+      "output_bytes": 44340226,
+      "cases": [
+        {
+          "input": "handwriting-512-reference.npz",
+          "mae": 0.00017715035937726498,
+          "max": 0.03403782844543457,
+          "p99": 0.005035752896219492,
+          "threshold": 0.35,
+          "iou": 0.9964381121994658,
+          "changed_fraction": 0.000152587890625
+        }
+      ]
+    }
+  },
+  "fingers": {
+    "android": {
+      "onnxruntime": "1.32.0",
+      "original_sha256": "6fdaaa03b9ab07688ea2b415230e9c47274d9c10acbf1d090e886e42ca98afe9",
+      "output_sha256": "6d4ae6ee82effb666d6bb03f29d00f1dab6d92581b47739b087142035f60e108",
+      "id": "fingers",
+      "platform": "android",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 472205839,
+      "output_bytes": 118926324,
+      "cases": [
+        {
+          "input": "fingers-512-reference.npz",
+          "mae": 0.008071161806583405,
+          "max": 0.11084926128387451,
+          "p99": 0.08096981048583984,
+          "threshold": 0.2,
+          "iou": 0.9516270690237586,
+          "changed_fraction": 0.0081939697265625
+        },
+        {
+          "input": "fingers-full-reference.npz",
+          "mae": 0.005048502702265978,
+          "max": 0.18654516339302063,
+          "p99": 0.1031925231218338,
+          "threshold": 0.2,
+          "iou": 0.9475447528329775,
+          "changed_fraction": 0.006092071533203125
+        }
+      ]
+    },
+    "ios": {
+      "coremltools": "9.0",
+      "specification_version": 7,
+      "id": "fingers",
+      "platform": "ios",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 236238182,
+      "output_bytes": 118539277,
+      "cases": [
+        {
+          "input": "fingers-512-reference.npz",
+          "mae": 0.007819263264536858,
+          "max": 0.1194927990436554,
+          "p99": 0.08367680758237839,
+          "threshold": 0.2,
+          "iou": 0.9489544067492371,
+          "changed_fraction": 0.008678436279296875
+        },
+        {
+          "input": "fingers-full-reference.npz",
+          "mae": 0.00546304089948535,
+          "max": 0.19178372621536255,
+          "p99": 0.10309156030416489,
+          "threshold": 0.2,
+          "iou": 0.9435258538509582,
+          "changed_fraction": 0.00655364990234375
+        }
+      ]
+    }
+  },
+  "watermark": {
+    "android": {
+      "onnxruntime": "1.32.0",
+      "original_sha256": "9902ef1761483d3c4281a23e851de228573cfdb1fe86ec72ea31702e6338d19f",
+      "output_sha256": "53f2e69206554bd510a5cbae1c80cbca9c87cbc0803953c81f19740ae2c49ce0",
+      "id": "watermark",
+      "platform": "android",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 33070917,
+      "output_bytes": 8580292,
+      "cases": [
+        {
+          "input": "watermark-256-reference.npz",
+          "mae": 0.005349727813154459,
+          "max": 0.0422285795211792,
+          "p99": 0.014241190627217293,
+          "psnr_vs_original_model_db": 44.356507388586294
+        }
+      ]
+    },
+    "ios": {
+      "coremltools": "9.0",
+      "specification_version": 7,
+      "id": "watermark",
+      "platform": "ios",
+      "dtype": "int8",
+      "weight_only": true,
+      "input_bytes": 16553743,
+      "output_bytes": 8565722,
+      "cases": [
+        {
+          "input": "watermark-256-reference.npz",
+          "mae": 0.0014015258057042956,
+          "max": 0.019984006881713867,
+          "p99": 0.007162205874919891,
+          "psnr_vs_original_model_db": 53.74393051977124
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,0 @@
-PASS docres native reference MAE=3.706955248640916E-7 max=1.0669231E-5 firstLoadAndPredictionMs=28079
-PASS handwriting native reference MAE=3.1857532191357544E-8 max=3.516674E-6 firstLoadAndPredictionMs=6925
-PASS fingers native reference MAE=1.8816044193743775E-7 max=3.3974648E-6 firstLoadAndPredictionMs=38365
-PASS watermark native reference MAE=1.8478857555237482E-7 max=1.2516975E-6 firstLoadAndPredictionMs=19504
-PASS esdnet native reference MAE=2.1777149909289287E-7 max=2.3841858E-6 firstLoadAndPredictionMs=9426

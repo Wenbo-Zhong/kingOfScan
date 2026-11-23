@@ -12,9 +12,22 @@
 
 各权重及转换模型的 SHA-256、来源版本、输入输出形状与**macOS 转换参考**误差在两端 `models.json`。该误差不是 iOS/Android 运行测量。原始许可证和 [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt)随包；GPL 只适用于本项目代码，不替代上游条款。手指权重用于本地研究/非商用，商业或再次发布前应明确权利方授权，不能把整个模型包宣称为 MIT。
 
-Android 的 `.onnx` 不压缩并用只读 mmap 加载，首次核对 SHA-256；ONNX Runtime 1.23.2，关闭遥测。其 XNNPACK 对 EYTH DAG 的分区/优化实测报缺失节点，因此手指明确使用 CPU，其他模型使用可用的 XNNPACK。iOS `.mlpackage` 由 Xcode 编译为 `.mlmodelc`，Core ML 使用 CPU/GPU，按实际输出 strides 读 float32。两端串行推理，只缓存一个模型；编辑界面另外缓存两个前缀结果，减少撤销/追加重算。
+2026-11-23 的小包版本保留五种模型与全部处理入口，采用 INT8 权重、浮点计算。Android 在原 ONNX 图前插入逐存储通道 `DequantizeLinear`，小权重、bias 与非卷积常量保留；iOS 用 Core ML 官方 `linear_quantize_weights` 逐通道压缩，仍使用 iOS 16 的 specification 7。四/六位手指量化、tiny U-Net 和 YOLO26 手分割的实图效果未通过，未进入应用资源。没有加入肤色或关键点选区兜底。
 
-模型文件约 Android 731 MiB、iOS 366 MiB，其中手指约 450/225 MiB。大图按输入尺寸输出，分块不等于一次整图推理；耗时随分块数增长。预处理逐行检查取消，调用原生模型之前再次检查，避免已取消任务继续加载或推理；正在进行的单次原生推理不能立即打断。原照、处理版本、强度、噪声 seed 和创建方向随编辑保存；旋转后的重渲染回到各编辑创建方向计算，再转回页面方向。失败或无检出不会自动伪造选区。
+| 模型 | Android 原 FP32 / INT8，MiB | Android 随包 gzip，MiB | iOS 原 FP16 / INT8，MiB |
+|---|---:|---:|---:|
+| 手指 EYTH | 450.33 / 113.42 | 99.90 | 225.29 / 113.05 |
+| 手写 DIS | 167.96 / 42.21 | 36.32 | 84.17 / 42.29 |
+| 高清 DocRes | 58.55 / 15.52 | 13.84 | 29.46 / 15.18 |
+| 摩尔纹 ESDNet | 22.79 / 6.01 | 4.76 | 11.65 / 6.09 |
+| 印章 DocDiff | 31.54 / 8.18 | 7.15 | 15.79 / 8.17 |
+| 合计 | 731.17 / 185.34 | 161.97 | 366.37 / 184.77 |
+
+Android 的 `.onnx.pack` 内容为确定性 gzip，不重复 ZIP 压缩；使用 `.pack` 后缀是为了避免 AGP 在资源合并时自动解压 `.gz`。首次使用流式解压到私有 `cache/ai_models`，核对长度和 SHA-256 后原子替换，再用只读 mmap 加载。复用缓存时重新核对 SHA；损坏或被系统清理时从随包资源重新生成。全模型缓存约 185 MiB，不能把下载包缩小当作等比例 RAM 缩小。APK 内原生库另作 ZIP 压缩，Android 安装时解压到应用目录。ONNX Runtime 1.23.2，关闭遥测；手指用 CPU，其他模型使用可用的 XNNPACK。iOS `.mlpackage` 由 Xcode 编译为 `.mlmodelc`，Core ML 使用 CPU/GPU，按实际输出 strides 读 float32。两端串行推理，只缓存一个原生会话；编辑界面另外缓存两个前缀结果。
+
+样例中手指按四向融合、默认阈值和选区扩展后，与原版选区 IoU 为 98.02% / 99.14%；无手文档两版均无检出。手写默认阈值选区重合约 99.6%；三种还原模型与原版输出 PSNR 均超过 40 dB。这些是量化前后差异，**不是标注准确率或与 CamScanner 的效果对比**。原始来源、SHA 与 FP32/FP16 转换误差保留于 manifest 的 `baseline_*`，当前压缩结果在 `validation`；必要实图见 [小包验证](../evidence/model-size/RESULTS.md)。
+
+大图按输入尺寸输出，分块不等于一次整图推理；耗时随分块数增长。预处理逐行检查取消，调用原生模型之前再次检查；正在进行的单次原生推理不能立即打断。原照、处理版本、强度、噪声 seed 和创建方向随编辑保存；旋转后的重渲染回到各编辑创建方向计算，再转回页面方向。处理算法/预处理仍为 `v1`，`packing_revision` 单独记录本次权重打包，旧页可继续重编辑；重渲染可能出现量化带来的像素差异。失败或无检出不会自动伪造选区。
 
 分割任务先用模型预测选区，扩展抗锯齿边缘，然后估计局部纸面并作边界传播/调和填充；选区外直接采用源像素。默认手指阈值 0.2、膨胀 18/512，手写阈值 0.35、膨胀 3/512，可用强度调整阈值。不是恢复被遮挡的印刷文字。实图手写有漏选/相邻笔画误伤，手指补全略灰；应通过对比、撤销或手动补选检查。
 
@@ -44,7 +57,20 @@ python stage_models.py --research-root RESEARCH_DIR --repo-root REPO_DIR
 python make_native_fixtures.py
 ```
 
-`make_native_fixtures.py` 输出实际 `/tmp/kingscan-ai-fixtures`；float32 采用 little-endian。测试调用生产 `PageRetouch`，包括五模型与 Torch 输出 MAE<0.003、预处理≤1/255、五种整页输出、选外像素、原照/版本/旋转/重开/OCR、空白拒绝、独立噪声、取消和缺版本。设备结果见 [RESULTS.md](../RESULTS.md)。
+以上先生成原版参考与来源清单，再在仓库根目录压缩、验证和替换资源：
+
+```bash
+python verification/models/compress_mobile.py --research-root RESEARCH_DIR --output CANDIDATES
+python verification/models/stage_compressed_models.py --candidates CANDIDATES
+python verification/models/compare_compressed_hands.py --research-root RESEARCH_DIR --candidates CANDIDATES --output EVIDENCE
+python verification/models/make_compression_evidence.py --research-root RESEARCH_DIR --candidates CANDIDATES --output EVIDENCE
+python verification/models/make_compressed_fixtures.py --original-fixtures ORIGINAL_FIXTURES --candidates CANDIDATES --platform android --output ANDROID_FIXTURES
+python verification/models/make_compressed_fixtures.py --original-fixtures ORIGINAL_FIXTURES --candidates CANDIDATES --platform ios --output IOS_FIXTURES
+```
+
+小包原生 tensor 校验继续采用 MAE<0.003，参考分别是已验证的 Android/iOS 压缩模型宿主输出；量化对原始模型的影响独立测量，不放宽运行时的正确性阈值。运行下面命令时，分别替换两端 fixture 路径。
+
+`make_native_fixtures.py` 输出原版 `/tmp/kingscan-ai-fixtures`；小包使用上一步生成的两端专用参考，float32 采用 little-endian。测试调用生产 `PageRetouch`，包括五模型原生输出对对应宿主参考 MAE<0.003、预处理≤1/255、五种整页输出、选外像素、原照/版本/旋转/重开/OCR、空白拒绝、独立噪声、取消和缺版本。Android 另验证同长度缓存损坏及缓存删除后的重建，并确认推理输出逐值一致。小包设备结果见[小包验证](../evidence/model-size/RESULTS.md)。
 
 ```bash
 ./gradlew :composeApp:assembleDebug :composeApp:assembleDebugAndroidTest -PkingscanVerification=true

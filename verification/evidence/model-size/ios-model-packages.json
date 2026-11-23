@@ -1,0 +1,27 @@
+{
+  "source": "actual coremlcompiler models in native verification host; excludes application/framework",
+  "models": {
+    "fingers": {
+      "source_package_bytes": 118539277,
+      "compiled_model_bytes": 118631641
+    },
+    "docres": {
+      "source_package_bytes": 15916238,
+      "compiled_model_bytes": 16009418
+    },
+    "esdnet": {
+      "source_package_bytes": 6382825,
+      "compiled_model_bytes": 6463302
+    },
+    "handwriting": {
+      "source_package_bytes": 44340226,
+      "compiled_model_bytes": 44402943
+    },
+    "watermark": {
+      "source_package_bytes": 8565722,
+      "compiled_model_bytes": 8646125
+    }
+  },
+  "source_package_bytes": 193744288,
+  "compiled_model_bytes": 194153429
+}

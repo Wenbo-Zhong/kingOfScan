@@ -1,0 +1,29 @@
+[
+  {
+    "case": "partial fingers",
+    "four_rotations": true,
+    "threshold": 0.2,
+    "iou_vs_original_selection": 0.9801777707858098,
+    "changed_fraction": 0.011454545454545455,
+    "reference_fraction": 0.5728181818181818,
+    "candidate_fraction": 0.5714545454545454
+  },
+  {
+    "case": "full hands",
+    "four_rotations": true,
+    "threshold": 0.2,
+    "iou_vs_original_selection": 0.9914427702038322,
+    "changed_fraction": 0.0020963541666666665,
+    "reference_fraction": 0.24475260416666667,
+    "candidate_fraction": 0.24311197916666666
+  },
+  {
+    "case": "document without hands",
+    "four_rotations": true,
+    "threshold": 0.2,
+    "iou_vs_original_selection": 1.0,
+    "changed_fraction": 0.0,
+    "reference_fraction": 0.0,
+    "candidate_fraction": 0.0
+  }
+]
