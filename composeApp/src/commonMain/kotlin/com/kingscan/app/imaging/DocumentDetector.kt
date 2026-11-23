@@ -20,8 +20,8 @@ object DocumentDetector {
         val gray = grayscale(small)
         val blurred = boxBlur(gray, small.width, small.height, radius = 1)
         val threshold = otsu(blurred)
-        val bright = BooleanArray(blurred.size) { blurred[it] >= threshold }
-        val dark = BooleanArray(blurred.size) { blurred[it] < threshold }
+        val bright = BooleanArray(blurred.size) { blurred[it] > threshold }
+        val dark = BooleanArray(blurred.size) { blurred[it] <= threshold }
         val chosen = selectComponent(
             bright = largestComponent(bright, small.width, small.height),
             dark = largestComponent(dark, small.width, small.height),

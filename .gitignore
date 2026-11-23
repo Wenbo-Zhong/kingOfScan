@@ -16,3 +16,6 @@ composeApp/build/
 *.apk
 *.aab
 *.ipa
+__pycache__/
+*.pyc
+verification/evidence/logs/

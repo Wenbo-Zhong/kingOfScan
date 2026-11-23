@@ -1,0 +1,7 @@
+PASS cold external SEND with URI grant
+PASS hot external SEND_MULTIPLE order and originals
+PASS actual erase gesture and apply
+PASS reset and undo preserve two edits
+PASS UI save retains original
+PASS system print panel
+

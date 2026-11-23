@@ -2,8 +2,9 @@ package com.kingscan.app.ui
 
 import androidx.compose.runtime.mutableStateListOf
 import com.kingscan.app.model.Screen
+import kotlinx.coroutines.CoroutineScope
 
-class Navigator {
+class Navigator(val scope: CoroutineScope) {
     private val stack = mutableStateListOf<Screen>(Screen.Library)
     val current: Screen get() = stack.last()
 
@@ -16,13 +17,22 @@ class Navigator {
     }
 
     fun backToCapture() {
-        while (current is Screen.Crop || current is Screen.Filter) pop()
+        finishEditor()
         if (current !is Screen.Capture) push(Screen.Capture)
+    }
+
+    fun finishEditor() {
+        while (current is Screen.Crop || current is Screen.Filter || current is Screen.Book || current is Screen.PdfUnlock) pop()
     }
 
     fun showDetail(documentId: String) {
         stack.clear()
         stack.add(Screen.Library)
         stack.add(Screen.Detail(documentId))
+    }
+
+    fun showLibrary() {
+        stack.clear()
+        stack.add(Screen.Library)
     }
 }

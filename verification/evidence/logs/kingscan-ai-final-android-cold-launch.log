@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.kingscan.app/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.kingscan.app/.MainActivity
+TotalTime: 15530
+WaitTime: 15627
+Complete

@@ -1,0 +1,7 @@
+PASS enable after real device PIN authentication
+PASS FLAG_SECURE enabled and removed
+PASS background lock excludes editor accessibility and blocks taps
+PASS incorrect PIN and cancellation remain locked
+PASS correct PIN restores unsaved history and saves third edit
+PASS authenticated disable persists and background return remains unlocked
+

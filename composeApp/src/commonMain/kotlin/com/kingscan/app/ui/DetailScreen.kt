@@ -14,17 +14,11 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.RotateRight
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
+import com.kingscan.app.ui.ScanDialog as AlertDialog
+import com.kingscan.app.ui.ScanTheme as MaterialTheme
+import com.kingscan.app.ui.ScanTextField as OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.kingscan.app.ui.ScanTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,8 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.kingscan.app.AppGraph
-import com.kingscan.app.imaging.ScanLimits
-import com.kingscan.app.model.EncodedPage
+import com.kingscan.app.data.PageOperations
 import com.kingscan.app.model.ScanDocument
 import com.kingscan.app.model.Screen
 import com.kingscan.app.model.label
@@ -61,8 +54,15 @@ fun DetailScreen(
     var confirmDeleteDoc by remember { mutableStateOf(false) }
     var confirmDeletePage by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
+    var showOriginal by remember { mutableStateOf(false) }
+    var organizing by remember { mutableStateOf(false) }
+    var tagsDraft by remember { mutableStateOf("") }
+    var notesDraft by remember { mutableStateOf("") }
+    var sourcePdfDialog by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val share = rememberShareLauncher()
+    val saveGallery = rememberGallerySaver(onMessage)
+    val print = rememberPrintLauncher(onMessage)
     val current = document
 
     if (current == null || current.pages.isEmpty()) {
@@ -102,7 +102,8 @@ fun DetailScreen(
         ) { index ->
             val item = current.pages[index]
             PageImage(
-                path = repository.pagePath(current.id, item),
+                path = if (showOriginal) repository.originalPath(current.id, item) ?: repository.pagePath(current.id, item)
+                    else repository.pagePath(current.id, item),
                 modifier = Modifier.fillMaxSize(),
                 contentDescription = "第 ${index + 1} 页",
             )
@@ -112,7 +113,63 @@ fun DetailScreen(
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            val actions = listOf(
+            val actions = listOfNotNull(
+                DetailAction(if (current.composition == null) "拼版与拼接" else "重新拼版") {
+                    navigator.push(Screen.ComposePages(current.id))
+                },
+                if (current.composition != null) DetailAction("提取拼版原页") {
+                    scope.launch {
+                        busy = true
+                        val result = withContext(Dispatchers.Default) { runCatching { repository.extractCompositionSources(current.id) } }
+                        busy = false
+                        result.fold({ navigator.showDetail(it.id) }, { onMessage(it.message ?: "无法提取") })
+                    }
+                } else null,
+                DetailAction("识别文字") { navigator.push(Screen.Ocr(current.id, page.id)) },
+                DetailAction("批注签名") { navigator.push(Screen.Annotate(current.id, page.id)) },
+                DetailAction("擦除与修复") { navigator.push(Screen.Retouch(current.id, page.id)) },
+                DetailAction("页面管理") { navigator.push(Screen.Pages(current.id)) },
+                DetailAction("原始 PDF") {
+                    if (current.originalPdfs.isEmpty()) onMessage("此文档没有导入的原始 PDF") else sourcePdfDialog = true
+                },
+                DetailAction(if (showOriginal) "查看结果" else "查看原图") {
+                    if (repository.originalPath(current.id, page) == null) onMessage("这张旧页面未保留原图")
+                    else showOriginal = !showOriginal
+                },
+                DetailAction("重新裁切") {
+                    scope.launch {
+                        busy = true
+                        val result = withContext(Dispatchers.Default) { runCatching { AppGraph.session.beginEdit(current.id, page) } }
+                        busy = false
+                        result.fold({ navigator.push(Screen.Crop) }, { onMessage(it.message ?: "无法读取原图") })
+                    }
+                },
+                DetailAction(if (current.starred) "取消收藏" else "收藏") {
+                    refresh(repository.organize(current.id, starred = !current.starred))
+                },
+                DetailAction("标签与备注") {
+                    tagsDraft = current.tags.joinToString("、")
+                    notesDraft = current.notes
+                    organizing = true
+                },
+                DetailAction("复制文档") {
+                    scope.launch {
+                        busy = true
+                        val result = withContext(Dispatchers.Default) { runCatching { repository.duplicate(current.id) } }
+                        busy = false
+                        result.fold({ navigator.showDetail(it.id) }, { onMessage(it.message ?: "复制失败") })
+                    }
+                },
+                DetailAction("提取本页") {
+                    scope.launch {
+                        busy = true
+                        val result = withContext(Dispatchers.Default) {
+                            runCatching { repository.extractPages(current.id, listOf(page.id), "${current.title} 第${pagerState.currentPage + 1}页") }
+                        }
+                        busy = false
+                        result.fold({ navigator.showDetail(it.id) }, { onMessage(it.message ?: "提取失败") })
+                    }
+                },
                 DetailAction("加页") {
                     AppGraph.session.beginAppend(current.id)
                     navigator.push(Screen.Capture)
@@ -121,20 +178,7 @@ fun DetailScreen(
                     scope.launch {
                         busy = true
                         val updated = withContext(Dispatchers.Default) {
-                            runCatching {
-                                val bytes = repository.readBytes(repository.pagePath(current.id, page))
-                                val rotated = AppGraph.codec.decode(bytes, ScanLimits.MAX_EDGE).rotate90CW()
-                                repository.replacePage(
-                                    current.id,
-                                    page.id,
-                                    EncodedPage(
-                                        jpeg = AppGraph.codec.encodeJpeg(rotated, ScanLimits.JPEG_QUALITY),
-                                        width = rotated.width,
-                                        height = rotated.height,
-                                        filter = page.filter,
-                                    ),
-                                )
-                            }.getOrNull()
+                            runCatching { PageOperations.rotate(current.id, page) }.getOrNull()
                         }
                         busy = false
                         if (updated == null) onMessage("旋转失败") else refresh(updated)
@@ -144,17 +188,22 @@ fun DetailScreen(
                 DetailAction("后移") { refresh(repository.movePage(current.id, page.id, 1)) },
                 DetailAction("删除页") { confirmDeletePage = true },
                 DetailAction("分享 PDF") {
-                    scope.launch {
-                        busy = true
-                        val path = withContext(Dispatchers.Default) {
-                            runCatching { repository.exportPdf(current.id) }.getOrNull()
-                        }
-                        busy = false
-                        if (path == null) onMessage("生成 PDF 失败") else share(path, "application/pdf", current.title)
-                    }
+                    navigator.push(Screen.Export(current.id))
                 },
                 DetailAction("分享图片") {
                     share(repository.pagePath(current.id, page), "image/jpeg", current.title)
+                },
+                DetailAction("保存本页到相册") { saveGallery(listOf(repository.pagePath(current.id, page))) },
+                DetailAction("全部保存到相册") { saveGallery(current.pages.map { repository.pagePath(current.id, it) }) },
+                DetailAction("系统打印") {
+                    busy = true
+                    scope.launch {
+                        val result = withContext(Dispatchers.Default) {
+                            runCatching { repository.exportPdf(current.id, repository.settings().export.copy(password = "", searchable = false)) }
+                        }
+                        busy = false
+                        result.fold({ print(it, current.title) }, { onMessage(it.message ?: "打印文件生成失败") })
+                    }
                 },
                 DetailAction("删除文档") { confirmDeleteDoc = true },
             )
@@ -166,6 +215,15 @@ fun DetailScreen(
         }
     }
     BusyOverlay(busy, "正在处理")
+
+    if (sourcePdfDialog) {
+        AlertDialog(onDismissRequest = { sourcePdfDialog = false }, title = { Text("原始 PDF") },
+            text = { Column {
+                current.originalPdfs.forEach { pdf ->
+                    TextButton(onClick = { share(repository.originalPdfPath(current.id, pdf), "application/pdf", pdf.name) }) { Text(pdf.name) }
+                }
+            } }, confirmButton = { TextButton(onClick = { sourcePdfDialog = false }) { Text("关闭") } })
+    }
 
     if (renaming) {
         AlertDialog(
@@ -205,7 +263,7 @@ fun DetailScreen(
         AlertDialog(
             onDismissRequest = { confirmDeleteDoc = false },
             title = { Text("删除整份文档？") },
-            text = { Text("所有页面都会从本机移除。") },
+            text = { Text("文档将移入回收站，可以恢复。") },
             confirmButton = {
                 TextButton(onClick = {
                     repository.delete(current.id)
@@ -214,6 +272,25 @@ fun DetailScreen(
                 }) { Text("删除") }
             },
             dismissButton = { TextButton(onClick = { confirmDeleteDoc = false }) { Text("取消") } },
+        )
+    }
+    if (organizing) {
+        AlertDialog(
+            onDismissRequest = { organizing = false },
+            title = { Text("标签与备注") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(tagsDraft, { tagsDraft = it }, label = { Text("标签（逗号或顿号分隔）") })
+                    OutlinedTextField(notesDraft, { notesDraft = it }, label = { Text("备注") }, minLines = 3)
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    refresh(repository.organize(current.id, tags = tagsDraft.split(Regex("[,，、]")), notes = notesDraft))
+                    organizing = false
+                }) { Text("保存") }
+            },
+            dismissButton = { TextButton(onClick = { organizing = false }) { Text("取消") } },
         )
     }
 }

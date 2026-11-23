@@ -7,9 +7,11 @@ data class PdfImage(
     val jpeg: ByteArray,
     val pixelWidth: Int,
     val pixelHeight: Int,
+    val physicalWidthPt: Float? = null,
+    val physicalHeightPt: Float? = null,
 ) {
-    val widthPt: Float get() = pixelWidth * 72f / 150f
-    val heightPt: Float get() = pixelHeight * 72f / 150f
+    val widthPt: Float get() = physicalWidthPt ?: (pixelWidth * 72f / 150f)
+    val heightPt: Float get() = physicalHeightPt ?: (pixelHeight * 72f / 150f)
 }
 
 object PdfWriter {

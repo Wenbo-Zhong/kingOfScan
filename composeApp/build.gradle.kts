@@ -24,6 +24,11 @@ kotlin {
     }
 
     sourceSets {
+        if (providers.gradleProperty("kingscanVerification").orNull == "true") {
+            iosMain.get().kotlin.srcDir("src/iosVerification/kotlin")
+            commonMain.get().kotlin.srcDir("src/commonVerification/kotlin")
+            androidInstrumentedTest.get().kotlin.srcDir("src/androidAiVerification/kotlin")
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -50,6 +55,16 @@ kotlin {
             implementation(libs.androidx.camera.lifecycle)
             implementation(libs.androidx.camera.view)
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.mlkit.text.latin)
+            implementation(libs.mlkit.text.chinese)
+            implementation(libs.pdfbox.android)
+            implementation("com.google.zxing:core:3.5.3")
+            implementation("com.microsoft.onnxruntime:onnxruntime-android:1.23.2")
+        }
+        androidInstrumentedTest.dependencies {
+            implementation("androidx.test:runner:1.6.2")
+            implementation("androidx.test.ext:junit:1.2.1")
+            implementation("androidx.test.uiautomator:uiautomator:2.3.0")
         }
     }
 }
@@ -64,6 +79,7 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -82,6 +98,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    androidResources { noCompress += "onnx" }
 
     lint {
         abortOnError = false

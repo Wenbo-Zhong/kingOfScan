@@ -1,0 +1,49 @@
+KingOfScan document model bundle: kingscan-document-ai-20261123-v1
+
+Application code is GPL-3.0. Third-party code and model assets retain their own
+licenses; GPL does not replace those licenses or grant rights to datasets,
+sample photographs, or model checkpoints beyond their upstream terms.
+
+DocRes: Jiaxin Zhang et al., MIT.
+https://github.com/ZZZHANG-jx/DocRes
+Checkpoint obtained from the authors' linked documents-restoration HF Space.
+See licenses/docres-LICENSE.txt.
+
+ESDNet / UHDM: CVMI-Lab authors, Apache-2.0.
+https://github.com/CVMI-Lab/UHDM
+Combined-dataset demo checkpoint from their linked Screen_Image_Demoireing Space.
+See licenses/esdnet-LICENSE.txt.
+
+DIS handwriting checkpoint: Inoob / ivanhe123.
+https://huggingface.co/Inoob/DIS-Handwriting-Remover
+Model card declares Apache-2.0; IS-Net architecture is from xuebinqin/DIS,
+Apache-2.0. See licenses/handwriting-LICENSE.txt.
+
+DocDiff: Zongyuan Yang et al., MIT.
+https://github.com/Royalvice/DocDiff
+seal_init.pth and seal_denoiser.pth; five-step DDIM inference adapter.
+See licenses/watermark-LICENSE.txt.
+
+HandsWild EYTH: Aisha Urooj / UCF authors.
+https://github.com/aurooj/Hand-Segmentation-in-the-Wild
+HandsWild repository code is MIT; see licenses/fingers-LICENSE.txt.
+Its README requires the underlying guosheng/refinenet implementation.
+RefineNet carries "RefineNet for non-commercial purposes", copyright 2016
+Guosheng Lin; see licenses/RefineNet-LICENSE.txt. The publicly linked EYTH
+checkpoint has no separate weight-license declaration in the inspected README.
+Our adapter independently translates the checkpoint's serialized DAG and does
+not copy the RefineNet or DrSleep Python implementation. This does not establish
+unrestricted commercial or redistribution rights to the checkpoint.
+Treat this model as local research/non-commercial pending clarification from the
+relevant rights holders; do not describe the whole bundle as MIT or commercially
+unrestricted.
+
+Android ONNX Runtime: Microsoft, MIT.
+https://github.com/microsoft/onnxruntime
+iOS Core ML is an Apple system framework.
+
+Exact original checkpoint and converted-file SHA-256 hashes, source revisions,
+tensor shapes, and conversion-reference errors are in models.json. Device
+acceptance errors are separate measurements in verification/evidence/ai-*.
+External photographs used for validation are not application model resources
+and do not inherit repository code licenses.

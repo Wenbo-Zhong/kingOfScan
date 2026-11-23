@@ -1,0 +1,25 @@
+{
+    "id": "localaiverificationdocres",
+    "title": "AI-docres",
+    "createdAt": 1795400000000,
+    "updatedAt": 1795405829839,
+    "pages": [
+        {
+            "id": "page",
+            "fileName": "page_kgv6gdie8jqp.jpg",
+            "width": 256,
+            "height": 256,
+            "filter": "Original",
+            "originalFileName": "original-page.png",
+            "edit": {
+                "filter": "Original",
+                "retouches": [
+                    {
+                        "kind": "SmartHd"
+                    }
+                ]
+            },
+            "annotationBaseFileName": "page_my8iijjx4vuz.base.jpg"
+        }
+    ]
+}

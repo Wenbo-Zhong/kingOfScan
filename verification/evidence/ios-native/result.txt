@@ -1,0 +1,7 @@
+PASS Chinese offline OCR
+PASS incorrect PDF password rejected
+PASS correct password accepted
+PASS CJK searchable PDF text
+PASS PDF page rendering
+PASS Unicode rotated QR JPEG round trip
+PASS blank QR image rejected

@@ -1,0 +1,4 @@
+PASS curved book baseline within 4 px
+PASS projective overlap reconstruction
+PASS 85.6 x 54 mm ID layout on A4 PDF
+PASS composition original source retention

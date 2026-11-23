@@ -1,0 +1,25 @@
+{
+  "android": {
+    "apk_bytes": 927009663,
+    "model_sha256": {
+      "fingers": "6fdaaa03b9ab07688ea2b415230e9c47274d9c10acbf1d090e886e42ca98afe9",
+      "docres": "f48f1309bc9462c7d8b65f562e8450abb70709a829c2bd2c410901784c43971a",
+      "esdnet": "ce114f857631b6db65e9739bf914d3231aa773357df077780ba80428392d510f",
+      "handwriting": "6a846d82efeba713008bccf76cb54f697b68df8b0a3867f5b52c1858266dcd86",
+      "watermark": "9902ef1761483d3c4281a23e851de228573cfdb1fe86ec72ea31702e6338d19f"
+    },
+    "uncompressed_mmap_models": true,
+    "verification_entry_absent": true
+  },
+  "ios": {
+    "compiled_models": {
+      "fingers": "fingers.mlmodelc",
+      "docres": "docres.mlmodelc",
+      "esdnet": "esdnet.mlmodelc",
+      "handwriting": "handwriting.mlmodelc",
+      "watermark": "watermark.mlmodelc"
+    },
+    "manifest_matches_android": true,
+    "verification_entry_absent": true
+  }
+}

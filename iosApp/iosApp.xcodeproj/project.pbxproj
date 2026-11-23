@@ -6,12 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		70000000000000000000000B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C87C418E2CDAD65C24FE660C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A02224AF6EE65C3A46707EA3;
+			remoteInfo = iosApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		700000000000000000000001 /* KingScanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KingScanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		924BAA09F0E9374036B1079D /* KingScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KingScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		138027352EFFFE3700683EC3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		138027352EFFFE3700683EC3 /* Exceptions for "iosApp" folder in "iosApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,9 +35,14 @@
 		0AD3A4AA9B7499A062DAB977 /* iosApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				138027352EFFFE3700683EC3 /* PBXFileSystemSynchronizedBuildFileExceptionSet */,
+				138027352EFFFE3700683EC3 /* Exceptions for "iosApp" folder in "iosApp" target */,
 			);
 			path = iosApp;
+			sourceTree = "<group>";
+		};
+		700000000000000000000002 /* KingScanUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = KingScanUITests;
 			sourceTree = "<group>";
 		};
 		E304200FB989A75E0BB7B8D3 /* Configuration */ = {
@@ -44,6 +60,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		700000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				924BAA09F0E9374036B1079D /* KingScan.app */,
+				700000000000000000000001 /* KingScanUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +84,7 @@
 			children = (
 				E304200FB989A75E0BB7B8D3 /* Configuration */,
 				0AD3A4AA9B7499A062DAB977 /* iosApp */,
+				700000000000000000000002 /* KingScanUITests */,
 				ECA5C4E0EF7FD17C3B1AACCC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +92,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		700000000000000000000004 /* KingScanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 700000000000000000000005 /* Build configuration list for PBXNativeTarget "KingScanUITests" */;
+			buildPhases = (
+				700000000000000000000006 /* Sources */,
+				700000000000000000000003 /* Frameworks */,
+				700000000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				700000000000000000000008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				700000000000000000000002 /* KingScanUITests */,
+			);
+			name = KingScanUITests;
+			productName = KingScanUITests;
+			productReference = 700000000000000000000001 /* KingScanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A02224AF6EE65C3A46707EA3 /* iosApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EB64A45CDBF0A83FD139E65 /* Build configuration list for PBXNativeTarget "iosApp" */;
@@ -100,6 +146,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					700000000000000000000004 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = A02224AF6EE65C3A46707EA3;
+					};
 					A02224AF6EE65C3A46707EA3 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -120,11 +170,19 @@
 			projectRoot = "";
 			targets = (
 				A02224AF6EE65C3A46707EA3 /* iosApp */,
+				700000000000000000000004 /* KingScanUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		700000000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6B2756A4AA77B2DADC5D54B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,7 +210,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :composeApp:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "/bin/sh \"$SRCROOT/scripts/build-framework.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -164,7 +222,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		700000000000000000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		700000000000000000000008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A02224AF6EE65C3A46707EA3 /* iosApp */;
+			targetProxy = 70000000000000000000000B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		310E7EB2E3916DAE0B3ACB38 /* Release */ = {
@@ -273,6 +346,34 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
+		};
+		700000000000000000000009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingscan.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iosApp;
+			};
+			name = Debug;
+		};
+		70000000000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingscan.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iosApp;
+			};
+			name = Release;
 		};
 		9CDBF1E94F5130B33A432FB7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -392,6 +493,15 @@
 			buildConfigurations = (
 				5D772B61411C867E96DF46A2 /* Debug */,
 				9CDBF1E94F5130B33A432FB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		700000000000000000000005 /* Build configuration list for PBXNativeTarget "KingScanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				700000000000000000000009 /* Debug */,
+				70000000000000000000000A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

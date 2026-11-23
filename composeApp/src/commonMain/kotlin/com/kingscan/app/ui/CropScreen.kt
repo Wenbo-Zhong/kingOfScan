@@ -13,12 +13,10 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.RotateRight
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
+import com.kingscan.app.ui.ScanButton as Button
+import com.kingscan.app.ui.ScanTheme as MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.kingscan.app.ui.ScanTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import com.kingscan.app.AppGraph
 import com.kingscan.app.imaging.DocumentDetector
 import com.kingscan.app.imaging.PerspectiveWarp
+import com.kingscan.app.imaging.PageGeometry
 import com.kingscan.app.imaging.RgbaImage
 import com.kingscan.app.model.PointF
 import com.kingscan.app.model.Quad
@@ -84,11 +83,12 @@ fun CropScreen(navigator: Navigator) {
                 onClick = {
                     image = image.rotate90CW()
                     quad = quad.rotate90CW()
+                    AppGraph.session.quarterTurns = (AppGraph.session.quarterTurns + 1).mod(4)
                     AppGraph.session.source = image
                 },
                 enabled = !busy,
             ) {
-                androidx.compose.material3.Icon(Icons.AutoMirrored.Filled.RotateRight, contentDescription = "旋转", tint = Color.White)
+                ScanIcon(ScanSymbol.RotateRight, contentDescription = "旋转", tint = Color.White)
             }
         }
         BoxWithConstraints(
@@ -115,17 +115,21 @@ fun CropScreen(navigator: Navigator) {
                 onClick = {
                     scope.launch {
                         busy = true
-                        val warped = withContext(Dispatchers.Default) { PerspectiveWarp.warp(image, quad) }
+                        val isBook = AppGraph.session.edit.book != null ||
+                            (AppGraph.session.editingPageId == null && AppGraph.session.scanMode == com.kingscan.app.model.ScanMode.Book)
+                        val warped = withContext(Dispatchers.Default) {
+                            if (isBook) PerspectiveWarp.warp(image, quad)
+                            else PageGeometry.apply(image, AppGraph.session.edit.copy(quad = quad))
+                        }
                         AppGraph.session.source = image
                         AppGraph.session.quad = quad
                         AppGraph.session.warped = warped
                         busy = false
-                        navigator.push(Screen.Filter)
+                        navigator.push(if (isBook) Screen.Book else Screen.Filter)
                     }
                 },
                 enabled = !busy,
                 modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-                shape = RoundedCornerShape(14.dp),
             ) { Text("下一步") }
         }
         }

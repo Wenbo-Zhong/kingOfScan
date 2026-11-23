@@ -1,0 +1,221 @@
+{
+  "bundle_version": "kingscan-document-ai-20261123-v1",
+  "models": [
+    {
+      "id": "fingers",
+      "version": "kingscan-document-ai-20261123-v1",
+      "edge": 512,
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        1,
+        512,
+        512
+      ],
+      "source": "https://github.com/aurooj/Hand-Segmentation-in-the-Wild",
+      "license": "HandsWild code: MIT; RefineNet: non-commercial; checkpoint: no separate license declaration",
+      "checkpoint_source": "https://drive.google.com/file/d/12HRYXdHWOGkl71QqUdlijCq2w2ARa6-M/view",
+      "code_revision": "2a8dc04394d51bdfcc93d2db6509297127645b1a",
+      "validation_environment": "macOS conversion reference; device acceptance recorded separately",
+      "onnx_sha256": "6fdaaa03b9ab07688ea2b415230e9c47274d9c10acbf1d090e886e42ca98afe9",
+      "coreml_files_sha256": {
+        "Manifest.json": "7d6e2d10e238ace89b77f6668dc033154e2ebda0a9c685702474c86ff0e9c025",
+        "Data/com.apple.CoreML/model.mlmodel": "aa2d3183e7534cf12bddb3f26e027cd1ca9251e5bc166f8e4c52a0a9080928aa",
+        "Data/com.apple.CoreML/weights/weight.bin": "4777a4c264e114f9b4db067d3108e39f02412041d2cc223f6df67a4c7c53aa9a"
+      },
+      "upstream_checkpoint_sha256": {
+        "weights/hand-refinenet-eyth.mat": "0ab3128894b2e50fd6cea8952b99bdc093be3c8f3f8098aa8252fc851e60a20a"
+      },
+      "validation": {
+        "onnx_cpu": {
+          "mae": 3.634361291915411e-07,
+          "max": 6.407499313354492e-06,
+          "p99": 3.9637088775634766e-06
+        },
+        "coreml_cpu_gpu_fp16": {
+          "mae": 0.00043171810102649033,
+          "max": 0.006165802478790283,
+          "p99": 0.0042642150074243546
+        }
+      }
+    },
+    {
+      "id": "docres",
+      "version": "kingscan-document-ai-20261123-v1",
+      "edge": 256,
+      "input_shape": [
+        1,
+        6,
+        256,
+        256
+      ],
+      "output_shape": [
+        1,
+        3,
+        256,
+        256
+      ],
+      "source": "https://github.com/ZZZHANG-jx/DocRes",
+      "license": "MIT",
+      "checkpoint_source": "https://huggingface.co/spaces/qubvel-hf/documents-restoration/resolve/main/checkpoints/docres.pkl",
+      "code_revision": "d3e3a18c7c7ad10e4615ca2eb6a10f83128d8560",
+      "validation_environment": "macOS conversion reference; device acceptance recorded separately",
+      "onnx_sha256": "f48f1309bc9462c7d8b65f562e8450abb70709a829c2bd2c410901784c43971a",
+      "coreml_files_sha256": {
+        "Manifest.json": "b083cedb0975decfb5a3052ac1bb7fbf61c933eb7a3af3b4ea59e180cf9f149b",
+        "Data/com.apple.CoreML/model.mlmodel": "3d9753dd63230f2b4278bb799b338182a3ce97eaa5e8c8b41c11a079851f2573",
+        "Data/com.apple.CoreML/weights/weight.bin": "32cc52f13356e167e58fa6a3c7820d759f0181f1dfbcce9447946be346278909"
+      },
+      "upstream_checkpoint_sha256": {
+        "weights/docres.pkl": "1d6a89d754fe1e58ffd1865eab0ef3f03344798d39197b2d9a77ce4fbc8c02fd"
+      },
+      "validation": {
+        "coreml_cpu_gpu_fp16": {
+          "mae": 0.00023200181021820754,
+          "max": 0.009616255760192871,
+          "p99": 0.001640230417251587
+        },
+        "onnx_cpu": {
+          "mae": 4.1563779973330384e-07,
+          "max": 1.1324882507324219e-05,
+          "p99": 1.9073486328125e-06
+        }
+      }
+    },
+    {
+      "id": "esdnet",
+      "version": "kingscan-document-ai-20261123-v1",
+      "edge": 512,
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "source": "https://github.com/CVMI-Lab/UHDM",
+      "license": "Apache-2.0",
+      "checkpoint_source": "https://huggingface.co/spaces/ECCV2022/Screen_Image_Demoireing/resolve/main/mix.pth",
+      "code_revision": "fa70a92d3d4f35d5c4e3fa7a54e3b2e5b995f1cd",
+      "validation_environment": "macOS conversion reference; device acceptance recorded separately",
+      "onnx_sha256": "ce114f857631b6db65e9739bf914d3231aa773357df077780ba80428392d510f",
+      "coreml_files_sha256": {
+        "Manifest.json": "ac6c0dc97b0b011e6c6b38e7595b2791345ea4576512f930355c11b4c5c719f8",
+        "Data/com.apple.CoreML/model.mlmodel": "7dd4be865bf54f0f7ccf5024fafc8e3ce576ac37803cc294764fe047a4d30318",
+        "Data/com.apple.CoreML/weights/weight.bin": "482d9257ab90b752ae3eedf00dae40b540607d1c67bb607777bb1b948c5fa86e"
+      },
+      "upstream_checkpoint_sha256": {
+        "weights/esdnet-mix.pth": "bdcdd33f11e1d5eb836671f15991ecb42134bd5ba98c1e4de3b8e2f4138fdb2b"
+      },
+      "validation": {
+        "onnx_cpu": {
+          "mae": 2.1700805064028827e-07,
+          "max": 2.384185791015625e-06,
+          "p99": 9.5367431640625e-07
+        },
+        "coreml_cpu_gpu_fp16": {
+          "mae": 0.00020305212819948792,
+          "max": 0.0018054544925689697,
+          "p99": 0.0007163882255554199
+        }
+      }
+    },
+    {
+      "id": "handwriting",
+      "version": "kingscan-document-ai-20261123-v1",
+      "edge": 512,
+      "input_shape": [
+        1,
+        3,
+        512,
+        512
+      ],
+      "output_shape": [
+        1,
+        1,
+        512,
+        512
+      ],
+      "source": "https://huggingface.co/Inoob/DIS-Handwriting-Remover",
+      "license": "Apache-2.0",
+      "checkpoint_source": "https://huggingface.co/Inoob/DIS-Handwriting-Remover",
+      "code_revision": "b6764e20381f6f42a70f83fa3324181529ed1403",
+      "validation_environment": "macOS conversion reference; device acceptance recorded separately",
+      "onnx_sha256": "6a846d82efeba713008bccf76cb54f697b68df8b0a3867f5b52c1858266dcd86",
+      "coreml_files_sha256": {
+        "Manifest.json": "39a4d901efa10b5476158d7593340ddd60638d9105f5716d34e3012a388da0be",
+        "Data/com.apple.CoreML/model.mlmodel": "4815315a28d6ce299f52098fe64f498a6133cd21439a104830dee9ba361b8a76",
+        "Data/com.apple.CoreML/weights/weight.bin": "6a437b641a79ce86bccda04da844426b9d1ee27a8c62a2a81a6f28f858db43c4"
+      },
+      "upstream_checkpoint_sha256": {
+        "weights/handwriting-isnet.pth": "d685cc76a8c4d6aebf9a82499b7771d13aaa27ebd90e933036bdd004db4beefa"
+      },
+      "validation": {
+        "onnx_cpu": {
+          "mae": 3.17879695899137e-08,
+          "max": 2.9206275939941406e-06,
+          "p99": 4.76837158203125e-07
+        },
+        "coreml_cpu_gpu_fp16": {
+          "mae": 2.004525958909653e-05,
+          "max": 0.010186374187469482,
+          "p99": 0.0005238428129814565
+        }
+      }
+    },
+    {
+      "id": "watermark",
+      "version": "kingscan-document-ai-20261123-v1",
+      "edge": 256,
+      "input_shape": [
+        1,
+        6,
+        256,
+        256
+      ],
+      "output_shape": [
+        1,
+        3,
+        256,
+        256
+      ],
+      "source": "https://github.com/Royalvice/DocDiff",
+      "license": "MIT",
+      "checkpoint_source": "https://github.com/Royalvice/DocDiff/tree/main/checksave",
+      "code_revision": "f422a3af10657eeabeca90f2e862d88c72725845",
+      "validation_environment": "macOS conversion reference; device acceptance recorded separately",
+      "onnx_sha256": "9902ef1761483d3c4281a23e851de228573cfdb1fe86ec72ea31702e6338d19f",
+      "coreml_files_sha256": {
+        "Manifest.json": "8de7d5ec78a73543c867dc41dce5ac3a1e03533d4ade330cdfd09ed3c93037b7",
+        "Data/com.apple.CoreML/model.mlmodel": "a9db4ecdd10116fd3a351195ee3b4d51a2bbb071b9c343c2fcacb8678a363099",
+        "Data/com.apple.CoreML/weights/weight.bin": "46362bab3c68c24f3bcf1b8f1c3834d116006ebd3965fc0e6a4e71b44a6c9c5d"
+      },
+      "upstream_checkpoint_sha256": {
+        "DocDiff/checksave/seal_init.pth": "211474533f9ffc92426d876c91f26c09ca295c57312460b0f882cb036156570a",
+        "DocDiff/checksave/seal_denoiser.pth": "7b625f959b9c9204246b8af382891735a1b25fbc71e639e044f5a20df52fcad2"
+      },
+      "validation": {
+        "onnx_cpu": {
+          "mae": 2.01204613858863e-07,
+          "max": 1.5497207641601562e-06,
+          "p99": 6.556510925292969e-07
+        },
+        "coreml_cpu_gpu_fp16": {
+          "mae": 0.00016633285849820822,
+          "max": 0.0017308592796325684,
+          "p99": 0.0005822684615850449
+        }
+      }
+    }
+  ]
+}

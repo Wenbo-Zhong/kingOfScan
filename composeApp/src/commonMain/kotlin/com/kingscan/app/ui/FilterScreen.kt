@@ -13,11 +13,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.kingscan.app.ui.ScanButton as Button
+import com.kingscan.app.ui.ScanChoiceChip as FilterChip
+import com.kingscan.app.ui.ScanTheme as MaterialTheme
+import com.kingscan.app.ui.ScanSecondaryButton as OutlinedButton
 import androidx.compose.material3.Text
+import com.kingscan.app.ui.ScanTextButton as TextButton
+import com.kingscan.app.ui.ScanSlider as Slider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -33,9 +35,14 @@ import com.kingscan.app.AppGraph
 import com.kingscan.app.data.defaultScanTitle
 import com.kingscan.app.imaging.ImageFilters
 import com.kingscan.app.imaging.RgbaImage
+import com.kingscan.app.imaging.PageMarkup
 import com.kingscan.app.imaging.ScanLimits
 import com.kingscan.app.model.EncodedPage
 import com.kingscan.app.model.FilterType
+import com.kingscan.app.model.ImageAdjustments
+import com.kingscan.app.model.ScanMode
+import com.kingscan.app.model.Screen
+import com.kingscan.app.model.CompositionKind
 import com.kingscan.app.model.label
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,13 +61,16 @@ fun FilterScreen(
         return
     }
     val previewBase = remember(warped) { warped.scaledDown(ScanLimits.PREVIEW_EDGE) }
-    var filter by remember { mutableStateOf(FilterType.Enhance) }
+    var filter by remember { mutableStateOf(AppGraph.session.edit.filter) }
     var preview by remember { mutableStateOf<RgbaImage?>(null) }
     var busy by remember { mutableStateOf(false) }
+    var adjustments by remember { mutableStateOf(AppGraph.session.edit.adjustments) }
+    var adjustment by remember { mutableStateOf(0) }
+    var compare by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
-    LaunchedEffect(filter, previewBase) {
-        preview = withContext(Dispatchers.Default) { ImageFilters.apply(previewBase, filter) }
+    LaunchedEffect(filter, previewBase, adjustments) {
+        preview = withContext(Dispatchers.Default) { PageMarkup.adjust(ImageFilters.apply(previewBase, filter), adjustments) }
     }
 
     Column(Modifier.fillMaxSize().background(Color.Black)) {
@@ -69,14 +79,33 @@ fun FilterScreen(
             onBack = { if (!busy) navigator.pop() },
             contentColor = Color.White,
         )
+        Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
+            TextButton(onClick = { compare = !compare }) { Text(if (compare) "查看处理结果" else "对比处理前") }
+            TextButton(onClick = { adjustments = ImageAdjustments() }) { Text("重置调整") }
+        }
         Box(Modifier.weight(1f).fillMaxWidth().padding(16.dp), contentAlignment = Alignment.Center) {
-            val shown = preview
+            val shown = if (compare) previewBase else preview
             if (shown == null) {
                 Text("正在生成预览", color = Color.White)
             } else {
                 RgbaImageView(shown, Modifier.fillMaxSize(), contentDescription = filter.label())
             }
         }
+        Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            listOf("亮度", "对比度", "饱和度").forEachIndexed { index, label ->
+                FilterChip(adjustment == index, { adjustment = index }, { Text(label) })
+            }
+        }
+        Slider(
+            value = when (adjustment) { 0 -> adjustments.brightness; 1 -> adjustments.contrast; else -> adjustments.saturation },
+            onValueChange = { value ->
+                adjustments = when (adjustment) {
+                    0 -> adjustments.copy(brightness = value)
+                    1 -> adjustments.copy(contrast = value)
+                    else -> adjustments.copy(saturation = value)
+                }
+            }, valueRange = -1f..1f, enabled = !busy, modifier = Modifier.padding(horizontal = 16.dp),
+        )
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -94,17 +123,20 @@ fun FilterScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             OutlinedButton(
-                onClick = { savePage(warped, filter, continueScan = true, scope, { busy = it }, navigator, onMessage) },
-                enabled = !busy,
+                onClick = { savePage(warped, filter, adjustments, continueScan = true, scope, { busy = it }, navigator, onMessage) },
+                enabled = !busy && AppGraph.session.editingPageId == null && AppGraph.session.pendingImports.isEmpty(),
                 modifier = Modifier.weight(1f),
-                shape = RoundedCornerShape(14.dp),
             ) { Text("再拍一页") }
             Button(
-                onClick = { savePage(warped, filter, continueScan = false, scope, { busy = it }, navigator, onMessage) },
+                onClick = { savePage(warped, filter, adjustments, continueScan = false, scope, { busy = it }, navigator, onMessage) },
                 enabled = !busy,
                 modifier = Modifier.weight(1f),
-                shape = RoundedCornerShape(14.dp),
-            ) { Text("完成") }
+            ) { Text(when {
+                AppGraph.session.pendingImports.isNotEmpty() -> "保存并编辑下一张"
+                AppGraph.session.editingPageId == null && AppGraph.session.scanMode == ScanMode.IdCard ->
+                    if (AppGraph.session.idCardPageIds.isEmpty()) "保存并拍反面" else "生成证件复印件"
+                else -> "完成"
+            }) }
         }
     }
     BusyOverlay(busy, "正在保存")
@@ -113,6 +145,7 @@ fun FilterScreen(
 private fun savePage(
     warped: RgbaImage,
     filter: FilterType,
+    adjustments: ImageAdjustments,
     continueScan: Boolean,
     scope: kotlinx.coroutines.CoroutineScope,
     setBusy: (Boolean) -> Unit,
@@ -123,16 +156,29 @@ private fun savePage(
     scope.launch {
         val saved = runCatching {
             val encoded = withContext(Dispatchers.Default) {
-                val filtered = ImageFilters.apply(warped, filter)
+                val filtered = PageMarkup.adjust(ImageFilters.apply(warped, filter), adjustments)
                 EncodedPage(
                     jpeg = AppGraph.codec.encodeJpeg(filtered, ScanLimits.JPEG_QUALITY),
                     width = filtered.width,
                     height = filtered.height,
                     filter = filter,
+                    originalBytes = AppGraph.session.originalBytes.takeIf { AppGraph.session.editingPageId == null },
+                    edit = AppGraph.session.edit.copy(
+                        quad = AppGraph.session.quad,
+                        quarterTurns = AppGraph.session.quarterTurns,
+                        filter = filter,
+                        adjustments = adjustments,
+                        // A changed crop invalidates annotations in corrected-page coordinates.
+                        marks = emptyList(),
+                        retouches = emptyList(),
+                    ),
                 )
             }
             val existing = AppGraph.session.documentId
-            if (existing == null) {
+            val editing = AppGraph.session.editingPageId
+            if (existing != null && editing != null) {
+                AppGraph.repository.replacePage(existing, editing, encoded) ?: error("页面不存在")
+            } else if (existing == null) {
                 AppGraph.repository.create(defaultScanTitle(), listOf(encoded))
             } else {
                 AppGraph.repository.addPages(existing, listOf(encoded))
@@ -144,7 +190,18 @@ private fun savePage(
             return@launch
         }
         AppGraph.session.documentId = saved.id
+        if (AppGraph.session.editingPageId == null) AppGraph.notifyScanSaved(saved, listOf(saved.pages.last()))
+        val idCard = AppGraph.session.editingPageId == null && AppGraph.session.scanMode == ScanMode.IdCard
+        if (AppGraph.session.editingPageId == null) AppGraph.session.capturedPages++
+        if (idCard) AppGraph.session.idCardPageIds += saved.pages.last().id
         AppGraph.session.clearImage()
-        if (continueScan) navigator.backToCapture() else navigator.showDetail(saved.id)
+        if (AppGraph.session.pendingImports.isNotEmpty()) {
+            navigator.finishEditor()
+            processNextImport(setBusy, navigator, onMessage)
+        } else if (idCard && AppGraph.session.idCardPageIds.size < 2) navigator.backToCapture()
+        else if (idCard) {
+            navigator.showDetail(saved.id)
+            navigator.push(Screen.ComposePages(saved.id, AppGraph.session.idCardPageIds.takeLast(2), CompositionKind.IdCard))
+        } else if (continueScan) navigator.backToCapture() else navigator.showDetail(saved.id)
     }
 }

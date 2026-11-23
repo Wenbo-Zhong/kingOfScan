@@ -1,0 +1,6 @@
+package: com.kingscan.app
+uses-permission: name='android.permission.USE_BIOMETRIC'
+uses-permission: name='android.permission.CAMERA'
+uses-permission: name='android.permission.WRITE_EXTERNAL_STORAGE' maxSdkVersion='28'
+permission: com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'

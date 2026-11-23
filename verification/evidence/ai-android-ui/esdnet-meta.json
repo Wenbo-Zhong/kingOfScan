@@ -1,0 +1,29 @@
+{
+  "id": "localaiverificationesdnet",
+  "title": "AI-esdnet",
+  "createdAt": 1795400000000,
+  "updatedAt": 1795413101412,
+  "pages": [
+    {
+      "id": "page",
+      "fileName": "page_nalgugu3g2f3.jpg",
+      "width": 512,
+      "height": 512,
+      "filter": "Original",
+      "originalFileName": "original-page.png",
+      "edit": {
+        "filter": "Original",
+        "retouches": [
+          {
+            "kind": "Demoire",
+            "strength": 0.5,
+            "modelVersion": "kingscan-document-ai-20261123-v1",
+            "seed": 20261123,
+            "orientation": 0
+          }
+        ]
+      },
+      "annotationBaseFileName": "page_jdk316ja9nq7.base.jpg"
+    }
+  ]
+}

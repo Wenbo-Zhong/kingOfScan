@@ -1,0 +1,42 @@
+--------- beginning of main
+11-23 13:10:40.307 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:10:40.609 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:10:40.610 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:10:40.690 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:10:40.815 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:10:40.855 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:10:40.855 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:10:40.855 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:10:40.980 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:10:41.270 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:10:41.270 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:10:48.176 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE append kind=SmartHd size=0
+11-23 13:10:48.257 12895 12895 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[SmartHd]
+11-23 13:10:48.266 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:10:48.266 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:10:48.267 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:11:11.468 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=docres
+11-23 13:11:11.468 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=docres
+11-23 13:12:33.595 12895 12934 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=docres
+11-23 13:18:25.110 13503 13526 I System.out: KMP_DOCUMENT_AI_UI START docres
+11-23 13:18:29.139 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:18:29.383 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:18:29.384 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:18:29.422 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:18:29.697 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:18:29.746 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:18:29.746 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:18:29.746 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:18:30.009 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:18:30.359 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:18:30.359 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:18:33.004 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE append kind=SmartHd size=0
+11-23 13:18:33.276 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[SmartHd]
+11-23 13:18:33.280 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:18:33.280 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:18:33.281 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:18:46.832 13503 13503 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=4 source=true effects=[]
+11-23 13:18:46.837 13503 13550 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=4
+11-23 13:18:47.404 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=docres
+11-23 13:18:47.426 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=docres
+11-23 13:19:25.628 13503 13547 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=docres

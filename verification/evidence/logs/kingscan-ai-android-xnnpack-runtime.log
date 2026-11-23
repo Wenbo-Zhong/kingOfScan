@@ -1,0 +1,47 @@
+
+com.kingscan.app.DocumentAiIntegrationTest:
+Error in actualModelsAndOriginalPreservation(com.kingscan.app.DocumentAiIntegrationTest):
+ai.onnxruntime.OrtException: Error code - ORT_INVALID_ARGUMENT - message: Invalid model. Node input '/refinement/op0/Conv' is not a graph input, initializer, or output of a previous node.
+	at ai.onnxruntime.OrtSession.createSession(Native Method)
+	at ai.onnxruntime.OrtSession.<init>(OrtSession.java:113)
+	at ai.onnxruntime.OrtEnvironment.createSession(OrtEnvironment.java:283)
+	at ai.onnxruntime.OrtEnvironment.createSession(OrtEnvironment.java:251)
+	at com.kingscan.app.imaging.AndroidDocumentModels.predict(AndroidDocumentModels.kt:46)
+	at com.kingscan.app.DocumentAiVerificationKt.verifyDocumentAi(DocumentAiVerification.kt:33)
+	at com.kingscan.app.DocumentAiIntegrationTest$actualModelsAndOriginalPreservation$1.invokeSuspend(DocumentAiIntegrationTest.kt:17)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.kingscan.app.DocumentAiIntegrationTest.actualModelsAndOriginalPreservation(DocumentAiIntegrationTest.kt:13)
+
+
+Time: 49.557
+There was 1 failure:
+1) actualModelsAndOriginalPreservation(com.kingscan.app.DocumentAiIntegrationTest)
+ai.onnxruntime.OrtException: Error code - ORT_INVALID_ARGUMENT - message: Invalid model. Node input '/refinement/op0/Conv' is not a graph input, initializer, or output of a previous node.
+	at ai.onnxruntime.OrtSession.createSession(Native Method)
+	at ai.onnxruntime.OrtSession.<init>(OrtSession.java:113)
+	at ai.onnxruntime.OrtEnvironment.createSession(OrtEnvironment.java:283)
+	at ai.onnxruntime.OrtEnvironment.createSession(OrtEnvironment.java:251)
+	at com.kingscan.app.imaging.AndroidDocumentModels.predict(AndroidDocumentModels.kt:46)
+	at com.kingscan.app.DocumentAiVerificationKt.verifyDocumentAi(DocumentAiVerification.kt:33)
+	at com.kingscan.app.DocumentAiIntegrationTest$actualModelsAndOriginalPreservation$1.invokeSuspend(DocumentAiIntegrationTest.kt:17)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.kingscan.app.DocumentAiIntegrationTest.actualModelsAndOriginalPreservation(DocumentAiIntegrationTest.kt:13)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+

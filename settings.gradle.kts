@@ -29,3 +29,7 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+if (providers.gradleProperty("kingscanVerification").orNull == "true") {
+    include(":shareSender")
+    project(":shareSender").projectDir = file("verification/android/shareSender")
+}

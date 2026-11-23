@@ -1,0 +1,29 @@
+{
+  "id": "localaiverificationwatermark",
+  "title": "AI-watermark",
+  "createdAt": 1795400000000,
+  "updatedAt": 1795413011156,
+  "pages": [
+    {
+      "id": "page",
+      "fileName": "page_dny2ubvsg6n6.jpg",
+      "width": 256,
+      "height": 256,
+      "filter": "Original",
+      "originalFileName": "original-page.png",
+      "edit": {
+        "filter": "Original",
+        "retouches": [
+          {
+            "kind": "Watermark",
+            "strength": 0.5,
+            "modelVersion": "kingscan-document-ai-20261123-v1",
+            "seed": 20261123,
+            "orientation": 0
+          }
+        ]
+      },
+      "annotationBaseFileName": "page_3yhsyqdpa28r.base.jpg"
+    }
+  ]
+}

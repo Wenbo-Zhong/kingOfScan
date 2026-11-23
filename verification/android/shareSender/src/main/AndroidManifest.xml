@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:label="KingScan Share Verification" android:allowBackup="false">
+        <activity android:name=".ShareActivity" android:exported="true" />
+        <provider android:name=".FixtureProvider" android:authorities="com.kingscan.verification.sender.fixtures"
+            android:exported="false" android:grantUriPermissions="true" />
+    </application>
+</manifest>

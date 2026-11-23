@@ -1,0 +1,117 @@
+Type-safe project accessors is an incubating feature.
+> Task :composeApp:preBuild UP-TO-DATE
+> Task :composeApp:preDebugBuild UP-TO-DATE
+> Task :composeApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :composeApp:generateComposeResClass SKIPPED
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidDebug SKIPPED
+> Task :composeApp:generateDebugResValues FROM-CACHE
+> Task :composeApp:checkDebugAarMetadata
+> Task :composeApp:mapDebugSourceSetPaths
+> Task :composeApp:generateDebugResources FROM-CACHE
+> Task :composeApp:mergeDebugResources FROM-CACHE
+> Task :composeApp:packageDebugResources FROM-CACHE
+> Task :composeApp:parseDebugLocalResources FROM-CACHE
+> Task :composeApp:createDebugCompatibleScreenManifests
+> Task :composeApp:extractDeepLinksDebug FROM-CACHE
+> Task :composeApp:processDebugMainManifest
+> Task :composeApp:processDebugManifest
+> Task :composeApp:javaPreCompileDebug FROM-CACHE
+> Task :composeApp:mergeDebugShaders
+> Task :composeApp:compileDebugShaders NO-SOURCE
+> Task :composeApp:copyDebugComposeResourcesToAndroidAssets
+> Task :composeApp:debugAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:generateDebugAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAssets
+> Task :composeApp:compressDebugAssets FROM-CACHE
+> Task :composeApp:desugarDebugFileDependencies FROM-CACHE
+> Task :composeApp:mergeDebugJniLibFolders
+> Task :composeApp:checkDebugDuplicateClasses
+> Task :composeApp:validateSigningDebug
+> Task :composeApp:mergeDebugNativeLibs
+> Task :composeApp:mergeExtDexDebug FROM-CACHE
+> Task :composeApp:mergeLibDexDebug FROM-CACHE
+> Task :composeApp:writeDebugAppMetadata
+> Task :composeApp:writeDebugSigningConfigVersions
+> Task :composeApp:convertXmlValueResourcesForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidInstrumentedTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidInstrumentedTestDebug SKIPPED
+> Task :composeApp:preDebugAndroidTestBuild SKIPPED
+> Task :composeApp:checkDebugAndroidTestAarMetadata
+> Task :composeApp:generateDebugAndroidTestResValues FROM-CACHE
+> Task :composeApp:mapDebugAndroidTestSourceSetPaths
+> Task :composeApp:generateDebugAndroidTestResources FROM-CACHE
+
+> Task :composeApp:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libimage_processing_util_jni.so, libmlkit_google_ocr_pipeline.so, libsurface_util_jni.so.
+
+> Task :composeApp:mergeDebugAndroidTestResources FROM-CACHE
+> Task :composeApp:processDebugAndroidTestManifest
+> Task :composeApp:processDebugAndroidTestResources FROM-CACHE
+> Task :composeApp:javaPreCompileDebugAndroidTest FROM-CACHE
+> Task :composeApp:mergeDebugAndroidTestShaders
+> Task :composeApp:compileDebugAndroidTestShaders NO-SOURCE
+> Task :composeApp:copyDebugAndroidTestComposeResourcesToAndroidAssets
+> Task :composeApp:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestAssets
+> Task :composeApp:compressDebugAndroidTestAssets FROM-CACHE
+> Task :composeApp:desugarDebugAndroidTestFileDependencies FROM-CACHE
+> Task :composeApp:checkDebugAndroidTestDuplicateClasses
+> Task :composeApp:mergeDebugAndroidTestJniLibFolders
+> Task :composeApp:mergeExtDexDebugAndroidTest FROM-CACHE
+> Task :composeApp:mergeLibDexDebugAndroidTest FROM-CACHE
+> Task :composeApp:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :composeApp:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :composeApp:validateSigningDebugAndroidTest
+> Task :composeApp:writeDebugAndroidTestSigningConfigVersions
+> Task :composeApp:processDebugManifestForPackage
+> Task :composeApp:processDebugResources
+
+> Task :composeApp:compileDebugKotlinAndroid
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:113:45 'fun setTargetAspectRatio(p0: Int): Preview.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:118:18 'fun setTargetAspectRatio(p0: Int): ImageCapture.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:121:18 'fun setTargetResolution(p0: Size): ImageAnalysis.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CodeScreen.kt:31:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/OcrScreen.kt:43:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :composeApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :composeApp:dexBuilderDebug
+> Task :composeApp:mergeDebugGlobalSynthetics FROM-CACHE
+> Task :composeApp:processDebugJavaRes
+> Task :composeApp:bundleDebugClassesToCompileJar
+> Task :composeApp:mergeProjectDexDebug
+> Task :composeApp:compileDebugAndroidTestKotlinAndroid
+> Task :composeApp:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+> Task :composeApp:dexBuilderDebugAndroidTest FROM-CACHE
+> Task :composeApp:mergeDebugAndroidTestGlobalSynthetics FROM-CACHE
+> Task :composeApp:processDebugAndroidTestJavaRes
+> Task :composeApp:mergeProjectDexDebugAndroidTest FROM-CACHE
+> Task :composeApp:mergeDebugAndroidTestJavaResource
+> Task :composeApp:packageDebugAndroidTest
+> Task :composeApp:createDebugAndroidTestApkListingFileRedirect
+> Task :composeApp:assembleDebugAndroidTest
+> Task :composeApp:mergeDebugJavaResource
+> Task :composeApp:packageDebug
+> Task :composeApp:createDebugApkListingFileRedirect
+> Task :composeApp:assembleDebug
+
+BUILD SUCCESSFUL in 20s
+64 actionable tasks: 40 executed, 24 from cache

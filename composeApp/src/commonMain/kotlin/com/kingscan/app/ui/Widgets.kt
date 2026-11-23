@@ -14,15 +14,18 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.ProgressBarRangeInfo
+import androidx.compose.ui.semantics.progressBarRangeInfo
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
+import com.kingscan.app.ui.ScanProgressIndicator as CircularProgressIndicator
+import com.kingscan.app.ui.ScanTheme as MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -35,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kingscan.app.AppGraph
@@ -42,36 +46,13 @@ import com.kingscan.app.imaging.RgbaImage
 import com.kingscan.app.imaging.toComposeImageBitmap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 
 @Composable
-fun ScanTopBar(
-    title: String,
-    onBack: (() -> Unit)? = null,
-    contentColor: Color = MaterialTheme.colorScheme.onSurface,
-    actions: @Composable RowScope.() -> Unit = {},
-) {
-    Row(
-        modifier = Modifier.fillMaxWidth().statusBarsPadding().height(56.dp).padding(horizontal = 4.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        if (onBack != null) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "返回", tint = contentColor)
-            }
-        } else {
-            Spacer(Modifier.width(16.dp))
-        }
-        Text(
-            text = title,
-            style = MaterialTheme.typography.titleLarge,
-            color = contentColor,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f),
-        )
-        actions()
+fun ScanLinearProgress(progress: () -> Float, modifier: Modifier = Modifier, color: Color = MaterialTheme.colorScheme.primary, trackColor: Color = color.copy(alpha = .2f)) {
+    val value = progress().coerceIn(0f, 1f)
+    Box(modifier.fillMaxWidth().height(4.dp).clip(RoundedCornerShape(2.dp)).background(trackColor)
+        .semantics { progressBarRangeInfo = ProgressBarRangeInfo(value, 0f..1f) }) {
+        Box(Modifier.fillMaxWidth(value).height(4.dp).background(color))
     }
 }
 
@@ -138,7 +119,8 @@ fun BusyOverlay(visible: Boolean, label: String) {
         exit = fadeOut(animationSpec = tween(durationMillis = 180)),
     ) {
         Box(
-            modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f)),
+            modifier = Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.5f))
+                .pointerInput(Unit) { awaitPointerEventScope { while (true) awaitPointerEvent().changes.forEach { it.consume() } } },
             contentAlignment = Alignment.Center,
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {

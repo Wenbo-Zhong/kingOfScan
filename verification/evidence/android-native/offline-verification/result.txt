@@ -1,0 +1,8 @@
+PASS
+Bundled Chinese OCR
+CJK searchable PDF
+AES password and A4 layout
+Encrypted PDF followed by image import
+Original vector PDF preserved
+Invalid final image keeps prior pages accessible
+Redaction clears OCR and preserves editable base

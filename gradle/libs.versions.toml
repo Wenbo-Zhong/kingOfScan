@@ -15,6 +15,8 @@ datetime = "0.6.2"
 material-icons = "1.7.3"
 okio = "3.9.1"
 serialization = "1.8.1"
+mlkit-text = "16.0.1"
+pdfbox-android = "2.0.27.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -33,6 +35,9 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "material-icons" }
 okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
 okio-fakefilesystem = { module = "com.squareup.okio:okio-fakefilesystem", version.ref = "okio" }
+mlkit-text-latin = { module = "com.google.mlkit:text-recognition", version.ref = "mlkit-text" }
+mlkit-text-chinese = { module = "com.google.mlkit:text-recognition-chinese", version.ref = "mlkit-text" }
+pdfbox-android = { module = "com.tom-roush:pdfbox-android", version.ref = "pdfbox-android" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

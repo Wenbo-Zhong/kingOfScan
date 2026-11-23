@@ -1,0 +1,136 @@
+{
+  "testDebugUnitTest": [
+    {
+      "name": "com.kingscan.app.CaptureGeometryTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:29",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.108"
+    },
+    {
+      "name": "com.kingscan.app.DocumentLifecycleTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:29",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.053"
+    },
+    {
+      "name": "com.kingscan.app.PageCompositionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:29",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.232"
+    },
+    {
+      "name": "com.kingscan.app.PageEditingTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:29",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.002"
+    },
+    {
+      "name": "com.kingscan.app.PageRetouchTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:29",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.055"
+    },
+    {
+      "name": "com.kingscan.app.ScanPipelineTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:30",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.063"
+    }
+  ],
+  "iosSimulatorArm64Test": [
+    {
+      "name": "com.kingscan.app.CaptureGeometryTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:39",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.454"
+    },
+    {
+      "name": "com.kingscan.app.DocumentLifecycleTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:40",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.021"
+    },
+    {
+      "name": "com.kingscan.app.IosOfflineDocumentIntegrationTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:42",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.377"
+    },
+    {
+      "name": "com.kingscan.app.PageCompositionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:40",
+      "hostname": "HM4W6KN6XD",
+      "time": "1.869"
+    },
+    {
+      "name": "com.kingscan.app.PageEditingTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:42",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.0"
+    },
+    {
+      "name": "com.kingscan.app.PageRetouchTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:42",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.179"
+    },
+    {
+      "name": "com.kingscan.app.ScanPipelineTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-11-22T18:29:42",
+      "hostname": "HM4W6KN6XD",
+      "time": "0.022"
+    }
+  ]
+}

@@ -12,7 +12,10 @@ import org.jetbrains.skia.Image
 import platform.CoreGraphics.CGBitmapContextCreate
 import platform.CoreGraphics.CGBitmapContextCreateImage
 import platform.CoreGraphics.CGColorSpaceCreateDeviceRGB
+import platform.CoreGraphics.CGColorSpaceRelease
 import platform.CoreGraphics.CGContextDrawImage
+import platform.CoreGraphics.CGContextRelease
+import platform.CoreGraphics.CGImageRelease
 import platform.CoreGraphics.CGImageAlphaInfo
 import platform.CoreGraphics.CGRectMake
 import platform.CoreGraphics.CGSizeMake
@@ -60,20 +63,25 @@ class IosImageCodec : ImageCodec {
             raw[offset++] = 255.toByte()
         }
         val cgImage = raw.usePinned { pinned ->
-            val context = CGBitmapContextCreate(
+            val colorSpace = CGColorSpaceCreateDeviceRGB() ?: error("无法创建色彩空间")
+            try {
+                val context = CGBitmapContextCreate(
                 pinned.addressOf(0),
                 image.width.toULong(),
                 image.height.toULong(),
                 8u,
                 (image.width * 4).toULong(),
-                CGColorSpaceCreateDeviceRGB(),
+                colorSpace,
                 bitmapInfo(),
             ) ?: error("无法创建画布")
-            CGBitmapContextCreateImage(context)
+                try { CGBitmapContextCreateImage(context) } finally { CGContextRelease(context) }
+            } finally { CGColorSpaceRelease(colorSpace) }
         } ?: error("无法编码图片")
-        val uiImage = UIImage.imageWithCGImage(cgImage)
-        val jpeg = UIImageJPEGRepresentation(uiImage, quality.coerceIn(50, 100) / 100.0) ?: error("无法编码图片")
-        return jpeg.toByteArray()
+        return try {
+            val uiImage = UIImage.imageWithCGImage(cgImage)
+            val jpeg = UIImageJPEGRepresentation(uiImage, quality.coerceIn(50, 100) / 100.0) ?: error("无法编码图片")
+            jpeg.toByteArray()
+        } finally { CGImageRelease(cgImage) }
     }
 }
 
@@ -82,16 +90,20 @@ private fun readPixels(cgImage: kotlinx.cinterop.CPointer<cnames.structs.CGImage
     val bytesPerRow = width * 4
     val raw = ByteArray(bytesPerRow * height)
     raw.usePinned { pinned ->
-        val context = CGBitmapContextCreate(
+        val colorSpace = CGColorSpaceCreateDeviceRGB() ?: error("无法创建色彩空间")
+        try {
+            val context = CGBitmapContextCreate(
             pinned.addressOf(0),
             width.toULong(),
             height.toULong(),
             8u,
             bytesPerRow.toULong(),
-            CGColorSpaceCreateDeviceRGB(),
+            colorSpace,
             bitmapInfo(),
         ) ?: error("无法创建画布")
-        CGContextDrawImage(context, CGRectMake(0.0, 0.0, width.toDouble(), height.toDouble()), cgImage)
+            try { CGContextDrawImage(context, CGRectMake(0.0, 0.0, width.toDouble(), height.toDouble()), cgImage) }
+            finally { CGContextRelease(context) }
+        } finally { CGColorSpaceRelease(colorSpace) }
     }
     val pixels = IntArray(width * height)
     var offset = 0
@@ -134,4 +146,3 @@ fun NSData.toByteArray(): ByteArray {
     }
     return output
 }
-

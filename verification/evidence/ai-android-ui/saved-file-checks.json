@@ -1,0 +1,82 @@
+{
+  "docres": {
+    "kind": "SmartHd",
+    "dimensions": [
+      256,
+      256
+    ],
+    "original_sha256": "5f41a7c79f4fb5dfb972b9dde58904b5a09ef606c63caa288fa3b079f1463772",
+    "original_matches_installed_fixture": true,
+    "explicit_parameters": {
+      "kind": "SmartHd",
+      "strength": 0.5,
+      "modelVersion": "kingscan-document-ai-20261123-v1",
+      "seed": 20261123,
+      "orientation": 0
+    }
+  },
+  "handwriting": {
+    "kind": "Handwriting",
+    "dimensions": [
+      562,
+      555
+    ],
+    "original_sha256": "739f6aeab3491216824d57abb2824dbf29a9a9b1636ad1bca5fb7da8418b4188",
+    "original_matches_installed_fixture": true,
+    "explicit_parameters": {
+      "kind": "Handwriting",
+      "strength": 0.5,
+      "modelVersion": "kingscan-document-ai-20261123-v1",
+      "seed": 20261123,
+      "orientation": 0
+    }
+  },
+  "fingers": {
+    "kind": "Fingers",
+    "dimensions": [
+      200,
+      110
+    ],
+    "original_sha256": "3099d83ffbbbf3ecba5c0c97d0daa9081d8b1c67f70165e2c7976fb021d70395",
+    "original_matches_installed_fixture": true,
+    "explicit_parameters": {
+      "kind": "Fingers",
+      "strength": 0.5,
+      "modelVersion": "kingscan-document-ai-20261123-v1",
+      "seed": 20261123,
+      "orientation": 0
+    }
+  },
+  "watermark": {
+    "kind": "Watermark",
+    "dimensions": [
+      256,
+      256
+    ],
+    "original_sha256": "f4cd267921bc9db8b79824c668a7e64adc6ee0bcf1af9a29ad1e7faa7be1cfbb",
+    "original_matches_installed_fixture": true,
+    "explicit_parameters": {
+      "kind": "Watermark",
+      "strength": 0.5,
+      "modelVersion": "kingscan-document-ai-20261123-v1",
+      "seed": 20261123,
+      "orientation": 0
+    }
+  },
+  "esdnet": {
+    "kind": "Demoire",
+    "dimensions": [
+      512,
+      512
+    ],
+    "original_sha256": "4e081185b45506c8c2820515b44239e93522a4ea556495603c62801722da41de",
+    "original_matches_installed_fixture": true,
+    "explicit_parameters": {
+      "kind": "Demoire",
+      "strength": 0.5,
+      "modelVersion": "kingscan-document-ai-20261123-v1",
+      "seed": 20261123,
+      "orientation": 0
+    }
+  }
+}

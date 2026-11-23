@@ -1,0 +1,4 @@
+PASS Unicode QR JPEG round trip
+PASS rotated QR decoding
+PASS blank image rejected
+PASS multiple QR detection

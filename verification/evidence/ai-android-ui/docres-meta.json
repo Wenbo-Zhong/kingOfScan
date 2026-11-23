@@ -1,0 +1,29 @@
+{
+  "id": "localaiverificationdocres",
+  "title": "AI-docres",
+  "createdAt": 1795400000000,
+  "updatedAt": 1795412131341,
+  "pages": [
+    {
+      "id": "page",
+      "fileName": "page_1kck9ggxrn7k.jpg",
+      "width": 256,
+      "height": 256,
+      "filter": "Original",
+      "originalFileName": "original-page.png",
+      "edit": {
+        "filter": "Original",
+        "retouches": [
+          {
+            "kind": "SmartHd",
+            "strength": 0.5,
+            "modelVersion": "kingscan-document-ai-20261123-v1",
+            "seed": 20261123,
+            "orientation": 0
+          }
+        ]
+      },
+      "annotationBaseFileName": "page_ux5u4p91ff55.base.jpg"
+    }
+  ]
+}

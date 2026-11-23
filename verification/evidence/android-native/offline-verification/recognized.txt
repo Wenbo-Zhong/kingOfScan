@@ -1,0 +1,3 @@
+离线扫描测试
+KingOfScan OFFLINE
+2026 123456

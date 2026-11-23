@@ -1,0 +1,71 @@
+Type-safe project accessors is an incubating feature.
+> Task :composeApp:preBuild UP-TO-DATE
+> Task :composeApp:preDebugBuild UP-TO-DATE
+> Task :composeApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :composeApp:generateComposeResClass SKIPPED
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidDebug SKIPPED
+> Task :composeApp:checkDebugAarMetadata UP-TO-DATE
+> Task :composeApp:generateDebugResValues UP-TO-DATE
+> Task :composeApp:mapDebugSourceSetPaths UP-TO-DATE
+> Task :composeApp:generateDebugResources UP-TO-DATE
+> Task :composeApp:mergeDebugResources UP-TO-DATE
+> Task :composeApp:packageDebugResources UP-TO-DATE
+> Task :composeApp:parseDebugLocalResources UP-TO-DATE
+> Task :composeApp:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :composeApp:extractDeepLinksDebug UP-TO-DATE
+> Task :composeApp:processDebugMainManifest UP-TO-DATE
+> Task :composeApp:processDebugManifest UP-TO-DATE
+> Task :composeApp:processDebugManifestForPackage UP-TO-DATE
+> Task :composeApp:processDebugResources UP-TO-DATE
+> Task :composeApp:javaPreCompileDebug UP-TO-DATE
+> Task :composeApp:mergeDebugShaders UP-TO-DATE
+> Task :composeApp:compileDebugShaders NO-SOURCE
+> Task :composeApp:copyDebugComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :composeApp:debugAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:generateDebugAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAssets UP-TO-DATE
+> Task :composeApp:compressDebugAssets UP-TO-DATE
+> Task :composeApp:desugarDebugFileDependencies UP-TO-DATE
+> Task :composeApp:checkDebugDuplicateClasses UP-TO-DATE
+> Task :composeApp:mergeExtDexDebug UP-TO-DATE
+> Task :composeApp:mergeLibDexDebug UP-TO-DATE
+> Task :composeApp:mergeDebugJniLibFolders UP-TO-DATE
+> Task :composeApp:mergeDebugNativeLibs UP-TO-DATE
+> Task :composeApp:stripDebugDebugSymbols UP-TO-DATE
+> Task :composeApp:validateSigningDebug UP-TO-DATE
+> Task :composeApp:writeDebugAppMetadata UP-TO-DATE
+> Task :composeApp:writeDebugSigningConfigVersions UP-TO-DATE
+
+> Task :composeApp:compileDebugKotlinAndroid
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:113:45 'fun setTargetAspectRatio(p0: Int): Preview.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:118:18 'fun setTargetAspectRatio(p0: Int): ImageCapture.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt:121:18 'fun setTargetResolution(p0: Size): ImageAnalysis.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CodeScreen.kt:31:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/OcrScreen.kt:43:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :composeApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :composeApp:dexBuilderDebug
+> Task :composeApp:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :composeApp:processDebugJavaRes UP-TO-DATE
+> Task :composeApp:mergeDebugJavaResource UP-TO-DATE
+> Task :composeApp:mergeProjectDexDebug
+> Task :composeApp:packageDebug
+> Task :composeApp:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :composeApp:assembleDebug
+
+BUILD SUCCESSFUL in 9s
+36 actionable tasks: 4 executed, 32 up-to-date

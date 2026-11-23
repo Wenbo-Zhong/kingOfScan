@@ -1,0 +1,68 @@
+Starting a Gradle Daemon, 1 busy and 1 stopped Daemons could not be reused, use --status for details
+Type-safe project accessors is an incubating feature.
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Main SKIPPED
+> Task :composeApp:convertXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForIosSimulatorArm64Main SKIPPED
+> Task :composeApp:generateComposeResClass SKIPPED
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain SKIPPED
+
+> Task :composeApp:compileKotlinIosSimulatorArm64
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CodeScreen.kt:31:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/ui/OcrScreen.kt:43:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/IosBarcodeCodec.kt:35:76 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/IosOcrEngine.kt:39:23 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/IosPageText.kt:31:22 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+
+> Task :composeApp:convertXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Test SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeTest SKIPPED
+> Task :composeApp:iosSimulatorArm64ResolveResourcesFromDependencies UP-TO-DATE
+> Task :composeApp:assembleIosSimulatorArm64MainResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64ResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64AggregateResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64ProcessResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64MainKlibrary
+> Task :composeApp:compileTestKotlinIosSimulatorArm64
+> Task :composeApp:assembleIosSimulatorArm64TestResources UP-TO-DATE
+> Task :composeApp:copyTestComposeResourcesForIosSimulatorArm64 UP-TO-DATE
+> Task :composeApp:linkDebugTestIosSimulatorArm64
+> Task :composeApp:iosSimulatorArm64Test
+
+BUILD SUCCESSFUL in 31s
+11 actionable tasks: 4 executed, 7 up-to-date

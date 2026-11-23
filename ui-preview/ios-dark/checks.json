@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-23",
+  "device": "iOS 27.0 arm64 simulator",
+  "passed": [
+    "Live light-to-dark appearance change",
+    "Home text, search placeholder, document cards and SF Symbols",
+    "More menu open and dark appearance",
+    "About alert open, readable content and dismiss",
+    "Grouped settings and native switch sizing",
+    "Native switch on and off without saving",
+    "Dark selected segment background fix; actual screenshot pixels compared",
+    "Production Xcode app build and simulator installation",
+    "Original light appearance restored"
+  ],
+  "not_completed": [
+    "Native slider interaction",
+    "Editor toolbar and canvas in dark appearance",
+    "Focused text input and keyboard in dark appearance"
+  ],
+  "reason_not_completed": "Computer Use was stopped by the user",
+  "metadata_files_compared": 6,
+  "local_settings_and_document_metadata_unchanged": true,
+  "final_appearance": "light"
+}

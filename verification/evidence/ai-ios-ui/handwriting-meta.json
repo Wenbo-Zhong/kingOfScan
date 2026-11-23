@@ -1,0 +1,25 @@
+{
+    "id": "localaiverificationhandwriting",
+    "title": "AI-handwriting",
+    "createdAt": 1795400000000,
+    "updatedAt": 1795406050670,
+    "pages": [
+        {
+            "id": "page",
+            "fileName": "page_mip8a723827w.jpg",
+            "width": 562,
+            "height": 555,
+            "filter": "Original",
+            "originalFileName": "original-page.png",
+            "edit": {
+                "filter": "Original",
+                "retouches": [
+                    {
+                        "kind": "Handwriting"
+                    }
+                ]
+            },
+            "annotationBaseFileName": "page_7c0qinit7w8z.base.jpg"
+        }
+    ]
+}

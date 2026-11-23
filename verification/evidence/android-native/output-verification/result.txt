@@ -1,0 +1,4 @@
+PASS local colour and selected-mask restoration
+PASS original/edit persistence after rotation and filter
+PASS gallery publishes byte-identical JPEG
+PASS printer reports 3 pages and outputs selected page only

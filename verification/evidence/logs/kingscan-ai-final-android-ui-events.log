@@ -1,0 +1,188 @@
+--------- beginning of main
+11-23 13:35:32.269 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:35:48.591 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:35:48.886 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:35:48.891 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[SmartHd]
+11-23 13:35:49.235 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:35:49.517 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[SmartHd]
+11-23 13:35:49.518 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:35:49.518 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:35:49.518 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:35:53.584 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=docres
+11-23 13:39:48.788 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=docres
+11-23 13:39:48.988 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:39:49.230 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:39:49.230 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:39:54.243 13754 13769 I System.out: KMP_DOCUMENT_AI_UI PASS docres button, compare, save, explicit parameters, original bytes and reopened preview
+11-23 13:39:54.243 13754 13769 I System.out: KMP_DOCUMENT_AI_UI START handwriting
+11-23 13:39:55.759 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:40:26.782 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:40:26.948 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:40:26.949 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:40:27.938 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:40:28.769 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:40:28.789 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:40:28.789 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:40:28.789 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:40:29.015 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:40:29.184 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:40:29.211 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:40:31.009 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE append kind=Handwriting size=0
+11-23 13:40:31.167 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[Handwriting]
+11-23 13:40:31.219 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:40:31.220 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:40:31.221 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:40:44.180 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=handwriting
+11-23 13:40:44.182 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=handwriting
+11-23 13:41:13.620 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=handwriting
+11-23 13:42:16.066 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=handwriting
+11-23 13:42:49.086 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=3 success=true
+11-23 13:42:49.370 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=3
+11-23 13:42:49.394 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=3 generating=false
+11-23 13:43:04.750 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:43:18.106 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:43:18.389 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:43:18.391 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[Handwriting]
+11-23 13:43:19.173 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:43:19.679 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[Handwriting]
+11-23 13:43:19.687 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:43:19.688 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:43:19.688 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:43:28.565 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=handwriting
+11-23 13:43:33.048 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=handwriting
+11-23 13:43:34.312 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:43:34.317 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:43:34.317 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:43:38.435 13754 13769 I System.out: KMP_DOCUMENT_AI_UI PASS handwriting button, compare, save, explicit parameters, original bytes and reopened preview
+11-23 13:43:38.435 13754 13769 I System.out: KMP_DOCUMENT_AI_UI START fingers
+11-23 13:43:39.727 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:44:05.704 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:44:05.986 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:44:06.000 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:44:06.060 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:44:06.180 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:44:06.181 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:44:06.191 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:44:06.191 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:44:06.192 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:44:06.201 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:44:06.202 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:44:09.503 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE append kind=Fingers size=0
+11-23 13:44:09.712 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[Fingers]
+11-23 13:44:09.841 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:44:09.841 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:44:09.841 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:44:13.108 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:44:13.110 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=fingers
+11-23 13:44:17.197 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=fingers
+11-23 13:44:43.602 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:44:43.688 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:45:12.947 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:45:13.203 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:45:42.420 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:45:42.637 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:46:12.655 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:46:13.709 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=3 success=true
+11-23 13:46:13.731 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=3
+11-23 13:46:13.731 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=3 generating=false
+11-23 13:46:28.473 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:46:41.232 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:46:41.397 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:46:41.400 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[Fingers]
+11-23 13:46:41.483 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:46:41.732 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[Fingers]
+11-23 13:46:41.734 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:46:41.734 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:46:41.734 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:46:44.214 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:47:14.655 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:47:14.831 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:47:45.520 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:47:45.633 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:48:15.780 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:48:15.929 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=fingers
+11-23 13:48:48.105 13754 13795 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=fingers
+11-23 13:48:49.439 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:48:49.446 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:48:49.446 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:48:52.418 13754 13769 I System.out: KMP_DOCUMENT_AI_UI PASS fingers button, compare, save, explicit parameters, original bytes and reopened preview
+11-23 13:48:52.420 13754 13769 I System.out: KMP_DOCUMENT_AI_UI START watermark
+11-23 13:48:53.400 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:49:33.346 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:49:33.469 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:49:33.471 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:49:33.508 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:49:33.520 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:49:33.544 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:49:33.544 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:49:33.544 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:49:33.560 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:49:33.569 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:49:33.571 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:49:36.127 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE append kind=Watermark size=0
+11-23 13:49:36.365 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[Watermark]
+11-23 13:49:36.367 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:49:36.367 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:49:36.367 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:49:39.086 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=watermark
+11-23 13:49:39.087 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=watermark
+11-23 13:49:41.464 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=watermark
+11-23 13:49:55.980 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=watermark
+11-23 13:49:56.081 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=3 success=true
+11-23 13:49:56.091 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=3
+11-23 13:49:56.091 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=3 generating=false
+11-23 13:50:11.531 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:50:17.782 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:50:17.895 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:50:17.896 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[Watermark]
+11-23 13:50:18.122 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:50:18.205 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[Watermark]
+11-23 13:50:18.209 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:50:18.209 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:50:18.209 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:50:18.833 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=watermark
+11-23 13:50:27.523 13754 13798 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=watermark
+11-23 13:50:27.552 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:50:27.553 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:50:27.553 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:50:28.874 13754 13769 I System.out: KMP_DOCUMENT_AI_UI PASS watermark button, compare, save, explicit parameters, original bytes and reopened preview
+11-23 13:50:28.875 13754 13769 I System.out: KMP_DOCUMENT_AI_UI START esdnet
+11-23 13:50:29.157 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:50:54.853 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:50:54.971 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:50:54.972 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[]
+11-23 13:50:55.696 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:50:55.796 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[]
+11-23 13:50:55.805 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:50:55.810 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:50:55.810 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:50:55.811 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:50:55.818 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:50:55.818 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:51:18.729 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE append kind=Demoire size=0
+11-23 13:51:18.942 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=3 source=true effects=[Demoire]
+11-23 13:51:18.951 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=3
+11-23 13:51:18.951 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=3
+11-23 13:51:18.951 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=3 hit=false prefix=0
+11-23 13:51:19.441 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=esdnet
+11-23 13:51:19.441 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_start model=esdnet
+11-23 13:51:21.941 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE session_ready model=esdnet
+11-23 13:51:29.263 13754 13797 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=esdnet
+11-23 13:51:29.446 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=3 success=true
+11-23 13:51:29.450 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=3
+11-23 13:51:29.450 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=3 generating=false
+11-23 13:51:41.749 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_dispose page=page
+11-23 13:51:53.931 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE editor_enter page=page
+11-23 13:51:54.065 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_start page=page
+11-23 13:51:54.069 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=1 source=false effects=[Demoire]
+11-23 13:51:54.569 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE source_result success=true
+11-23 13:51:54.604 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_enter id=2 source=true effects=[Demoire]
+11-23 13:51:54.608 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_wait id=2
+11-23 13:51:54.609 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_lock id=2
+11-23 13:51:54.609 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE render_cache id=2 hit=false prefix=null
+11-23 13:51:55.576 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_start model=esdnet
+11-23 13:52:03.633 13754 13796 I System.out: KMP_DOCUMENT_AI_TRACE predict_end model=esdnet
+11-23 13:52:03.867 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_result id=2 success=true
+11-23 13:52:03.887 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_publish id=2
+11-23 13:52:03.887 13754 13754 I System.out: KMP_DOCUMENT_AI_TRACE render_exit id=2 generating=false
+11-23 13:52:08.432 13754 13769 I System.out: KMP_DOCUMENT_AI_UI PASS esdnet button, compare, save, explicit parameters, original bytes and reopened preview

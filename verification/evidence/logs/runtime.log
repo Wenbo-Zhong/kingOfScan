@@ -1,0 +1,16 @@
+objc[15914]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_24A5423a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10c1f4398) and /Library/Developer/CoreSimulator/Volumes/iOS_24A5423a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10c3d0310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+PASS docres native reference MAE=0.002126057528808345 max=0.040932238
+PASS handwriting native reference MAE=1.7305343958060526E-4 max=0.050102085
+PASS fingers native reference MAE=0.0015386645380718149 max=0.03278497
+PASS watermark native reference MAE=0.0013422850067096685 max=0.009042084
+PASS esdnet native reference MAE=9.086489533392713E-4 max=0.011600435
+PASS docres full page dimensions preserved
+PASS esdnet full page dimensions preserved
+PASS handwriting unselected pixels preserved=294847/311910
+PASS fingers unselected pixels preserved=9429/22000
+PASS watermark full page dimensions preserved
+PASS original bytes, model parameters, rotated rerender and OCR invalidation survive repository reload
+PASS clean paper rejected by both segmentation operations
+PASS coordinate-stable watermark noise matches independent reference
+PASS unavailable model version and cancellation preserve saved original
+com.kingscan.offline-verification: 15914

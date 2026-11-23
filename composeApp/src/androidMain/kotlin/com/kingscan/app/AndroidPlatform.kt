@@ -34,10 +34,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.kingscan.app.imaging.DocumentDetector
+import com.kingscan.app.imaging.CaptureAnalysis
+import com.kingscan.app.imaging.CaptureFrame
 import com.kingscan.app.imaging.RgbaImage
 import com.kingscan.app.imaging.ScanLimits
-import com.kingscan.app.model.Quad
+import com.kingscan.app.model.ImportFile
+import com.kingscan.app.AppGraph
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -58,7 +60,7 @@ actual fun ScannerCamera(
     onBind: (capture: () -> Unit) -> Unit,
     onPhoto: (ByteArray) -> Unit,
     onError: (String) -> Unit,
-    onDetection: (Quad?) -> Unit,
+    onDetection: (CaptureFrame) -> Unit,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -100,16 +102,20 @@ actual fun ScannerCamera(
     val analysisExecutor = remember { Executors.newSingleThreadExecutor() }
 
     DisposableEffect(lifecycleOwner, granted) {
+        var disposed = false
         val future = ProcessCameraProvider.getInstance(context)
         val listener = Runnable {
+            if (disposed) return@Runnable
             val provider = runCatching { future.get() }.getOrNull() ?: run {
                 latestError.value.invoke("无法打开相机")
                 return@Runnable
             }
-            val preview = Preview.Builder().build().also { it.surfaceProvider = previewView.surfaceProvider }
+            val preview = Preview.Builder().setTargetAspectRatio(androidx.camera.core.AspectRatio.RATIO_4_3)
+                .build().also { it.surfaceProvider = previewView.surfaceProvider }
             val imageCapture = ImageCapture.Builder()
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
                 .setJpegQuality(92)
+                .setTargetAspectRatio(androidx.camera.core.AspectRatio.RATIO_4_3)
                 .build()
             val imageAnalysis = ImageAnalysis.Builder()
                 .setTargetResolution(android.util.Size(640, 480))
@@ -117,17 +123,17 @@ actual fun ScannerCamera(
                 .build()
             var lastAnalysisAt = 0L
             imageAnalysis.setAnalyzer(analysisExecutor) { proxy ->
-                val now = android.os.SystemClock.elapsedRealtime()
-                if (now - lastAnalysisAt < 120L) {
+                try {
+                    val now = android.os.SystemClock.elapsedRealtime()
+                    if (now - lastAnalysisAt < 120L) return@setAnalyzer
+                    lastAnalysisAt = now
+                    val frame = runCatching { analyzePreview(proxy, now) }.getOrNull() ?: return@setAnalyzer
+                    android.os.Handler(android.os.Looper.getMainLooper()).post {
+                        if (!disposed) latestDetection.value.invoke(frame)
+                    }
+                } finally {
                     proxy.close()
-                    return@setAnalyzer
                 }
-                lastAnalysisAt = now
-                val quad = runCatching { detectPreviewQuad(proxy) }.getOrNull()
-                android.os.Handler(android.os.Looper.getMainLooper()).post {
-                    latestDetection.value.invoke(quad)
-                }
-                proxy.close()
             }
             try {
                 provider.unbindAll()
@@ -149,13 +155,15 @@ actual fun ScannerCamera(
                             override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                                 val bytes = runCatching { file.readBytes() }.getOrNull()
                                 file.delete()
-                                if (bytes != null && bytes.isNotEmpty()) latestPhoto.value.invoke(bytes)
-                                else latestError.value.invoke("没有拿到照片")
+                                ContextCompat.getMainExecutor(context).execute {
+                                    if (bytes != null && bytes.isNotEmpty()) latestPhoto.value.invoke(bytes)
+                                    else latestError.value.invoke("没有拿到照片")
+                                }
                             }
 
                             override fun onError(exception: ImageCaptureException) {
                                 file.delete()
-                                latestError.value.invoke("拍摄失败")
+                                ContextCompat.getMainExecutor(context).execute { latestError.value.invoke("拍摄失败") }
                             }
                         },
                     )
@@ -166,6 +174,7 @@ actual fun ScannerCamera(
         }
         future.addListener(listener, ContextCompat.getMainExecutor(context))
         onDispose {
+            disposed = true
             if (future.isDone) runCatching { future.get().unbindAll() }
             executor.shutdown()
             analysisExecutor.shutdown()
@@ -178,7 +187,7 @@ actual fun ScannerCamera(
     AndroidView(factory = { previewView }, modifier = modifier)
 }
 
-private fun detectPreviewQuad(proxy: ImageProxy): Quad? {
+private fun analyzePreview(proxy: ImageProxy, now: Long): CaptureFrame? {
     val plane = proxy.planes.firstOrNull() ?: return null
     val sourceWidth = proxy.width
     val sourceHeight = proxy.height
@@ -196,38 +205,43 @@ private fun detectPreviewQuad(proxy: ImageProxy): Quad? {
             pixels[y * width + x] = (0xFF shl 24) or (value shl 16) or (value shl 8) or value
         }
     }
-    val detected = DocumentDetector.detectOrNull(RgbaImage(width, height, pixels)) ?: return null
-    return when ((proxy.imageInfo.rotationDegrees % 360 + 360) % 360) {
-        90 -> detected.rotate90CW()
-        180 -> detected.rotate90CW().rotate90CW()
-        270 -> detected.rotate90CW().rotate90CW().rotate90CW()
-        else -> detected
-    }
+    var image = RgbaImage(width, height, pixels)
+    repeat(((proxy.imageInfo.rotationDegrees % 360 + 360) % 360) / 90) { image = image.rotate90CW() }
+    return CaptureAnalysis.analyze(image, now)
 }
 
 @Composable
-actual fun rememberImageImporter(
-    onImage: (ByteArray) -> Unit,
+actual fun rememberImagesImporter(
+    onImages: (List<ImportFile>) -> Unit,
     onError: (String) -> Unit,
     onStart: () -> Unit,
     onCancel: () -> Unit,
 ): () -> Unit {
     val context = LocalContext.current
-    val latest = rememberUpdatedState(onImage)
+    val latest = rememberUpdatedState(onImages)
     val latestError = rememberUpdatedState(onError)
     val latestStart = rememberUpdatedState(onStart)
     val latestCancel = rememberUpdatedState(onCancel)
     val scope = androidx.compose.runtime.rememberCoroutineScope()
-    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-        if (uri == null) {
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(50)) { uris ->
+        if (uris.isEmpty()) {
             latestCancel.value.invoke()
             return@rememberLauncherForActivityResult
         }
         scope.launch(Dispatchers.IO) {
-            val bytes = runCatching { context.contentResolver.openInputStream(uri)?.use { it.readBytes() } }.getOrNull()
+            val staged = mutableListOf<ImportFile>()
+            val result = runCatching {
+                uris.forEachIndexed { index, uri ->
+                    val bytes = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: error("无法读取所选图片")
+                    staged += AppGraph.repository.stageImport(bytes, "相册 ${index + 1}")
+                }
+                staged.toList()
+            }
             kotlinx.coroutines.withContext(Dispatchers.Main) {
-                if (bytes != null && bytes.isNotEmpty()) latest.value.invoke(bytes)
-                else latestError.value.invoke("无法读取所选图片")
+                result.fold({ latest.value.invoke(it) }, {
+                    staged.forEach { file -> AppGraph.repository.finishImport(file) }
+                    latestError.value.invoke(it.message ?: "无法读取所选图片")
+                })
             }
         }
     }
@@ -236,6 +250,48 @@ actual fun rememberImageImporter(
         runCatching {
             launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }.onFailure { latestError.value.invoke("无法打开相册") }
+    }
+}
+
+@Composable
+actual fun rememberFileImporter(
+    onFiles: (List<ImportFile>) -> Unit,
+    onError: (String) -> Unit,
+    onStart: () -> Unit,
+    onCancel: () -> Unit,
+): () -> Unit {
+    val context = LocalContext.current
+    val latestFiles = rememberUpdatedState(onFiles)
+    val latestError = rememberUpdatedState(onError)
+    val latestCancel = rememberUpdatedState(onCancel)
+    val scope = androidx.compose.runtime.rememberCoroutineScope()
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.OpenMultipleDocuments()) { uris ->
+        if (uris.isEmpty()) latestCancel.value() else scope.launch(Dispatchers.IO) {
+            val staged = mutableListOf<ImportFile>()
+            val result = runCatching {
+                uris.forEach { uri ->
+                    val mime = context.contentResolver.getType(uri)
+                    val name = context.contentResolver.query(uri, arrayOf(android.provider.OpenableColumns.DISPLAY_NAME), null, null, null)?.use {
+                        if (it.moveToFirst()) it.getString(0) else null
+                    } ?: "导入文件"
+                    val bytes = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: error("无法读取 $name")
+                    val pdf = mime == "application/pdf" || bytes.take(5).toByteArray().contentEquals("%PDF-".encodeToByteArray())
+                    staged += AppGraph.repository.stageImport(bytes, name, pdf)
+                }
+                staged.toList()
+            }
+            kotlinx.coroutines.withContext(Dispatchers.Main) {
+                result.fold({ latestFiles.value(it) }, {
+                    staged.forEach { file -> AppGraph.repository.finishImport(file) }
+                    latestError.value(it.message ?: "无法读取文件")
+                })
+            }
+        }
+    }
+    return {
+        onStart()
+        runCatching { launcher.launch(arrayOf("application/pdf", "image/*")) }
+            .onFailure { onError("无法打开文件选择器") }
     }
 }
 

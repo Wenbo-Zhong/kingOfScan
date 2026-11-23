@@ -1,0 +1,25 @@
+{
+    "id": "localaiverificationfingers",
+    "title": "AI-fingers",
+    "createdAt": 1795400000000,
+    "updatedAt": 1795406210119,
+    "pages": [
+        {
+            "id": "page",
+            "fileName": "page_p6p5a2ulek28.jpg",
+            "width": 200,
+            "height": 110,
+            "filter": "Original",
+            "originalFileName": "original-page.png",
+            "edit": {
+                "filter": "Original",
+                "retouches": [
+                    {
+                        "kind": "Fingers"
+                    }
+                ]
+            },
+            "annotationBaseFileName": "page_zt3z7ntwtp50.base.jpg"
+        }
+    ]
+}

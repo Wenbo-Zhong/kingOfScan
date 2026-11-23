@@ -1,0 +1,5 @@
+PASS actual QR text entry and generation preview
+PASS QR gallery UI publishes byte-identical JPEG
+PASS actual QR native share sheet
+PASS large-format continuous capture entry and overlap guidance
+PASS book and ID capture entries

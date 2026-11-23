@@ -1,0 +1,3 @@
+PASS docres UI-saved model kind, dimensions and original SHA256=5f41a7c79f4fb5dfb972b9dde58904b5a09ef606c63caa288fa3b079f1463772
+PASS handwriting UI-saved model kind, dimensions and original SHA256=739f6aeab3491216824d57abb2824dbf29a9a9b1636ad1bca5fb7da8418b4188
+PASS fingers UI-saved model kind, dimensions and original SHA256=3099d83ffbbbf3ecba5c0c97d0daa9081d8b1c67f70165e2c7976fb021d70395

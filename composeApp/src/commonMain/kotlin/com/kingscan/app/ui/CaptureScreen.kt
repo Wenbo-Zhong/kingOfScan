@@ -1,34 +1,16 @@
 package com.kingscan.app.ui
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.FlashOff
-import androidx.compose.material.icons.filled.FlashOn
-import androidx.compose.material.icons.filled.PhotoLibrary
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import com.kingscan.app.ui.ScanTextButton as TextButton
+import com.kingscan.app.ui.ScanIconButton as IconButton
+import com.kingscan.app.ui.ScanIcon as Icon
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,139 +21,239 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.kingscan.app.AppGraph
-import com.kingscan.app.imaging.DocumentDetector
-import com.kingscan.app.imaging.ScanLimits
-import com.kingscan.app.model.Quad
-import com.kingscan.app.model.Screen
+import com.kingscan.app.data.defaultScanTitle
+import com.kingscan.app.imaging.*
+import com.kingscan.app.model.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Composable
-fun CaptureScreen(
-    navigator: Navigator,
-    onMessage: (String) -> Unit,
-) {
-    val scope = rememberCoroutineScope()
+fun CaptureScreen(navigator: Navigator, onMessage: (String) -> Unit) {
+    val settings = remember { AppGraph.repository.settings() }
+    var mode by remember { mutableStateOf(settings.scanMode) }
+    var automatic by remember { mutableStateOf(settings.autoCapture) }
+    var continuous by remember { mutableStateOf(settings.continuousCapture) }
     var torch by remember { mutableStateOf(false) }
     var busy by remember { mutableStateOf(false) }
     var capture by remember { mutableStateOf<(() -> Unit)?>(null) }
-    var detectedQuad by remember { mutableStateOf<Quad?>(null) }
-    val importImage = rememberImageImporter(
-        onImage = { bytes -> openEditor(bytes, scope, { busy = it }, navigator, onMessage) },
-        onError = { message -> busy = false; onMessage(message) },
-        onStart = { busy = true },
-        onCancel = { busy = false },
+    var frame by remember { mutableStateOf<CaptureFrame?>(null) }
+    var readiness by remember { mutableStateOf(CaptureReadiness(0f, "对齐后点击拍摄")) }
+    var count by remember { mutableStateOf(AppGraph.session.capturedPages) }
+    val controller = remember { AutoCaptureController() }
+    fun persist() {
+        AppGraph.session.scanMode = mode
+        AppGraph.repository.saveSettings(AppGraph.repository.settings().copy(
+            scanMode = mode, autoCapture = automatic, continuousCapture = continuous))
+    }
+    fun shutter() {
+        if (busy || capture == null) return
+        busy = true
+        controller.markCaptured(frame)
+        capture?.invoke()
+    }
+    val importImage = rememberImagesImporter(
+        onImages = { files -> importFiles(files, { busy = it }, navigator, onMessage) },
+        onError = { busy = false; onMessage(it) }, onStart = { busy = true }, onCancel = { busy = false },
     )
-
     Box(Modifier.fillMaxSize().background(Color.Black)) {
         ScannerCamera(
-            torchEnabled = torch,
-            modifier = Modifier.fillMaxSize(),
-            onBind = { capture = it },
-            onPhoto = { bytes -> openEditor(bytes, scope, { busy = it }, navigator, onMessage) },
-            onError = onMessage,
-            onDetection = { detectedQuad = it },
+            torchEnabled = torch, modifier = Modifier.fillMaxSize(), onBind = { capture = it },
+            onPhoto = { bytes ->
+                if (navigator.current == Screen.Capture) {
+                    AppGraph.session.scanMode = mode
+                    if (continuous || mode == ScanMode.LargeFormat) saveContinuousCapture(bytes, mode, { busy = it }, navigator, onMessage) {
+                        count = AppGraph.session.capturedPages
+                    } else openEditor(bytes, { busy = it }, navigator, onMessage, mode)
+                }
+            },
+            onError = { busy = false; controller.reset(); onMessage(it) },
+            onDetection = { next ->
+                frame = next
+                readiness = controller.update(next, automatic && mode != ScanMode.LargeFormat && capture != null, busy)
+                if (readiness.capture) shutter()
+            },
         )
-        detectedQuad?.let { quad ->
+        frame?.let { analyzed ->
             Canvas(Modifier.fillMaxSize()) {
-                // Camera preview uses FIT_CENTER; keep the outline in the same
-                // centered 4:3 camera-content rectangle instead of stretching it
-                // over the taller device viewport.
-                val contentWidth = minOf(size.width, size.height * 0.75f)
-                val contentHeight = minOf(size.height, size.width / 0.75f)
-                val left = (size.width - contentWidth) / 2f
-                val top = (size.height - contentHeight) / 2f
-                val points = listOf(quad.topLeft, quad.topRight, quad.bottomRight, quad.bottomLeft)
-                fun mapPoint(x: Float, y: Float) = Offset(left + x * contentWidth, top + y * contentHeight)
-                val path = Path().apply {
-                    val first = mapPoint(points.first().x, points.first().y)
-                    moveTo(first.x, first.y)
-                    points.drop(1).forEach {
-                        val mapped = mapPoint(it.x, it.y)
-                        lineTo(mapped.x, mapped.y)
+                val ratio = analyzed.width.toFloat() / analyzed.height
+                val contentWidth = minOf(size.width, size.height * ratio)
+                val contentHeight = contentWidth / ratio
+                val left = (size.width - contentWidth) / 2
+                val top = (size.height - contentHeight) / 2
+                fun map(point: PointF) = Offset(left + point.x * contentWidth, top + point.y * contentHeight)
+                analyzed.quad?.let { quad ->
+                    val points = listOf(quad.topLeft, quad.topRight, quad.bottomRight, quad.bottomLeft)
+                    val path = Path().apply {
+                        val first = map(points.first()); moveTo(first.x, first.y)
+                        points.drop(1).forEach { val p = map(it); lineTo(p.x, p.y) }
+                        close()
                     }
-                    close()
+                    drawPath(path, Seal.copy(alpha = 0.15f))
+                    drawPath(path, Seal, style = Stroke(3.dp.toPx()))
+                    points.forEach { drawCircle(Color.White, 4.dp.toPx(), map(it)) }
+                    if (mode == ScanMode.Book) {
+                        val upper = PointF((quad.topLeft.x + quad.topRight.x) / 2, (quad.topLeft.y + quad.topRight.y) / 2)
+                        val lower = PointF((quad.bottomLeft.x + quad.bottomRight.x) / 2, (quad.bottomLeft.y + quad.bottomRight.y) / 2)
+                        drawLine(Color.White, map(upper), map(lower), 2.dp.toPx())
+                    }
                 }
-                drawPath(path, Color(0xFF31D6A0).copy(alpha = 0.16f))
-                drawPath(path, Color(0xFF31D6A0), style = Stroke(width = 3.dp.toPx()))
-                points.forEach { point ->
-                    val mapped = mapPoint(point.x, point.y)
-                    drawCircle(Color.White, radius = 5.dp.toPx(), center = mapped)
-                    drawCircle(Color(0xFF31D6A0), radius = 3.dp.toPx(), center = mapped)
+                if (mode == ScanMode.IdCard && analyzed.quad == null) {
+                    val width = contentWidth * 0.85f; val height = width / 1.585f
+                    drawRect(Color.White, Offset((size.width - width) / 2, (size.height - height) / 2),
+                        androidx.compose.ui.geometry.Size(width, height), style = Stroke(2.dp.toPx()))
                 }
             }
         }
-        Row(
-            modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth().statusBarsPadding().padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = { AppGraph.session.cancel(); navigator.pop() }) {
-                Icon(Icons.Filled.Close, contentDescription = "关闭", tint = Color.White)
+        Column(Modifier.align(Alignment.TopCenter).fillMaxWidth().statusBarsPadding()) {
+            Row(Modifier.fillMaxWidth().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = {
+                    if (!busy) {
+                        val id = AppGraph.session.documentId
+                        AppGraph.session.cancel()
+                        if (id == null) navigator.pop() else navigator.showDetail(id)
+                    }
+                }, enabled = !busy) { Icon(ScanSymbol.Close, "关闭", tint = Color.White) }
+                Spacer(Modifier.weight(1f))
+                TextButton(onClick = { automatic = !automatic; controller.reset(); persist() }, enabled = !busy && mode != ScanMode.LargeFormat) {
+                    Text(if (automatic) "自动拍摄 开" else "自动拍摄 关", color = Color.White)
+                }
+                IconButton(onClick = { torch = !torch }) {
+                    Icon(if (torch) ScanSymbol.FlashOn else ScanSymbol.FlashOff, "补光灯", tint = Color.White)
+                }
             }
-            Spacer(Modifier.weight(1f))
-            IconButton(onClick = { torch = !torch }) {
-                Icon(
-                    if (torch) Icons.Filled.FlashOn else Icons.Filled.FlashOff,
-                    contentDescription = "闪光灯",
-                    tint = Color.White,
-                )
-            }
+            Text(when (mode) {
+                ScanMode.Document -> readiness.hint
+                ScanMode.IdCard -> (if (AppGraph.session.idCardPageIds.size % 2 == 0) "拍摄证件正面" else "拍摄证件反面") + " · " + readiness.hint
+                ScanMode.Book -> "横放摊开的书 · " + readiness.hint
+                ScanMode.LargeFormat -> "保持方向一致，相邻画面保留约一半重叠，手动拍摄"
+            }, color = Color.White, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().padding(12.dp))
+            if (readiness.progress > 0) ScanLinearProgress(
+                progress = { readiness.progress }, color = Seal, modifier = Modifier.fillMaxWidth().padding(horizontal = 48.dp))
         }
-        Text(
-            text = "对齐文档后拍摄，边缘会自动识别",
-            color = Color.White,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.align(Alignment.TopCenter).padding(top = 72.dp, start = 24.dp, end = 24.dp),
-        )
-        Row(
-            modifier = Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 28.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            IconButton(onClick = { if (!busy) importImage() }, modifier = Modifier.size(56.dp)) {
-                Icon(Icons.Filled.PhotoLibrary, contentDescription = "相册", tint = Color.White)
+        Column(Modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                ScanMode.entries.forEach { item ->
+                    TextButton(onClick = {
+                        if (mode != item) AppGraph.session.idCardPageIds.clear()
+                        if (mode != item) AppGraph.session.largeFormatPageIds.clear()
+                        mode = item; controller.reset(); persist()
+                    }, enabled = !busy) {
+                        Text(item.label(), color = if (mode == item) Seal else Color.White)
+                    }
+                }
             }
-            Spacer(Modifier.width(36.dp))
-            Box(
-                modifier = Modifier
-                    .size(76.dp)
-                    .clip(CircleShape)
-                    .border(4.dp, Color.White, CircleShape)
-                    .padding(6.dp)
-                    .clip(CircleShape)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                TextButton(onClick = { continuous = !continuous; persist() }, enabled = !busy && mode != ScanMode.LargeFormat) {
+                    Text(if (continuous || mode == ScanMode.LargeFormat) "连续拍摄" else "逐页编辑", color = Color.White)
+                }
+                Text("$count 页", color = Color.White)
+                TextButton(onClick = {
+                    AppGraph.session.documentId?.let { id ->
+                        if (mode == ScanMode.LargeFormat) {
+                            if (AppGraph.session.largeFormatPageIds.size < 2) onMessage("请拍摄至少两张有重叠的画面")
+                            else {
+                                navigator.showDetail(id)
+                                navigator.push(Screen.ComposePages(id, AppGraph.session.largeFormatPageIds.toList(), CompositionKind.Overlap))
+                            }
+                        } else navigator.showDetail(id)
+                    }
+                }, enabled = !busy && AppGraph.session.documentId != null) {
+                    Text(if (mode == ScanMode.LargeFormat) "完成并拼接" else "完成", color = Seal)
+                }
+            }
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(36.dp)) {
+                IconButton(onClick = { if (!busy) importImage() }, modifier = Modifier.size(56.dp)) {
+                    Icon(ScanSymbol.PhotoLibrary, "相册", tint = Color.White)
+                }
+                Box(Modifier.size(76.dp).clip(CircleShape).border(4.dp, Color.White, CircleShape)
+                    .padding(6.dp).clip(CircleShape)
                     .background(if (busy || capture == null) Color.White.copy(alpha = 0.45f) else Color.White)
-                    .clickable(enabled = !busy && capture != null) { capture?.invoke() },
-            )
-            Spacer(Modifier.width(92.dp))
+                    .clickable(enabled = !busy && capture != null) { shutter() })
+                Spacer(Modifier.size(56.dp))
+            }
         }
-        BusyOverlay(busy, "正在识别边缘")
+        BusyOverlay(busy, "正在处理并保存")
     }
 }
 
-internal fun openEditor(
-    bytes: ByteArray,
-    scope: kotlinx.coroutines.CoroutineScope,
-    setBusy: (Boolean) -> Unit,
-    navigator: Navigator,
-    onMessage: (String) -> Unit,
+private fun saveContinuousCapture(
+    bytes: ByteArray, mode: ScanMode, setBusy: (Boolean) -> Unit,
+    navigator: Navigator, onMessage: (String) -> Unit, onSaved: () -> Unit,
 ) {
     setBusy(true)
-    scope.launch {
+    AppGraph.session.processingJob = navigator.scope.launch(start = CoroutineStart.LAZY) {
+        val result = withContext(Dispatchers.Default) {
+            runCatching {
+                val image = AppGraph.codec.decode(bytes, ScanLimits.MAX_EDGE)
+                val quad = if (mode == ScanMode.LargeFormat) Quad.full()
+                    else DocumentDetector.detectOrNull(image) ?: error("未找到完整边缘，请改用逐页编辑")
+                val filter = if (mode == ScanMode.LargeFormat) FilterType.Original else AppGraph.repository.settings().defaultFilter
+                val base = PageEdit(quad = quad, filter = filter)
+                val edits = if (mode == ScanMode.Book) {
+                    val spread = PerspectiveWarp.warp(image, quad)
+                    val seam = BookGeometry.estimateSeam(spread)
+                    val firstRight = AppGraph.repository.settings().bookRightToLeft
+                    listOf(firstRight, !firstRight).map { base.copy(book = BookPageEdit(it, seam, seam)) }
+                } else listOf(base)
+                val pages = edits.map { edit ->
+                    val output = ImageFilters.apply(PageGeometry.apply(image, edit), filter)
+                    EncodedPage(AppGraph.codec.encodeJpeg(output, ScanLimits.JPEG_QUALITY), output.width, output.height,
+                        filter, originalBytes = bytes, edit = edit)
+                }
+                val id = AppGraph.session.documentId
+                if (id == null) AppGraph.repository.create(
+                    if (mode == ScanMode.IdCard) "证件扫描" else defaultScanTitle(), pages)
+                else AppGraph.repository.addPages(id, pages)
+            }
+        }
+        setBusy(false)
+        result.fold({ saved ->
+            AppGraph.session.documentId = saved.id
+            AppGraph.session.capturedPages += if (mode == ScanMode.Book) 2 else 1
+            if (mode == ScanMode.IdCard) AppGraph.session.idCardPageIds += saved.pages.last().id
+            if (mode == ScanMode.LargeFormat) AppGraph.session.largeFormatPageIds += saved.pages.last().id
+            AppGraph.notifyScanSaved(saved, saved.pages.takeLast(if (mode == ScanMode.Book) 2 else 1))
+            onSaved()
+            if (mode == ScanMode.IdCard && AppGraph.session.idCardPageIds.size >= 2) {
+                navigator.showDetail(saved.id)
+                navigator.push(Screen.ComposePages(saved.id, AppGraph.session.idCardPageIds.takeLast(2), CompositionKind.IdCard))
+            }
+        }, { onMessage(it.message ?: "保存失败") })
+    }
+    AppGraph.session.processingJob?.start()
+}
+
+internal fun openEditor(
+    bytes: ByteArray, setBusy: (Boolean) -> Unit, navigator: Navigator,
+    onMessage: (String) -> Unit, mode: ScanMode = ScanMode.Document,
+) {
+    setBusy(true)
+    AppGraph.session.processingJob = navigator.scope.launch(start = CoroutineStart.LAZY) {
         val prepared = withContext(Dispatchers.Default) {
             runCatching {
                 val image = AppGraph.codec.decode(bytes, ScanLimits.MAX_EDGE)
-                val quad = DocumentDetector.detect(image)
-                image to quad
+                image to DocumentDetector.detect(image)
             }.getOrNull()
         }
         setBusy(false)
         if (prepared == null) {
             onMessage("这张图片无法读取")
+            if (AppGraph.session.pendingImports.isNotEmpty()) processNextImport(setBusy, navigator, onMessage)
+            else AppGraph.session.documentId?.let(navigator::showDetail)
             return@launch
         }
+        AppGraph.session.scanMode = mode
         AppGraph.session.source = prepared.first
+        AppGraph.session.originalBytes = bytes
+        AppGraph.session.editingPageId = null
+        AppGraph.session.quarterTurns = 0
+        AppGraph.session.edit = PageEdit(filter = AppGraph.repository.settings().defaultFilter)
         AppGraph.session.quad = prepared.second
         AppGraph.session.warped = null
         navigator.push(Screen.Crop)
     }
+    AppGraph.session.processingJob?.start()
 }
