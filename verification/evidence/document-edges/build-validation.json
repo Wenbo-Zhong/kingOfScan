@@ -1,0 +1,116 @@
+{
+  "shared_tests": {
+    "tests": 33,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "com.kingscan.app.DocumentLifecycleTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.CaptureGeometryTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.DocumentAiCancellationTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.PageCompositionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.DocumentEdgesTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.DocumentAiPersistenceTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.PageRetouchTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.ScanPipelineTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "com.kingscan.app.PageEditingTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0
+      }
+    ]
+  },
+  "ios_targets_compiled": [
+    "iosArm64",
+    "iosSimulatorArm64"
+  ],
+  "apk": {
+    "path": "verification/artifacts/KingScan-document-edges-arm64-20261125.apk",
+    "bytes": 198528871,
+    "sha256": "c0cd97a5cfd0ecf41027d7a18cdc861df6adc474cc783ffd70dc26b7961e127a",
+    "signing": "Local Android debug keystore, v2 and v3 verified",
+    "alignment_verified": true,
+    "native_abis": [
+      "arm64-v8a"
+    ],
+    "five_models_verified": true
+  },
+  "source_sha256": {
+    "DocumentDetector.kt": "bafb1e8645085d7f1e7af3a1f5e30886b41eb58aacaafe547eadec436db00843",
+    "DocumentEdges.kt": "aebff268c21aa7e00f810ce511330fa48ad99d9c68e81b3173ede68ecbdc4a83"
+  },
+  "logs": {
+    "validated-platform-build.log": {
+      "sha256": "21ebbe66fa51dd48064527e9c99da937612d5b272ac60e7f58182b59731f3bf8",
+      "result_lines": [
+        "> Task :composeApp:compileKotlinIosSimulatorArm64",
+        "> Task :composeApp:compileKotlinIosArm64",
+        "BUILD SUCCESSFUL in 10s"
+      ]
+    },
+    "final-release-build.log": {
+      "sha256": "6dd0a936ff4368e97756a7e7365293862c64754f27ef0ae2bfdbf58833879dfe",
+      "result_lines": [
+        "BUILD SUCCESSFUL in 41s"
+      ]
+    },
+    "final-apk-signature.log": {
+      "sha256": "c53d26a5f68368268a17e2e5ed4bc88ed271a301aebc094bfad59d648824eb89",
+      "result_lines": [
+        "Verifies",
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): true",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false"
+      ]
+    },
+    "final-apk-alignment.log": {
+      "sha256": "8e01c21f709aa5c139d6c241100902e35d82b3fa0d5abb558d968b621ed1ee06",
+      "result_lines": [
+        "Verification successful"
+      ]
+    }
+  },
+  "device_validation": "No Android device was connected; no new real-camera acceptance run"
+}

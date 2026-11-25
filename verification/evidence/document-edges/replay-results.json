@@ -1,0 +1,343 @@
+{
+  "source_sha256": {
+    "DocumentDetector.kt": "bafb1e8645085d7f1e7af3a1f5e30886b41eb58aacaafe547eadec436db00843",
+    "DocumentEdges.kt": "aebff268c21aa7e00f810ce511330fa48ad99d9c68e81b3173ede68ecbdc4a83"
+  },
+  "before_ref": "ad04d2a22de71694bcde82e42dd8dd44b4720c6d",
+  "before_source_sha256": {
+    "DocumentDetector.kt": "cfee28a649e4ca7f665c564734da76855d4296888ae872cd54c66cfd8b17c9fa"
+  },
+  "input_sha256": "50c21d9cdc7ae08d4d5853fc9f7e5df0af85c6c65b5ec880528ba8e8e983076d",
+  "input_dimensions": [
+    1080,
+    2400
+  ],
+  "camera_crop": [
+    0,
+    480,
+    1080,
+    1920
+  ],
+  "reference_method": "Approximate manually chosen straight-side extensions; not a calibrated ground truth",
+  "reference_sides_pixels": [
+    [
+      [
+        236,
+        513
+      ],
+      [
+        786,
+        500
+      ]
+    ],
+    [
+      [
+        878,
+        590
+      ],
+      [
+        927,
+        925
+      ]
+    ],
+    [
+      [
+        235,
+        1063
+      ],
+      [
+        845,
+        1018
+      ]
+    ],
+    [
+      [
+        140,
+        594
+      ],
+      [
+        132,
+        932
+      ]
+    ]
+  ],
+  "reference_quad_pixels": [
+    [
+      141.8644965445973,
+      515.225020990764
+    ],
+    [
+      864.5642040814118,
+      498.14302790353025
+    ],
+    [
+      939.5824114642589,
+      1011.0226089903415
+    ],
+    [
+      128.7138276163638,
+      1070.8407832086289
+    ]
+  ],
+  "before": {
+    "file": "camera-screenshot-crop.png",
+    "quad": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.99722224,
+        0.03125
+      ],
+      [
+        0.99722224,
+        0.78541666
+      ],
+      [
+        0.0,
+        0.8854167
+      ]
+    ],
+    "first_ms": 34.249292,
+    "median_ms": 2.442625,
+    "p95_ms": 2.580708
+  },
+  "after": [
+    {
+      "file": "camera-screenshot-crop.png",
+      "quad": [
+        [
+          0.13271292,
+          0.35800692
+        ],
+        [
+          0.8013899,
+          0.34519202
+        ],
+        [
+          0.87365717,
+          0.70332265
+        ],
+        [
+          0.11683139,
+          0.7452218
+        ]
+      ],
+      "first_ms": 175.99025,
+      "median_ms": 34.205042,
+      "p95_ms": 35.275708
+    },
+    {
+      "file": "screenshot-cw-90.png",
+      "quad": [
+        [
+          0.25406197,
+          0.117223024
+        ],
+        [
+          0.6413942,
+          0.13192292
+        ],
+        [
+          0.65411025,
+          0.801971
+        ],
+        [
+          0.2959766,
+          0.8733617
+        ]
+      ],
+      "first_ms": 42.384625,
+      "median_ms": 31.684583,
+      "p95_ms": 32.412333
+    },
+    {
+      "file": "screenshot-cw-180.png",
+      "quad": [
+        [
+          0.1260819,
+          0.29554808
+        ],
+        [
+          0.8805211,
+          0.25435913
+        ],
+        [
+          0.86706877,
+          0.64130205
+        ],
+        [
+          0.19701837,
+          0.65407354
+        ]
+      ],
+      "first_ms": 32.116875,
+      "median_ms": 30.727083,
+      "p95_ms": 31.362375
+    },
+    {
+      "file": "screenshot-cw-270.png",
+      "quad": [
+        [
+          0.3449003,
+          0.19688082
+        ],
+        [
+          0.70343405,
+          0.12583911
+        ],
+        [
+          0.74547833,
+          0.88156617
+        ],
+        [
+          0.35817844,
+          0.86663723
+        ]
+      ],
+      "first_ms": 30.725042,
+      "median_ms": 30.453125,
+      "p95_ms": 30.960792
+    }
+  ],
+  "before_measurements": {
+    "quad_pixels": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1077.0000192,
+        45.0
+      ],
+      [
+        1077.0000192,
+        1130.9999904
+      ],
+      [
+        0.0,
+        1275.0000479999999
+      ]
+    ],
+    "approximate_reference_iou": 0.32314182886348636,
+    "corner_error_pixels": [
+      534.3990621574717,
+      500.4673608565084,
+      182.42305491832067,
+      241.34675224624044
+    ],
+    "mean_corner_error_pixels": 364.6590575446353
+  },
+  "after_measurements": {
+    "quad_pixels": [
+      [
+        143.3299536,
+        515.5299648
+      ],
+      [
+        865.501092,
+        497.0765088
+      ],
+      [
+        943.5497435999999,
+        1012.784616
+      ],
+      [
+        126.1779012,
+        1073.119392
+      ]
+    ],
+    "approximate_reference_iou": 0.9907805860887864,
+    "corner_error_pixels": [
+      1.4968483917955482,
+      1.4195851401699617,
+      4.341012897627588,
+      3.4092493034868974
+    ],
+    "mean_corner_error_pixels": 2.666673933269999
+  },
+  "shared_tests": [
+    {
+      "name": "com.kingscan.app.DocumentLifecycleTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.CaptureGeometryTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.DocumentAiCancellationTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.PageCompositionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.DocumentEdgesTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.DocumentAiPersistenceTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.PageRetouchTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.ScanPipelineTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "name": "com.kingscan.app.PageEditingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "limitations": [
+    "Screenshot replay contains existing UI overlay, not raw camera frames",
+    "Timing is desktop JVM, not mobile performance",
+    "No same-frame CamScanner comparison was performed"
+  ],
+  "orientation_checks": [
+    {
+      "clockwise_degrees": 0,
+      "approximate_reference_iou": 0.9907805860887864,
+      "mean_corner_error_pixels": 2.666673933269999
+    },
+    {
+      "clockwise_degrees": 90,
+      "approximate_reference_iou": 0.9907789424414637,
+      "mean_corner_error_pixels": 2.4278671710449493
+    },
+    {
+      "clockwise_degrees": 180,
+      "approximate_reference_iou": 0.9915484541878865,
+      "mean_corner_error_pixels": 2.183553326841108
+    },
+    {
+      "clockwise_degrees": 270,
+      "approximate_reference_iou": 0.9900811034770681,
+      "mean_corner_error_pixels": 2.709301583582816
+    }
+  ]
+}

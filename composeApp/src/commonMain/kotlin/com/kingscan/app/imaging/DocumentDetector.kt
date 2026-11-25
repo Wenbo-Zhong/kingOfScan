@@ -1,110 +1,22 @@
 package com.kingscan.app.imaging
 
-import com.kingscan.app.model.PointF
 import com.kingscan.app.model.Quad
 
 object DocumentDetector {
     /**
      * Finds a document quad on a downscaled copy of [image].
-     * Paper is assumed to be a large region that does not cover every image edge.
-     * Both bright-on-dark and dark-on-light pages are considered. When nothing
-     * stands out, a slightly inset rectangle is returned so the user can drag it.
+     * Four supported outer edges are required, independent of the page's color.
+     * When nothing stands out, a slightly inset rectangle is returned so the user
+     * can drag it.
      */
     fun detect(image: RgbaImage): Quad {
         return detectOrNull(image) ?: Quad.inset(0.06f)
     }
 
-    /** Returns null when the preview has no clear page-sized region. */
-    fun detectOrNull(image: RgbaImage): Quad? {
+    /** Returns null when the preview has no supported, closed document outline. */
+    fun detectOrNull(image: RgbaImage, preferred: Quad? = null): Quad? {
         val small = image.scaledDown(ScanLimits.DETECT_EDGE)
-        val gray = grayscale(small)
-        val blurred = boxBlur(gray, small.width, small.height, radius = 1)
-        val threshold = otsu(blurred)
-        val bright = BooleanArray(blurred.size) { blurred[it] > threshold }
-        val dark = BooleanArray(blurred.size) { blurred[it] <= threshold }
-        val chosen = selectComponent(
-            bright = largestComponent(bright, small.width, small.height),
-            dark = largestComponent(dark, small.width, small.height),
-            width = small.width,
-            height = small.height,
-        ) ?: return null
-        return quadFromComponent(chosen, small.width, small.height)
-    }
-
-    internal fun selectComponent(
-        bright: IntArray,
-        dark: IntArray,
-        width: Int,
-        height: Int,
-    ): IntArray? {
-        val total = width * height
-        fun score(component: IntArray): Long {
-            if (component.isEmpty()) return Long.MIN_VALUE
-            val ratio = component.size.toFloat() / total.toFloat()
-            if (ratio < 0.08f || ratio > 0.92f) return Long.MIN_VALUE
-            val borders = bordersTouched(component, width, height)
-            return (4L - borders) * 1_000_000L + component.size
-        }
-
-        val brightScore = score(bright)
-        val darkScore = score(dark)
-        if (maxOf(brightScore, darkScore) == Long.MIN_VALUE) return null
-        return if (brightScore >= darkScore) bright else dark
-    }
-
-    private fun quadFromComponent(component: IntArray, width: Int, height: Int): Quad {
-        var topLeft = component[0]
-        var topRight = component[0]
-        var bottomRight = component[0]
-        var bottomLeft = component[0]
-        var topLeftScore = Int.MAX_VALUE
-        var topRightScore = Int.MIN_VALUE
-        var bottomRightScore = Int.MIN_VALUE
-        var bottomLeftScore = Int.MAX_VALUE
-        for (index in component) {
-            val x = index % width
-            val y = index / width
-            val sum = x + y
-            val diff = x - y
-            if (sum < topLeftScore) {
-                topLeftScore = sum
-                topLeft = index
-            }
-            if (sum > bottomRightScore) {
-                bottomRightScore = sum
-                bottomRight = index
-            }
-            if (diff > topRightScore) {
-                topRightScore = diff
-                topRight = index
-            }
-            if (diff < bottomLeftScore) {
-                bottomLeftScore = diff
-                bottomLeft = index
-            }
-        }
-        fun point(index: Int) = PointF(
-            x = (index % width).toFloat() / width.toFloat(),
-            y = (index / width).toFloat() / height.toFloat(),
-        )
-        return Quad(point(topLeft), point(topRight), point(bottomRight), point(bottomLeft)).clamped()
-    }
-
-    private fun bordersTouched(component: IntArray, width: Int, height: Int): Int {
-        var left = false
-        var right = false
-        var top = false
-        var bottom = false
-        for (index in component) {
-            val x = index % width
-            val y = index / width
-            if (x == 0) left = true
-            if (x == width - 1) right = true
-            if (y == 0) top = true
-            if (y == height - 1) bottom = true
-            if (left && right && top && bottom) break
-        }
-        return listOf(left, right, top, bottom).count { it }
+        return DocumentEdges(grayscale(small), small.width, small.height).detect(preferred)
     }
 
     private fun grayscale(image: RgbaImage): IntArray {
@@ -175,45 +87,6 @@ object DocumentDetector {
             }
         }
         return threshold
-    }
-
-    internal fun largestComponent(mask: BooleanArray, width: Int, height: Int): IntArray {
-        val seen = BooleanArray(mask.size)
-        val queueX = IntArray(mask.size)
-        val queueY = IntArray(mask.size)
-        val component = IntArray(mask.size)
-        var best = IntArray(0)
-        for (start in mask.indices) {
-            if (!mask[start] || seen[start]) continue
-            var head = 0
-            var tail = 0
-            queueX[tail] = start % width
-            queueY[tail] = start / width
-            tail++
-            seen[start] = true
-            var count = 0
-            while (head < tail) {
-                val x = queueX[head]
-                val y = queueY[head]
-                head++
-                component[count++] = y * width + x
-                fun push(nx: Int, ny: Int) {
-                    if (nx < 0 || ny < 0 || nx >= width || ny >= height) return
-                    val index = ny * width + nx
-                    if (seen[index] || !mask[index]) return
-                    seen[index] = true
-                    queueX[tail] = nx
-                    queueY[tail] = ny
-                    tail++
-                }
-                push(x - 1, y)
-                push(x + 1, y)
-                push(x, y - 1)
-                push(x, y + 1)
-            }
-            if (count > best.size) best = component.copyOf(count)
-        }
-        return best
     }
 }
 

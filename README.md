@@ -31,6 +31,8 @@
 
 本轮深色模式截图、修复对比和验收范围见 [iOS 深色模式实测](ui-preview/ios-dark/RESULTS.md)。
 
+纸边检测改为验证四条外边，并共享跨帧确认、平滑和短暂漏检保持。弱对比卡片与预览闪动的回放证据、38 项共享测试和真机反馈见 [预览选框稳定性修复](verification/evidence/preview-stability/RESULTS.md)。
+
 ## 环境
 
 - JDK 17 或 21。这台机器的系统 Java 是 11，请改用 Android Studio 自带的 JBR

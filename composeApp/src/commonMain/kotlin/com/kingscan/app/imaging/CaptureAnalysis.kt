@@ -13,13 +13,14 @@ data class CaptureFrame(
     val luminance: Float,
     val sharpness: Float,
     val fingerprint: IntArray,
+    val geometryFresh: Boolean = true,
 )
 
 object CaptureAnalysis {
-    fun analyze(image: RgbaImage, timeMillis: Long): CaptureFrame {
+    fun analyze(image: RgbaImage, timeMillis: Long, preferred: Quad? = null): CaptureFrame {
         if (image.width < 4 || image.height < 4) return CaptureFrame(null, image.width, image.height,
             timeMillis, 0f, 0f, IntArray(0))
-        val quad = DocumentDetector.detectOrNull(image)
+        val quad = DocumentDetector.detectOrNull(image, preferred)
         val region = quad ?: Quad.inset(0.15f)
         val points = listOf(region.topLeft, region.topRight, region.bottomRight, region.bottomLeft)
         val left = (points.minOf { it.x } * image.width).toInt().coerceIn(1, image.width - 2)
@@ -87,6 +88,10 @@ class AutoCaptureController {
             return CaptureReadiness(0f, "请把整页放入取景框")
         }
         missingSince = null
+        if (!frame.geometryFresh) {
+            stableSince = null
+            return CaptureReadiness(0f, "请保持手机和纸张稳定")
+        }
         if (frame.luminance < 55f) {
             stableSince = null
             return CaptureReadiness(0f, "光线偏暗，可打开补光灯")

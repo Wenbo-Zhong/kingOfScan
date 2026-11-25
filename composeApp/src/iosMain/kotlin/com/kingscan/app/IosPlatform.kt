@@ -22,7 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.UIKitView
 import androidx.compose.ui.unit.dp
 import com.kingscan.app.imaging.CaptureFrame
-import com.kingscan.app.imaging.CaptureAnalysis
+import com.kingscan.app.imaging.CapturePreviewAnalyzer
 import com.kingscan.app.imaging.RgbaImage
 import com.kingscan.app.imaging.ScanLimits
 import com.kingscan.app.imaging.argb
@@ -327,6 +327,7 @@ private class IosCameraView(
 private class VideoDelegate(private val onFrame: (CaptureFrame) -> Unit) :
     platform.darwin.NSObject(), AVCaptureVideoDataOutputSampleBufferDelegateProtocol {
     private var lastAt = 0L
+    private val analyzer = CapturePreviewAnalyzer()
 
     override fun captureOutput(output: AVCaptureOutput, didOutputSampleBuffer: CMSampleBufferRef?, fromConnection: AVCaptureConnection) {
         val now = (CACurrentMediaTime() * 1000).toLong()
@@ -349,7 +350,7 @@ private class VideoDelegate(private val onFrame: (CaptureFrame) -> Unit) :
             }
             RgbaImage(width, height, pixels)
         } finally { CVPixelBufferUnlockBaseAddress(buffer, kCVPixelBufferLock_ReadOnly) }
-        runCatching { CaptureAnalysis.analyze(image, now) }.onSuccess(onFrame)
+        runCatching { analyzer.analyze(image, now) }.onSuccess(onFrame)
     }
 }
 

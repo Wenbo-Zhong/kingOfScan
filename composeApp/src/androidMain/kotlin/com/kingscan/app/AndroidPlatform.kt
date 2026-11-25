@@ -34,7 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.kingscan.app.imaging.CaptureAnalysis
+import com.kingscan.app.imaging.CapturePreviewAnalyzer
 import com.kingscan.app.imaging.CaptureFrame
 import com.kingscan.app.imaging.RgbaImage
 import com.kingscan.app.imaging.ScanLimits
@@ -122,12 +122,13 @@ actual fun ScannerCamera(
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
             var lastAnalysisAt = 0L
+            val previewAnalyzer = CapturePreviewAnalyzer()
             imageAnalysis.setAnalyzer(analysisExecutor) { proxy ->
                 try {
                     val now = android.os.SystemClock.elapsedRealtime()
                     if (now - lastAnalysisAt < 120L) return@setAnalyzer
                     lastAnalysisAt = now
-                    val frame = runCatching { analyzePreview(proxy, now) }.getOrNull() ?: return@setAnalyzer
+                    val frame = runCatching { analyzePreview(proxy, now, previewAnalyzer) }.getOrNull() ?: return@setAnalyzer
                     android.os.Handler(android.os.Looper.getMainLooper()).post {
                         if (!disposed) latestDetection.value.invoke(frame)
                     }
@@ -187,7 +188,7 @@ actual fun ScannerCamera(
     AndroidView(factory = { previewView }, modifier = modifier)
 }
 
-private fun analyzePreview(proxy: ImageProxy, now: Long): CaptureFrame? {
+private fun analyzePreview(proxy: ImageProxy, now: Long, analyzer: CapturePreviewAnalyzer): CaptureFrame? {
     val plane = proxy.planes.firstOrNull() ?: return null
     val sourceWidth = proxy.width
     val sourceHeight = proxy.height
@@ -207,7 +208,7 @@ private fun analyzePreview(proxy: ImageProxy, now: Long): CaptureFrame? {
     }
     var image = RgbaImage(width, height, pixels)
     repeat(((proxy.imageInfo.rotationDegrees % 360 + 360) % 360) / 90) { image = image.rotate90CW() }
-    return CaptureAnalysis.analyze(image, now)
+    return analyzer.analyze(image, now)
 }
 
 @Composable
