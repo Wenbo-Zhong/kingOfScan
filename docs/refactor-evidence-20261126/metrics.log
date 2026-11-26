@@ -1,0 +1,10 @@
+before {'blank': 550, 'comment': 141, 'code': 9462, 'nFiles': 77} {'composeApp/src/commonMain': {'code': 6836, 'blank': 402, 'comment': 123, 'files': 51}, 'composeApp/src/iosMain': {'code': 1448, 'blank': 80, 'comment': 9, 'files': 12}, 'composeApp/src/androidMain': {'code': 1155, 'blank': 64, 'comment': 9, 'files': 12}, 'iosApp/iosApp': {'code': 23, 'blank': 4, 'comment': 0, 'files': 2}}
+after {'blank': 624, 'comment': 147, 'code': 9729, 'nFiles': 100} {'composeApp/src/commonMain': {'code': 7075, 'blank': 468, 'comment': 129, 'files': 68}, 'composeApp/src/iosMain': {'code': 1461, 'blank': 84, 'comment': 9, 'files': 15}, 'composeApp/src/androidMain': {'code': 1170, 'blank': 68, 'comment': 9, 'files': 15}, 'iosApp/iosApp': {'code': 23, 'blank': 4, 'comment': 0, 'files': 2}}
+AppGraph.kt {'code': 180, 'physical': 199} -> {'code': 58, 'physical': 65}
+data/DocumentRepository.kt {'code': 668, 'physical': 754} -> {'code': 580, 'physical': 659}
+ui/LibraryScreen.kt {'code': 388, 'physical': 393} -> {'code': 267, 'physical': 273}
+ui/FilterScreen.kt {'code': 199, 'physical': 204} -> {'code': 181, 'physical': 187}
+ui/BookScreen.kt {'code': 151, 'physical': 153} -> {'code': 146, 'physical': 149}
+ui/CaptureScreen.kt {'code': 284, 'physical': 288} -> {'code': 277, 'physical': 282}
+ui/OcrScreen.kt {'code': 108, 'physical': 111} -> {'code': 94, 'physical': 98}
+ui/ExportScreen.kt {'code': 71, 'physical': 73} -> {'code': 72, 'physical': 75}

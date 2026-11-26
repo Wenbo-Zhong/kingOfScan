@@ -1,0 +1,782 @@
+{
+  "before": {
+    "groups": {
+      "composeApp/src/commonMain": {
+        "code": 6836,
+        "blank": 402,
+        "comment": 123,
+        "files": 51
+      },
+      "composeApp/src/iosMain": {
+        "code": 1448,
+        "blank": 80,
+        "comment": 9,
+        "files": 12
+      },
+      "composeApp/src/androidMain": {
+        "code": 1155,
+        "blank": 64,
+        "comment": 9,
+        "files": 12
+      },
+      "iosApp/iosApp": {
+        "code": 23,
+        "blank": 4,
+        "comment": 0,
+        "files": 2
+      }
+    },
+    "total": {
+      "blank": 550,
+      "comment": 141,
+      "code": 9462,
+      "nFiles": 77
+    },
+    "files": {
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/data/DocumentRepository.kt": {
+        "code": 668,
+        "physical": 754
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/DocumentEdges.kt": {
+        "code": 493,
+        "physical": 541
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosPlatform.kt": {
+        "code": 466,
+        "physical": 495
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/LibraryScreen.kt": {
+        "code": 388,
+        "physical": 393
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/ui/IosComponents.kt": {
+        "code": 354,
+        "physical": 366
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPlatform.kt": {
+        "code": 307,
+        "physical": 318
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/DetailScreen.kt": {
+        "code": 289,
+        "physical": 298
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CaptureScreen.kt": {
+        "code": 284,
+        "physical": 288
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/model/Models.kt": {
+        "code": 266,
+        "physical": 309
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/DocumentAi.kt": {
+        "code": 247,
+        "physical": 268
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CropScreen.kt": {
+        "code": 246,
+        "physical": 254
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/AnnotationScreen.kt": {
+        "code": 211,
+        "physical": 213
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/RetouchScreen.kt": {
+        "code": 211,
+        "physical": 213
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/FilterScreen.kt": {
+        "code": 199,
+        "physical": 204
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/AppGraph.kt": {
+        "code": 180,
+        "physical": 199
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/OverlapStitcher.kt": {
+        "code": 177,
+        "physical": 185
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/PageRetouch.kt": {
+        "code": 168,
+        "physical": 182
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/Widgets.kt": {
+        "code": 157,
+        "physical": 163
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/App.kt": {
+        "code": 156,
+        "physical": 160
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/PerspectiveWarp.kt": {
+        "code": 154,
+        "physical": 167
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/BookScreen.kt": {
+        "code": 151,
+        "physical": 153
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidDocumentOutput.kt": {
+        "code": 146,
+        "physical": 157
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosImageCodec.kt": {
+        "code": 138,
+        "physical": 148
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/CaptureAnalysis.kt": {
+        "code": 135,
+        "physical": 149
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidDeviceSecurity.kt": {
+        "code": 130,
+        "physical": 141
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CodeScreen.kt": {
+        "code": 127,
+        "physical": 129
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/CompositionScreen.kt": {
+        "code": 127,
+        "physical": 130
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/SettingsScreen.kt": {
+        "code": 125,
+        "physical": 129
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/ImportFlow.kt": {
+        "code": 116,
+        "physical": 122
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosDeviceSecurity.kt": {
+        "code": 113,
+        "physical": 123
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/PageManagementScreen.kt": {
+        "code": 111,
+        "physical": 114
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/imaging/AndroidDocumentModels.kt": {
+        "code": 109,
+        "physical": 119
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/OcrScreen.kt": {
+        "code": 108,
+        "physical": 111
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/ImageFilters.kt": {
+        "code": 105,
+        "physical": 119
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidImageCodec.kt": {
+        "code": 94,
+        "physical": 102
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/CapturePreviewAnalyzer.kt": {
+        "code": 94,
+        "physical": 110
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/ui/AndroidComponents.kt": {
+        "code": 91,
+        "physical": 94
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/PageComposer.kt": {
+        "code": 86,
+        "physical": 91
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/DocumentDetector.kt": {
+        "code": 85,
+        "physical": 99
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPdfExport.kt": {
+        "code": 80,
+        "physical": 84
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/BookGeometry.kt": {
+        "code": 79,
+        "physical": 92
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosPdfExport.kt": {
+        "code": 78,
+        "physical": 82
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/pdf/PdfWriter.kt": {
+        "code": 77,
+        "physical": 89
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/security/SecurityState.kt": {
+        "code": 74,
+        "physical": 87
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/MainActivity.kt": {
+        "code": 72,
+        "physical": 76
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/ExportScreen.kt": {
+        "code": 71,
+        "physical": 73
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosDocumentOutput.kt": {
+        "code": 70,
+        "physical": 74
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/PageMarkup.kt": {
+        "code": 69,
+        "physical": 75
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/RgbaImage.kt": {
+        "code": 68,
+        "physical": 81
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/imaging/IosDocumentModels.kt": {
+        "code": 61,
+        "physical": 65
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/Theme.kt": {
+        "code": 60,
+        "physical": 67
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/data/PdfImport.kt": {
+        "code": 57,
+        "physical": 60
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/data/PageOperations.kt": {
+        "code": 51,
+        "physical": 55
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosOcrEngine.kt": {
+        "code": 49,
+        "physical": 52
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidOcrEngine.kt": {
+        "code": 43,
+        "physical": 46
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/pdf/PdfExport.kt": {
+        "code": 41,
+        "physical": 47
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/data/ScanWrite.kt": {
+        "code": 40,
+        "physical": 49
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/DeviceAuthenticator.kt": {
+        "code": 40,
+        "physical": 46
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/DeviceLockScreen.kt": {
+        "code": 40,
+        "physical": 43
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/PlatformUi.kt": {
+        "code": 40,
+        "physical": 51
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosPageText.kt": {
+        "code": 39,
+        "physical": 42
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosBarcodeCodec.kt": {
+        "code": 35,
+        "physical": 40
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPageText.kt": {
+        "code": 32,
+        "physical": 34
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/IosPdfSource.kt": {
+        "code": 32,
+        "physical": 35
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/PlatformComponents.kt": {
+        "code": 31,
+        "physical": 34
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/data/AnnotationSave.kt": {
+        "code": 30,
+        "physical": 33
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/Navigator.kt": {
+        "code": 30,
+        "physical": 38
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidPdfSource.kt": {
+        "code": 26,
+        "physical": 28
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/AndroidBarcodeCodec.kt": {
+        "code": 25,
+        "physical": 29
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/codes/BarcodeCodec.kt": {
+        "code": 24,
+        "physical": 31
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/imaging/EditHistory.kt": {
+        "code": 16,
+        "physical": 18
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ui/EditorDocument.kt": {
+        "code": 14,
+        "physical": 17
+      },
+      "iosApp/iosApp/ContentView.swift": {
+        "code": 14,
+        "physical": 17
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/MainViewController.kt": {
+        "code": 13,
+        "physical": 15
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/ocr/OcrEngine.kt": {
+        "code": 11,
+        "physical": 15
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/pdf/PdfSource.kt": {
+        "code": 9,
+        "physical": 13
+      },
+      "iosApp/iosApp/iOSApp.swift": {
+        "code": 9,
+        "physical": 10
+      }
+    }
+  },
+  "after": {
+    "groups": {
+      "composeApp/src/commonMain": {
+        "code": 7075,
+        "blank": 468,
+        "comment": 129,
+        "files": 68
+      },
+      "composeApp/src/iosMain": {
+        "code": 1461,
+        "blank": 84,
+        "comment": 9,
+        "files": 15
+      },
+      "composeApp/src/androidMain": {
+        "code": 1170,
+        "blank": 68,
+        "comment": 9,
+        "files": 15
+      },
+      "iosApp/iosApp": {
+        "code": 23,
+        "blank": 4,
+        "comment": 0,
+        "files": 2
+      }
+    },
+    "total": {
+      "blank": 624,
+      "comment": 147,
+      "code": 9729,
+      "nFiles": 100
+    },
+    "files": {
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/storage/DocumentRepository.kt": {
+        "code": 580,
+        "physical": 659
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/DocumentEdges.kt": {
+        "code": 493,
+        "physical": 541
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/ui/IosComponents.kt": {
+        "code": 355,
+        "physical": 368
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/DetailScreen.kt": {
+        "code": 294,
+        "physical": 304
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosCamera.kt": {
+        "code": 287,
+        "physical": 301
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/CaptureScreen.kt": {
+        "code": 277,
+        "physical": 282
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/library/LibraryScreen.kt": {
+        "code": 267,
+        "physical": 273
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/CropScreen.kt": {
+        "code": 249,
+        "physical": 258
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/DocumentAi.kt": {
+        "code": 247,
+        "physical": 268
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/AnnotationScreen.kt": {
+        "code": 217,
+        "physical": 220
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/RetouchScreen.kt": {
+        "code": 215,
+        "physical": 218
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt": {
+        "code": 191,
+        "physical": 198
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/FilterScreen.kt": {
+        "code": 181,
+        "physical": 187
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/OverlapStitcher.kt": {
+        "code": 177,
+        "physical": 185
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/PageRetouch.kt": {
+        "code": 168,
+        "physical": 182
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/App.kt": {
+        "code": 156,
+        "physical": 160
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/PerspectiveWarp.kt": {
+        "code": 154,
+        "physical": 167
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/ScanSession.kt": {
+        "code": 154,
+        "physical": 169
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/ui/Widgets.kt": {
+        "code": 151,
+        "physical": 157
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDocumentOutput.kt": {
+        "code": 146,
+        "physical": 157
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/BookScreen.kt": {
+        "code": 146,
+        "physical": 149
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosImporters.kt": {
+        "code": 146,
+        "physical": 157
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/imaging/IosImageCodec.kt": {
+        "code": 138,
+        "physical": 148
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/CaptureAnalysis.kt": {
+        "code": 135,
+        "physical": 149
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/codes/CodeScreen.kt": {
+        "code": 134,
+        "physical": 137
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/CompositionScreen.kt": {
+        "code": 134,
+        "physical": 138
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/settings/SettingsScreen.kt": {
+        "code": 131,
+        "physical": 136
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDeviceSecurity.kt": {
+        "code": 130,
+        "physical": 141
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/ImportFlow.kt": {
+        "code": 116,
+        "physical": 123
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/PageManagementScreen.kt": {
+        "code": 115,
+        "physical": 119
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosDeviceSecurity.kt": {
+        "code": 113,
+        "physical": 123
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/imaging/AndroidDocumentModels.kt": {
+        "code": 109,
+        "physical": 119
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/ImageFilters.kt": {
+        "code": 105,
+        "physical": 119
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/imaging/AndroidImageCodec.kt": {
+        "code": 94,
+        "physical": 102
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidImporters.kt": {
+        "code": 94,
+        "physical": 97
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/CapturePreviewAnalyzer.kt": {
+        "code": 94,
+        "physical": 110
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/ocr/OcrScreen.kt": {
+        "code": 94,
+        "physical": 98
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/ui/AndroidComponents.kt": {
+        "code": 92,
+        "physical": 96
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/PageEdits.kt": {
+        "code": 86,
+        "physical": 99
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/PageComposer.kt": {
+        "code": 86,
+        "physical": 91
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/DocumentDetector.kt": {
+        "code": 85,
+        "physical": 99
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/pdf/AndroidPdfExport.kt": {
+        "code": 80,
+        "physical": 84
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/BookGeometry.kt": {
+        "code": 79,
+        "physical": 92
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/pdf/IosPdfExport.kt": {
+        "code": 78,
+        "physical": 82
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/pdf/PdfWriter.kt": {
+        "code": 77,
+        "physical": 89
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/library/LibraryDialogs.kt": {
+        "code": 76,
+        "physical": 79
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/security/SecurityState.kt": {
+        "code": 74,
+        "physical": 87
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/MainActivity.kt": {
+        "code": 72,
+        "physical": 76
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/export/ExportScreen.kt": {
+        "code": 72,
+        "physical": 75
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosDocumentOutput.kt": {
+        "code": 70,
+        "physical": 74
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/PageMarkup.kt": {
+        "code": 69,
+        "physical": 75
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/storage/DocumentFiles.kt": {
+        "code": 69,
+        "physical": 81
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/Geometry.kt": {
+        "code": 68,
+        "physical": 83
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/RgbaImage.kt": {
+        "code": 68,
+        "physical": 81
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/library/LibraryDocumentCard.kt": {
+        "code": 63,
+        "physical": 66
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/imaging/IosDocumentModels.kt": {
+        "code": 61,
+        "physical": 65
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/ui/Theme.kt": {
+        "code": 60,
+        "physical": 67
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/AppGraph.kt": {
+        "code": 58,
+        "physical": 65
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/PdfImport.kt": {
+        "code": 58,
+        "physical": 62
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/library/LibraryState.kt": {
+        "code": 52,
+        "physical": 59
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/ocr/IosOcrEngine.kt": {
+        "code": 49,
+        "physical": 52
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/Documents.kt": {
+        "code": 46,
+        "physical": 53
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/ocr/AndroidOcrEngine.kt": {
+        "code": 43,
+        "physical": 46
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/security/DeviceLockScreen.kt": {
+        "code": 43,
+        "physical": 47
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/ocr/DocumentOcr.kt": {
+        "code": 42,
+        "physical": 45
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/PageOperations.kt": {
+        "code": 42,
+        "physical": 47
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/pdf/PdfExport.kt": {
+        "code": 41,
+        "physical": 47
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/ScanWrite.kt": {
+        "code": 41,
+        "physical": 51
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/platform/DeviceAuthenticator.kt": {
+        "code": 40,
+        "physical": 46
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/platform/PlatformUi.kt": {
+        "code": 40,
+        "physical": 51
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/imaging/IosPageText.kt": {
+        "code": 39,
+        "physical": 42
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/codes/IosBarcodeCodec.kt": {
+        "code": 35,
+        "physical": 40
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/imaging/AndroidPageText.kt": {
+        "code": 32,
+        "physical": 34
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/pdf/IosPdfSource.kt": {
+        "code": 32,
+        "physical": 35
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/ui/PlatformComponents.kt": {
+        "code": 31,
+        "physical": 34
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/AnnotationSave.kt": {
+        "code": 31,
+        "physical": 35
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/scan/ScanSaveNavigation.kt": {
+        "code": 31,
+        "physical": 35
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidSharing.kt": {
+        "code": 29,
+        "physical": 31
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/storage/ExportStore.kt": {
+        "code": 29,
+        "physical": 35
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/navigation/Navigator.kt": {
+        "code": 29,
+        "physical": 37
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/PageRenderer.kt": {
+        "code": 28,
+        "physical": 34
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosSharing.kt": {
+        "code": 28,
+        "physical": 31
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/pdf/AndroidPdfSource.kt": {
+        "code": 26,
+        "physical": 28
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/codes/AndroidBarcodeCodec.kt": {
+        "code": 25,
+        "physical": 29
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/codes/BarcodeCodec.kt": {
+        "code": 24,
+        "physical": 31
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/AppSettings.kt": {
+        "code": 21,
+        "physical": 25
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/storage/LibraryStore.kt": {
+        "code": 21,
+        "physical": 25
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/navigation/Screen.kt": {
+        "code": 21,
+        "physical": 23
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/core/platform/IosNavigation.kt": {
+        "code": 17,
+        "physical": 21
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/imaging/EditHistory.kt": {
+        "code": 16,
+        "physical": 18
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/feature/editor/EditorDocument.kt": {
+        "code": 15,
+        "physical": 19
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/ExportOptions.kt": {
+        "code": 14,
+        "physical": 17
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/OcrResult.kt": {
+        "code": 14,
+        "physical": 17
+      },
+      "iosApp/iosApp/ContentView.swift": {
+        "code": 14,
+        "physical": 17
+      },
+      "composeApp/src/iosMain/kotlin/com/kingscan/app/MainViewController.kt": {
+        "code": 13,
+        "physical": 15
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/document/CompositionOptions.kt": {
+        "code": 11,
+        "physical": 14
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/ocr/OcrEngine.kt": {
+        "code": 11,
+        "physical": 15
+      },
+      "composeApp/src/commonMain/kotlin/com/kingscan/app/core/pdf/PdfSource.kt": {
+        "code": 9,
+        "physical": 13
+      },
+      "iosApp/iosApp/iOSApp.swift": {
+        "code": 9,
+        "physical": 10
+      },
+      "composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidNavigation.kt": {
+        "code": 7,
+        "physical": 9
+      }
+    }
+  }
+}

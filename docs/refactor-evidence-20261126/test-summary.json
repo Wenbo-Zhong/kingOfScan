@@ -1,0 +1,586 @@
+{
+  "date": "2026-11-26",
+  "baseline_archive_sha256": "b868606325a80bb58be521c7b7dd3648b267548926b6c1ee86f4ec0839416834",
+  "shared_suites": {
+    "testDebugUnitTest": {
+      "totals": {
+        "tests": 75,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.kingscan.app.core.imaging.CaptureGeometryTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "actualPageDetectorFindsBimodalPaperAndRejectsBlankFrame",
+            "automaticCaptureWaitsForStableQualityAndNewPage",
+            "bookCurveFlattensMeasuredTextBaselinesAndSeparatesPages"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.CapturePreviewTrackerTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "heldOutlineCannotCompleteAutomaticCapture",
+            "missingPageExpiresAndRequiresNewConfirmation",
+            "consistentNewPositionReplacesOldOutline",
+            "steadyMotionFollowsWithoutFreezingAndSmallJitterIsReduced",
+            "shortMissesAndIsolatedWrongRegionsDoNotFlash"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentAiCancellationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "cancellationInterruptsEveryModelsPreprocessingWithoutChangingActiveInput"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentAiPersistenceTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "savedModelIdentityDoesNotDependOnFutureApplicationDefaults"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentEdgesTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "roundedCornersAndSideNotchUseExtendedStraightEdges",
+            "blankGradientAndRoundObjectHaveNoDocumentOutline",
+            "printedRuleAcrossThePageDoesNotCutTheDetectedOutlineInHalf",
+            "lowContrastOutlineSurvivesDarkPrintedContent",
+            "pageMissingAnOuterEdgeDoesNotSelectTheDesk",
+            "printedGrayPageOnSimilarDeskUsesOuterEdges"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageCompositionTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "registeredOverlapReconstructsSharedTextureAndRejectsBlankImages",
+            "idPrintMaintainsPhysicalSizeAndBothSides",
+            "composedCopiesRetainAllRealOriginalsAfterSourceDeletion"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageRendererTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "adjustedBaseSkipsGeometryRetouchAndFilter",
+            "originalAndGeometricStagesProduceTheSameOutput",
+            "encodingKeepsUnmarkedBaseAndOriginalButInvalidatesOcr"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageRetouchTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "coloredInkRemovalPreservesBlackPrinting",
+            "restorationReducesNoiseAndRecoversMildGaussianDefocus",
+            "selectedInkIsFilledAndEveryUnselectedPixelIsUnchanged"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.ScanPipelineTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "detectsBrightPageOnDarkDesk",
+            "fullFrameSkipsWarp",
+            "rotatesPixelsAndQuadTogether",
+            "filtersKeepSizeAndGrayIsNeutral",
+            "pdfEmbedsJpegAndHasATrailer",
+            "detectsDarkCardOnLightTable",
+            "warpsTheRightHalfWithoutMixingTheLeftColor",
+            "repositoryStoresRenamesReordersAndExports"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.ocr.DocumentOcrTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "failureLeavesCompletedPagesAndReportsOnlyPersistedResults",
+            "singlePageAndMissingSelectionPreserveExistingRecognition",
+            "cancellationDuringNativeRecognitionCannotPublishLateResult"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.security.BiometricSecurityTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "failedSupersededAndReusedCallbacksCannotGrantAccess",
+            "folderLockEnablesImmediatelyAndManualRelockInvalidatesAuthentication",
+            "unsupportedAndroidDoesNotActivatePersistedPolicies",
+            "coldStartAndBackgroundRequireSeparateAppAndFolderAuthentication",
+            "backgroundInvalidatesPendingPolicyChangeEvenWithoutAnEnabledLock"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.DocumentLifecycleTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "failedMetadataCommitDoesNotDestroyThePreviouslySavedImage",
+            "trashAndRestoreKeepOriginalBytesAndFolderAssociation",
+            "mergingCopiesOriginalsAndOcrAndSurvivesPurgingSources",
+            "oldMetadataLoadsWithoutInventingAnOriginal",
+            "invalidPagePermutationLeavesDocumentUnchanged"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.ExportSnapshotTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "reexportAndPageEditsPreservePreviouslySharedPdf"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.FolderLockRepositoryTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "retainedPathsAndExportsCannotBypassRelocking",
+            "appendAndSourceRollbackStillCleanOnlyOwnedFilesAfterAccessIsRevoked",
+            "ordinarySettingsSaveCannotChangeLockPolicy",
+            "legacyFoldersRemainUnlockedAndSavedPoliciesSurviveRestart",
+            "unpublishedNewDocumentRollbackWorksWhileAppIsLocked",
+            "duplicateAndMergeWithinProtectedFolderKeepProtection",
+            "movingIntoLockedFolderAndDeletingItsAssociationAreBlocked",
+            "lockedFolderHidesTitlesOcrFavoritesAndTrashButKeepsUnprotectedDocumentsVisible"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.editor.AnnotationSaveTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "retryAfterSecondPageFailureUsesCurrentBasesAndAppliesEachWatermarkOnce",
+            "retryDoesNotDuplicateWatermarkOnAnAlreadySavedOtherPage"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.editor.PageEditingTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "aNewEditDropsTheRedoBranch",
+            "redactionIgnoresTransparencyAndReversedDragDirection",
+            "pageNumbersKeepTheImageInsidePaperMargins"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.library.LibraryStateTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "revokedFolderAccessClosesSensitiveSelectionDialogsAndKeepsDraft",
+            "filtersAndOrderedSelectionSurviveBatchSnapshot"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.PdfImportOwnershipTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "cancellationAfterRenderingCannotCommitAnyPages",
+            "emptyPdfClosesSourceAndLeavesNoDocument",
+            "successfulImportKeepsOriginalPdfAndClosesSource",
+            "laterRenderFailureRollsBackOnlyThisFilesPages",
+            "cancellationAfterAttachingOriginalRemovesOnlyOwnedSourceAndPages"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanPublicationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "bookAddsBothPagesAndEditingDoesNotIncrementOrNotify",
+            "modeListsContainOnlyOwnedPages"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanSessionOwnershipTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "renderInterleavingCannotPurgeAnExistingNewTarget",
+            "switchingSessionWaitsForWorkerBeforeDeletingItsInputOrResettingTarget",
+            "cameraReentryKeepsFingerprintUntilPageChangesOrNewSessionStarts"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanWriteCancellationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "cancellationAfterCaptureCommitBeforeUiDeliveryRollsBackOwnedPages",
+            "cancelledPdfResultDeliveryRollsBackItsOriginalAndAppendedPages",
+            "activeCapturePublishesCommittedDocument"
+          ]
+        }
+      ]
+    },
+    "iosSimulatorArm64Test": {
+      "totals": {
+        "tests": 76,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "suites": [
+        {
+          "name": "com.kingscan.app.core.document.IosOfflineDocumentIntegrationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "chineseSearchablePasswordPdf[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.CaptureGeometryTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "automaticCaptureWaitsForStableQualityAndNewPage[iosSimulatorArm64]",
+            "actualPageDetectorFindsBimodalPaperAndRejectsBlankFrame[iosSimulatorArm64]",
+            "bookCurveFlattensMeasuredTextBaselinesAndSeparatesPages[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.CapturePreviewTrackerTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "shortMissesAndIsolatedWrongRegionsDoNotFlash[iosSimulatorArm64]",
+            "missingPageExpiresAndRequiresNewConfirmation[iosSimulatorArm64]",
+            "steadyMotionFollowsWithoutFreezingAndSmallJitterIsReduced[iosSimulatorArm64]",
+            "consistentNewPositionReplacesOldOutline[iosSimulatorArm64]",
+            "heldOutlineCannotCompleteAutomaticCapture[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentAiCancellationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "cancellationInterruptsEveryModelsPreprocessingWithoutChangingActiveInput[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentAiPersistenceTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "savedModelIdentityDoesNotDependOnFutureApplicationDefaults[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.DocumentEdgesTest",
+          "tests": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "printedGrayPageOnSimilarDeskUsesOuterEdges[iosSimulatorArm64]",
+            "lowContrastOutlineSurvivesDarkPrintedContent[iosSimulatorArm64]",
+            "roundedCornersAndSideNotchUseExtendedStraightEdges[iosSimulatorArm64]",
+            "printedRuleAcrossThePageDoesNotCutTheDetectedOutlineInHalf[iosSimulatorArm64]",
+            "blankGradientAndRoundObjectHaveNoDocumentOutline[iosSimulatorArm64]",
+            "pageMissingAnOuterEdgeDoesNotSelectTheDesk[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageCompositionTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "idPrintMaintainsPhysicalSizeAndBothSides[iosSimulatorArm64]",
+            "registeredOverlapReconstructsSharedTextureAndRejectsBlankImages[iosSimulatorArm64]",
+            "composedCopiesRetainAllRealOriginalsAfterSourceDeletion[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageRendererTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "adjustedBaseSkipsGeometryRetouchAndFilter[iosSimulatorArm64]",
+            "originalAndGeometricStagesProduceTheSameOutput[iosSimulatorArm64]",
+            "encodingKeepsUnmarkedBaseAndOriginalButInvalidatesOcr[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.PageRetouchTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "selectedInkIsFilledAndEveryUnselectedPixelIsUnchanged[iosSimulatorArm64]",
+            "coloredInkRemovalPreservesBlackPrinting[iosSimulatorArm64]",
+            "restorationReducesNoiseAndRecoversMildGaussianDefocus[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.imaging.ScanPipelineTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "detectsBrightPageOnDarkDesk[iosSimulatorArm64]",
+            "detectsDarkCardOnLightTable[iosSimulatorArm64]",
+            "rotatesPixelsAndQuadTogether[iosSimulatorArm64]",
+            "warpsTheRightHalfWithoutMixingTheLeftColor[iosSimulatorArm64]",
+            "fullFrameSkipsWarp[iosSimulatorArm64]",
+            "filtersKeepSizeAndGrayIsNeutral[iosSimulatorArm64]",
+            "pdfEmbedsJpegAndHasATrailer[iosSimulatorArm64]",
+            "repositoryStoresRenamesReordersAndExports[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.ocr.DocumentOcrTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "singlePageAndMissingSelectionPreserveExistingRecognition[iosSimulatorArm64]",
+            "failureLeavesCompletedPagesAndReportsOnlyPersistedResults[iosSimulatorArm64]",
+            "cancellationDuringNativeRecognitionCannotPublishLateResult[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.security.BiometricSecurityTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "coldStartAndBackgroundRequireSeparateAppAndFolderAuthentication[iosSimulatorArm64]",
+            "unsupportedAndroidDoesNotActivatePersistedPolicies[iosSimulatorArm64]",
+            "failedSupersededAndReusedCallbacksCannotGrantAccess[iosSimulatorArm64]",
+            "backgroundInvalidatesPendingPolicyChangeEvenWithoutAnEnabledLock[iosSimulatorArm64]",
+            "folderLockEnablesImmediatelyAndManualRelockInvalidatesAuthentication[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.DocumentLifecycleTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "oldMetadataLoadsWithoutInventingAnOriginal[iosSimulatorArm64]",
+            "mergingCopiesOriginalsAndOcrAndSurvivesPurgingSources[iosSimulatorArm64]",
+            "trashAndRestoreKeepOriginalBytesAndFolderAssociation[iosSimulatorArm64]",
+            "invalidPagePermutationLeavesDocumentUnchanged[iosSimulatorArm64]",
+            "failedMetadataCommitDoesNotDestroyThePreviouslySavedImage[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.ExportSnapshotTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "reexportAndPageEditsPreservePreviouslySharedPdf[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.core.storage.FolderLockRepositoryTest",
+          "tests": 8,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "lockedFolderHidesTitlesOcrFavoritesAndTrashButKeepsUnprotectedDocumentsVisible[iosSimulatorArm64]",
+            "retainedPathsAndExportsCannotBypassRelocking[iosSimulatorArm64]",
+            "movingIntoLockedFolderAndDeletingItsAssociationAreBlocked[iosSimulatorArm64]",
+            "ordinarySettingsSaveCannotChangeLockPolicy[iosSimulatorArm64]",
+            "appendAndSourceRollbackStillCleanOnlyOwnedFilesAfterAccessIsRevoked[iosSimulatorArm64]",
+            "unpublishedNewDocumentRollbackWorksWhileAppIsLocked[iosSimulatorArm64]",
+            "duplicateAndMergeWithinProtectedFolderKeepProtection[iosSimulatorArm64]",
+            "legacyFoldersRemainUnlockedAndSavedPoliciesSurviveRestart[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.editor.AnnotationSaveTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "retryAfterSecondPageFailureUsesCurrentBasesAndAppliesEachWatermarkOnce[iosSimulatorArm64]",
+            "retryDoesNotDuplicateWatermarkOnAnAlreadySavedOtherPage[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.editor.PageEditingTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "aNewEditDropsTheRedoBranch[iosSimulatorArm64]",
+            "redactionIgnoresTransparencyAndReversedDragDirection[iosSimulatorArm64]",
+            "pageNumbersKeepTheImageInsidePaperMargins[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.library.LibraryStateTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "filtersAndOrderedSelectionSurviveBatchSnapshot[iosSimulatorArm64]",
+            "revokedFolderAccessClosesSensitiveSelectionDialogsAndKeepsDraft[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.PdfImportOwnershipTest",
+          "tests": 5,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "successfulImportKeepsOriginalPdfAndClosesSource[iosSimulatorArm64]",
+            "cancellationAfterRenderingCannotCommitAnyPages[iosSimulatorArm64]",
+            "laterRenderFailureRollsBackOnlyThisFilesPages[iosSimulatorArm64]",
+            "cancellationAfterAttachingOriginalRemovesOnlyOwnedSourceAndPages[iosSimulatorArm64]",
+            "emptyPdfClosesSourceAndLeavesNoDocument[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanPublicationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "bookAddsBothPagesAndEditingDoesNotIncrementOrNotify[iosSimulatorArm64]",
+            "modeListsContainOnlyOwnedPages[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanSessionOwnershipTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "switchingSessionWaitsForWorkerBeforeDeletingItsInputOrResettingTarget[iosSimulatorArm64]",
+            "renderInterleavingCannotPurgeAnExistingNewTarget[iosSimulatorArm64]",
+            "cameraReentryKeepsFingerprintUntilPageChangesOrNewSessionStarts[iosSimulatorArm64]"
+          ]
+        },
+        {
+          "name": "com.kingscan.app.feature.scan.ScanWriteCancellationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "cases": [
+            "cancellationAfterCaptureCommitBeforeUiDeliveryRollsBackOwnedPages[iosSimulatorArm64]",
+            "activeCapturePublishesCommittedDocument[iosSimulatorArm64]",
+            "cancelledPdfResultDeliveryRollsBackItsOriginalAndAppendedPages[iosSimulatorArm64]"
+          ]
+        }
+      ]
+    }
+  },
+  "native_tests": {
+    "BiometricLockUiIntegrationTest": {
+      "tests": 1,
+      "passed": true
+    },
+    "LocalOutputIntegrationTest": {
+      "tests": 1,
+      "passed": true
+    },
+    "OfflineDocumentIntegrationTest": {
+      "tests": 1,
+      "passed": true
+    },
+    "LocalGeometryIntegrationTest": {
+      "tests": 1,
+      "passed": true
+    }
+  },
+  "limitations": [
+    "Android lock UI uses test grants, not successful hardware biometric authentication.",
+    "iOS verification covers simulator Kotlin tests and framework build, not device UI acceptance."
+  ]
+}

@@ -1,0 +1,202 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Type-safe project accessors is an incubating feature.
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :composeApp:generateComposeResClass SKIPPED
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidDebug SKIPPED
+> Task :composeApp:preBuild UP-TO-DATE
+> Task :composeApp:preDebugBuild UP-TO-DATE
+> Task :composeApp:checkDebugAarMetadata UP-TO-DATE
+> Task :composeApp:generateDebugResValues UP-TO-DATE
+> Task :composeApp:mapDebugSourceSetPaths UP-TO-DATE
+> Task :composeApp:generateDebugResources UP-TO-DATE
+> Task :composeApp:mergeDebugResources UP-TO-DATE
+> Task :composeApp:packageDebugResources UP-TO-DATE
+> Task :composeApp:parseDebugLocalResources UP-TO-DATE
+> Task :composeApp:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :composeApp:extractDeepLinksDebug UP-TO-DATE
+> Task :composeApp:processDebugMainManifest UP-TO-DATE
+> Task :composeApp:processDebugManifest UP-TO-DATE
+> Task :composeApp:processDebugManifestForPackage UP-TO-DATE
+> Task :composeApp:processDebugResources UP-TO-DATE
+> Task :composeApp:javaPreCompileDebug UP-TO-DATE
+> Task :composeApp:convertXmlValueResourcesForAndroidUnitTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidUnitTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidUnitTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidUnitTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidUnitTestDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidUnitTestDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidUnitTestDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidUnitTestDebug SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonTest SKIPPED
+> Task :composeApp:preDebugUnitTestBuild UP-TO-DATE
+> Task :composeApp:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :composeApp:convertXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Main SKIPPED
+> Task :composeApp:convertXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForIosSimulatorArm64Main SKIPPED
+
+> Task :composeApp:compileKotlinIosSimulatorArm64
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/codes/CodeScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/ocr/OcrScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/codes/IosBarcodeCodec.kt:35:76 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/imaging/IosPageText.kt:31:22 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/ocr/IosOcrEngine.kt:39:23 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+
+> Task :composeApp:convertXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAppleTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAppleTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAppleTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosSimulatorArm64Test NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosSimulatorArm64Test SKIPPED
+> Task :composeApp:convertXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForNativeTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForNativeTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForNativeTest SKIPPED
+> Task :composeApp:iosSimulatorArm64ResolveResourcesFromDependencies UP-TO-DATE
+> Task :composeApp:assembleIosSimulatorArm64MainResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64ResolveSelfResourcesCopyHierarchicalMultiplatformResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64AggregateResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64ProcessResources UP-TO-DATE
+> Task :composeApp:iosSimulatorArm64MainKlibrary
+> Task :composeApp:compileTestKotlinIosSimulatorArm64
+> Task :composeApp:assembleIosSimulatorArm64TestResources UP-TO-DATE
+> Task :composeApp:copyTestComposeResourcesForIosSimulatorArm64 UP-TO-DATE
+
+> Task :composeApp:compileDebugKotlinAndroid
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:99:45 'fun setTargetAspectRatio(p0: Int): Preview.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:104:18 'fun setTargetAspectRatio(p0: Int): ImageCapture.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:107:18 'fun setTargetResolution(p0: Size): ImageAnalysis.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDeviceSecurity.kt:7:8 'class FingerprintManager : Any' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDeviceSecurity.kt:55:34 'fun hasEnrolledFingerprints(): Boolean' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/codes/CodeScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/ocr/OcrScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :composeApp:linkDebugTestIosSimulatorArm64
+> Task :composeApp:compileDebugJavaWithJavac NO-SOURCE
+> Task :composeApp:processDebugJavaRes UP-TO-DATE
+> Task :composeApp:bundleDebugClassesToCompileJar
+> Task :composeApp:bundleDebugClassesToRuntimeJar
+> Task :composeApp:iosSimulatorArm64Test
+> Task :composeApp:convertXmlValueResourcesForIosArm64Main NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForIosArm64Main NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForIosArm64Main NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForIosArm64Main SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForIosArm64Main SKIPPED
+> Task :composeApp:compileDebugUnitTestKotlinAndroid
+
+> Task :composeApp:compileKotlinIosArm64
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/codes/CodeScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/ocr/OcrScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/codes/IosBarcodeCodec.kt:35:76 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/imaging/IosPageText.kt:31:22 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/iosMain/kotlin/com/kingscan/app/core/ocr/IosOcrEngine.kt:39:23 This declaration needs opt-in. Its usage should be marked with '@kotlinx.cinterop.BetaInteropApi' or '@OptIn(kotlinx.cinterop.BetaInteropApi::class)'
+
+> Task :composeApp:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :composeApp:processDebugUnitTestJavaRes UP-TO-DATE
+> Task :composeApp:testDebugUnitTest
+> Task :composeApp:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :composeApp:mergeDebugShaders UP-TO-DATE
+> Task :composeApp:compileDebugShaders NO-SOURCE
+> Task :composeApp:copyDebugComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :composeApp:debugAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:generateDebugAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAssets UP-TO-DATE
+> Task :composeApp:compressDebugAssets UP-TO-DATE
+> Task :composeApp:desugarDebugFileDependencies UP-TO-DATE
+> Task :composeApp:dexBuilderDebug
+> Task :composeApp:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :composeApp:mergeDebugJavaResource UP-TO-DATE
+> Task :composeApp:checkDebugDuplicateClasses UP-TO-DATE
+> Task :composeApp:mergeExtDexDebug UP-TO-DATE
+> Task :composeApp:mergeLibDexDebug UP-TO-DATE
+> Task :composeApp:mergeDebugJniLibFolders UP-TO-DATE
+> Task :composeApp:mergeDebugNativeLibs UP-TO-DATE
+> Task :composeApp:stripDebugDebugSymbols UP-TO-DATE
+> Task :composeApp:validateSigningDebug UP-TO-DATE
+> Task :composeApp:writeDebugAppMetadata UP-TO-DATE
+> Task :composeApp:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :composeApp:convertXmlValueResourcesForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidInstrumentedTest NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidInstrumentedTest SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidInstrumentedTestDebug NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidInstrumentedTestDebug SKIPPED
+> Task :composeApp:preDebugAndroidTestBuild SKIPPED
+> Task :composeApp:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :composeApp:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :composeApp:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :composeApp:generateDebugAndroidTestResources UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :composeApp:processDebugAndroidTestManifest UP-TO-DATE
+> Task :composeApp:processDebugAndroidTestResources UP-TO-DATE
+> Task :composeApp:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestShaders UP-TO-DATE
+> Task :composeApp:compileDebugAndroidTestShaders NO-SOURCE
+> Task :composeApp:copyDebugAndroidTestComposeResourcesToAndroidAssets UP-TO-DATE
+> Task :composeApp:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :composeApp:compressDebugAndroidTestAssets UP-TO-DATE
+> Task :composeApp:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :composeApp:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :composeApp:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :composeApp:mergeLibDexDebugAndroidTest UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :composeApp:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :composeApp:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :composeApp:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :composeApp:compileDebugAndroidTestKotlinAndroid
+> Task :composeApp:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+> Task :composeApp:dexBuilderDebugAndroidTest UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :composeApp:processDebugAndroidTestJavaRes UP-TO-DATE
+> Task :composeApp:mergeDebugAndroidTestJavaResource UP-TO-DATE
+> Task :composeApp:mergeProjectDexDebugAndroidTest UP-TO-DATE
+> Task :composeApp:packageDebugAndroidTest UP-TO-DATE
+> Task :composeApp:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :composeApp:assembleDebugAndroidTest UP-TO-DATE
+> Task :composeApp:mergeProjectDexDebug
+> Task :composeApp:packageDebug
+> Task :composeApp:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :composeApp:assembleDebug
+
+BUILD SUCCESSFUL in 59s
+81 actionable tasks: 14 executed, 67 up-to-date

@@ -1,127 +1,65 @@
 package com.kingscan.app
 
-import com.kingscan.app.data.DocumentRepository
-import com.kingscan.app.imaging.ImageCodec
-import com.kingscan.app.imaging.RgbaImage
-import com.kingscan.app.imaging.createImageCodec
-import com.kingscan.app.model.Quad
-import com.kingscan.app.model.PageEdit
-import com.kingscan.app.model.PageMeta
-import com.kingscan.app.model.ImportFile
-import com.kingscan.app.model.ScanMode
-import com.kingscan.app.model.ScanDocument
-import com.kingscan.app.imaging.ScanLimits
-import kotlinx.coroutines.Job
+import com.kingscan.app.core.storage.DocumentRepository
+import com.kingscan.app.feature.editor.PageOperations
+import com.kingscan.app.feature.scan.ScanSession
+import com.kingscan.app.core.imaging.ImageCodec
+import com.kingscan.app.core.imaging.createImageCodec
+import com.kingscan.app.core.document.ImportFile
+import com.kingscan.app.core.document.PageEdit
+import com.kingscan.app.core.document.PageMeta
+import com.kingscan.app.core.document.ScanDocument
+import com.kingscan.app.core.ocr.DocumentOcr
+import com.kingscan.app.core.security.SecurityState
 import kotlinx.coroutines.channels.Channel
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
 
 object AppGraph {
     lateinit var repository: DocumentRepository
         private set
     lateinit var codec: ImageCodec
         private set
-    val session = ScanSession()
+    lateinit var pageOperations: PageOperations
+        private set
+    lateinit var ocr: DocumentOcr
+        private set
+    lateinit var session: ScanSession
+        private set
     val externalImports = Channel<ExternalImport>(Channel.UNLIMITED)
     val savedImages = Channel<List<String>>(Channel.UNLIMITED)
-    var deviceLockEnabled by mutableStateOf(false)
-        private set
-    var locked by mutableStateOf(false)
-        private set
+    val security = SecurityState()
+    val deviceLockEnabled: Boolean get() = security.supported && security.appLockEnabled
+    val locked: Boolean get() = security.appLocked
 
-    fun configureDeviceLock(enabled: Boolean) {
-        deviceLockEnabled = enabled
-        locked = false // Called only after system authentication, when saving settings.
+    internal fun configureDeviceLock(enabled: Boolean) {
+        repository.saveDeviceLock(enabled)
+        security.setAppLock(enabled)
     }
 
-    fun lock() { if (deviceLockEnabled) locked = true }
-    fun unlock() { locked = false } // Only the native authentication success callback calls this.
+    fun lock() { security.background() }
+    internal fun unlock() { security.unlockApp() }
+    internal fun configureFolderLock(id: String, enabled: Boolean) {
+        repository.saveFolderLock(id, enabled)
+        security.setFolderLock(id, enabled)
+    }
+    internal fun unlockFolder(id: String) { security.unlockFolder(id) }
 
-    fun notifyScanSaved(document: ScanDocument, pages: List<PageMeta>) {
-        if (repository.settings().autoSaveToGallery) savedImages.trySend(pages.map { repository.pagePath(document.id, it) })
+    private fun notifyScanSaved(document: ScanDocument, pages: List<PageMeta>) {
+        if (repository.settings().autoSaveToGallery) {
+            runCatching { pages.map { repository.pagePath(document.id, it) } }.onSuccess { savedImages.trySend(it) }
+        }
     }
 
-    fun init(storageRoot: String) {
+    fun init(storageRoot: String, biometricsSupported: Boolean = true) {
         if (::repository.isInitialized) return
-        repository = DocumentRepository(storageRoot)
+        repository = DocumentRepository(storageRoot, security = security)
         codec = createImageCodec()
-        deviceLockEnabled = repository.settings().deviceLock
-        locked = deviceLockEnabled
+        pageOperations = PageOperations(repository, codec)
+        ocr = DocumentOcr(repository, codec)
+        session = ScanSession(repository::finishImport,
+            { PageEdit(filter = repository.settings().defaultFilter) }, repository, codec, ::notifyScanSaved)
+        security.initialize(biometricsSupported, repository.settings().deviceLock,
+            repository.folders().filter { it.locked }.map { it.id }.toSet())
     }
 }
 
 data class ExternalImport(val files: List<ImportFile> = emptyList(), val error: String? = null)
-
-class ScanSession {
-    var documentId: String? = null
-    var editingPageId: String? = null
-    var originalBytes: ByteArray? = null
-    var quarterTurns: Int = 0
-    var edit: PageEdit = PageEdit()
-    var source: RgbaImage? = null
-    var quad: Quad = Quad.inset(0.06f)
-    var warped: RgbaImage? = null
-    val pendingImports = ArrayDeque<ImportFile>()
-    var processingJob: Job? = null
-    var activeImport: ImportFile? = null
-    var scanMode: ScanMode = ScanMode.Document
-    var capturedPages: Int = 0
-    val idCardPageIds = mutableListOf<String>()
-    val largeFormatPageIds = mutableListOf<String>()
-
-    fun beginNew() {
-        documentId = null
-        capturedPages = 0
-        idCardPageIds.clear()
-        largeFormatPageIds.clear()
-        discardImports()
-        clearImage()
-    }
-
-    fun beginAppend(documentId: String) {
-        this.documentId = documentId
-        capturedPages = 0
-        idCardPageIds.clear()
-        largeFormatPageIds.clear()
-        discardImports()
-        clearImage()
-    }
-
-    fun beginEdit(documentId: String, page: PageMeta) {
-        val original = AppGraph.repository.originalPath(documentId, page)
-            ?: error("这张旧页面没有保留原图，无法重新裁切。可重新导入原图。")
-        beginAppend(documentId)
-        editingPageId = page.id
-        originalBytes = AppGraph.repository.readBytes(original)
-        edit = page.edit ?: PageEdit(filter = page.filter)
-        quarterTurns = edit.quarterTurns.mod(4)
-        var decoded = AppGraph.codec.decode(originalBytes!!, ScanLimits.MAX_EDGE)
-        repeat(quarterTurns) { decoded = decoded.rotate90CW() }
-        source = decoded
-        quad = edit.quad
-    }
-
-    fun clearImage() {
-        editingPageId = null
-        originalBytes = null
-        quarterTurns = 0
-        edit = PageEdit(filter = AppGraph.repository.settings().defaultFilter)
-        source = null
-        warped = null
-        quad = Quad.inset(0.06f)
-    }
-
-    fun cancel() {
-        beginNew()
-    }
-
-    private fun discardImports() {
-        processingJob?.cancel()
-        processingJob = null
-        activeImport?.let(AppGraph.repository::finishImport)
-        activeImport = null
-        pendingImports.forEach(AppGraph.repository::finishImport)
-        pendingImports.clear()
-    }
-}

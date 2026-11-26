@@ -1,0 +1,4 @@
+BiometricLockUiIntegrationTest: OK (1 test)
+LocalOutputIntegrationTest: OK (1 test)
+OfflineDocumentIntegrationTest: OK (1 test)
+LocalGeometryIntegrationTest: OK (1 test)

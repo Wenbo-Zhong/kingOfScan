@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.storage.DocumentLifecycleTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:06" hostname="HM4W6KN6XD" time="0.031">
+  <properties/>
+  <testcase name="oldMetadataLoadsWithoutInventingAnOriginal[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.DocumentLifecycleTest" time="0.0"/>
+  <testcase name="mergingCopiesOriginalsAndOcrAndSurvivesPurgingSources[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.DocumentLifecycleTest" time="0.018"/>
+  <testcase name="trashAndRestoreKeepOriginalBytesAndFolderAssociation[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.DocumentLifecycleTest" time="0.007"/>
+  <testcase name="invalidPagePermutationLeavesDocumentUnchanged[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.DocumentLifecycleTest" time="0.002"/>
+  <testcase name="failedMetadataCommitDoesNotDestroyThePreviouslySavedImage[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.DocumentLifecycleTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

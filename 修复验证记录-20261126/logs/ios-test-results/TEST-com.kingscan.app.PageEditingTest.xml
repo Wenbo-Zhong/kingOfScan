@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.PageEditingTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:44" hostname="HM4W6KN6XD" time="0.0">
+  <properties/>
+  <testcase name="aNewEditDropsTheRedoBranch[iosSimulatorArm64]" classname="com.kingscan.app.PageEditingTest" time="0.0"/>
+  <testcase name="redactionIgnoresTransparencyAndReversedDragDirection[iosSimulatorArm64]" classname="com.kingscan.app.PageEditingTest" time="0.0"/>
+  <testcase name="pageNumbersKeepTheImageInsidePaperMargins[iosSimulatorArm64]" classname="com.kingscan.app.PageEditingTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

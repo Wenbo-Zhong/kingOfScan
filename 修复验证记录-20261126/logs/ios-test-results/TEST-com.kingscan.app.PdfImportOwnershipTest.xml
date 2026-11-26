@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.PdfImportOwnershipTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:44" hostname="HM4W6KN6XD" time="0.025">
+  <properties/>
+  <testcase name="successfulImportKeepsOriginalPdfAndClosesSource[iosSimulatorArm64]" classname="com.kingscan.app.PdfImportOwnershipTest" time="0.004"/>
+  <testcase name="cancellationAfterRenderingCannotCommitAnyPages[iosSimulatorArm64]" classname="com.kingscan.app.PdfImportOwnershipTest" time="0.001"/>
+  <testcase name="laterRenderFailureRollsBackOnlyThisFilesPages[iosSimulatorArm64]" classname="com.kingscan.app.PdfImportOwnershipTest" time="0.008"/>
+  <testcase name="cancellationAfterAttachingOriginalRemovesOnlyOwnedSourceAndPages[iosSimulatorArm64]" classname="com.kingscan.app.PdfImportOwnershipTest" time="0.01"/>
+  <testcase name="emptyPdfClosesSourceAndLeavesNoDocument[iosSimulatorArm64]" classname="com.kingscan.app.PdfImportOwnershipTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

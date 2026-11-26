@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.ScanPipelineTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:44" hostname="HM4W6KN6XD" time="0.297">
+  <properties/>
+  <testcase name="detectsBrightPageOnDarkDesk[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.137"/>
+  <testcase name="detectsDarkCardOnLightTable[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.129"/>
+  <testcase name="rotatesPixelsAndQuadTogether[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.0"/>
+  <testcase name="warpsTheRightHalfWithoutMixingTheLeftColor[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.001"/>
+  <testcase name="fullFrameSkipsWarp[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.0"/>
+  <testcase name="filtersKeepSizeAndGrayIsNeutral[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.0"/>
+  <testcase name="pdfEmbedsJpegAndHasATrailer[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.0"/>
+  <testcase name="repositoryStoresRenamesReordersAndExports[iosSimulatorArm64]" classname="com.kingscan.app.ScanPipelineTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

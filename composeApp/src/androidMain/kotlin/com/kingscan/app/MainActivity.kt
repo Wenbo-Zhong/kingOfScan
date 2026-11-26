@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.kingscan.app.model.ImportFile
+import com.kingscan.app.core.document.ImportFile
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -19,10 +19,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val root = File(filesDir, "kingscan").apply { mkdirs() }.absolutePath
-        AppGraph.init(root)
-        com.kingscan.app.imaging.AndroidDocumentModels.context = applicationContext
+        AppGraph.init(root, com.kingscan.app.core.platform.supportsSystemBiometrics(this))
+        com.kingscan.app.core.imaging.AndroidDocumentModels.context = applicationContext
         PDFBoxResourceLoader.init(applicationContext)
-        com.kingscan.app.pdf.AndroidPdfResources.context = applicationContext
+        com.kingscan.app.core.pdf.AndroidPdfResources.context = applicationContext
         setContent { App() }
         if (savedInstanceState == null) importSharedFiles(intent)
     }

@@ -9,13 +9,12 @@ import android.print.*
 import android.provider.MediaStore
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.kingscan.app.data.PageOperations
-import com.kingscan.app.imaging.*
-import com.kingscan.app.model.*
-import com.kingscan.app.pdf.AndroidPdfResources
-import com.kingscan.app.ui.printPageCount
-import com.kingscan.app.ui.writePrintPages
-import com.kingscan.app.ui.saveImagesToGallery
+import com.kingscan.app.core.imaging.*
+import com.kingscan.app.core.document.*
+import com.kingscan.app.core.pdf.AndroidPdfResources
+import com.kingscan.app.core.platform.printPageCount
+import com.kingscan.app.core.platform.writePrintPages
+import com.kingscan.app.core.platform.saveImagesToGallery
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import org.junit.Assert.*
@@ -49,7 +48,7 @@ class LocalOutputIntegrationTest {
             RetouchEdit(strokes = listOf(RetouchStroke(listOf(PointF(0.775f, 0.74f)), width = 0.11f))),
         )
         val page = document.pages.single()
-        val source = PageOperations.geometricSource(document.id, page)
+        val source = AppGraph.pageOperations.geometricSource(document.id, page)
         val restored = PageRetouch.apply(source, effects)
         assertTrue(restored.pixel(260, 357).green() > 235)
         assertTrue(restored.pixel(260, 430).red() > 235)
@@ -58,8 +57,8 @@ class LocalOutputIntegrationTest {
         File(root, "retouch-result.jpg").writeBytes(outputBytes)
         document = repo.replacePage(document.id, page.id, EncodedPage(outputBytes, 1000, 700,
             FilterType.Original, edit = page.edit!!.copy(retouches = effects), annotationBaseBytes = outputBytes))!!
-        document = PageOperations.rotate(document.id, document.pages.single())!!
-        document = PageOperations.filter(document.id, document.pages.single(), FilterType.Gray)!!
+        document = AppGraph.pageOperations.rotate(document.id, document.pages.single())!!
+        document = AppGraph.pageOperations.filter(document.id, document.pages.single(), FilterType.Gray)!!
         val reopened = repo.load(document.id)!!
         assertEquals(2, reopened.pages.single().edit!!.retouches.size)
         assertArrayEquals(originalBytes, repo.readBytes(repo.originalPath(document.id, reopened.pages.single())!!))

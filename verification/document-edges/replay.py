@@ -100,15 +100,15 @@ def main():
         jar("org.jetbrains", "annotations", "13.0"),
         jar("org.jetbrains.intellij.deps", "trove4j", "1.0.20200330"),
     ]
-    geometry = (source / "model/Models.kt").read_text()
-    geometry = geometry[geometry.index("@Serializable\ndata class PointF"):
-                        geometry.index("@Serializable\ndata class ImageAdjustments")]
-    (work / "Geometry.kt").write_text("package com.kingscan.app.model\n" + geometry.replace("@Serializable\n", ""))
-    rgba = (source / "imaging/RgbaImage.kt").read_text()
+    geometry = (source / "core/document/Geometry.kt").read_text().replace(
+        "import kotlinx.serialization.Serializable\n", "").replace("@Serializable\n", "")
+    (work / "Geometry.kt").write_text(geometry)
+    rgba = (source / "core/imaging/RgbaImage.kt").read_text()
     rgba = rgba[:rgba.index("expect fun createImageCodec()")].replace(
         "import androidx.compose.ui.graphics.ImageBitmap\n", "")
     (work / "RgbaImage.kt").write_text(rgba)
-    production = [source / "imaging/DocumentDetector.kt", source / "imaging/DocumentEdges.kt"]
+    production = [source / "core/imaging" / name for name in
+                  ("DocumentDetector.kt", "DocumentEdges.kt", "BinaryMorphology.kt")]
     replay_jar = work / "detector.jar"
     def compile_detector(paths, destination, label):
         run([args.java, "-cp", ":".join(compiler_cp),
@@ -124,14 +124,21 @@ def main():
         before_dir = work / "before"
         before_dir.mkdir()
         for path in production:
-            result = subprocess.run(["git", "show", f"{args.before_ref}:{path.relative_to(repo)}"],
+            relative = path.relative_to(repo)
+            result = subprocess.run(["git", "show", f"{args.before_ref}:{relative}"],
                                     cwd=repo, capture_output=True)
             if result.returncode:
-                if path.name == "DocumentEdges.kt":
-                    continue  # The old detector did not have this file.
+                legacy = str(relative).replace("/core/imaging/", "/imaging/")
+                result = subprocess.run(["git", "show", f"{args.before_ref}:{legacy}"],
+                                        cwd=repo, capture_output=True)
+            if result.returncode:
+                if path.name in ("DocumentEdges.kt", "BinaryMorphology.kt"):
+                    continue  # Older detectors did not have these helpers.
                 raise RuntimeError(result.stderr.decode())
             target = before_dir / path.name
-            target.write_bytes(result.stdout)
+            target.write_text(result.stdout.decode().replace(
+                "com.kingscan.app.imaging", "com.kingscan.app.core.imaging").replace(
+                "com.kingscan.app.model", "com.kingscan.app.core.document"))
             before_sources[target.name] = hashlib.sha256(result.stdout).hexdigest()
         before_jar = work / "before.jar"
         compile_detector(list(before_dir.glob("*.kt")), before_jar, "before")

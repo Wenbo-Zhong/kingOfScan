@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.ocr.DocumentOcrTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:06" hostname="HM4W6KN6XD" time="0.021">
+  <properties/>
+  <testcase name="singlePageAndMissingSelectionPreserveExistingRecognition[iosSimulatorArm64]" classname="com.kingscan.app.core.ocr.DocumentOcrTest" time="0.013"/>
+  <testcase name="failureLeavesCompletedPagesAndReportsOnlyPersistedResults[iosSimulatorArm64]" classname="com.kingscan.app.core.ocr.DocumentOcrTest" time="0.005"/>
+  <testcase name="cancellationDuringNativeRecognitionCannotPublishLateResult[iosSimulatorArm64]" classname="com.kingscan.app.core.ocr.DocumentOcrTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,839 @@
+{
+  "date": "2026-11-26",
+  "tests": {
+    "testDebugUnitTest": {
+      "tests": 82,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "iosSimulatorArm64Test": {
+      "tests": 83,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "native_debug_runtime": {
+    "before": {
+      "cold_analysis_ms": 588.869426,
+      "detector": {
+        "median_ms": 121.550209,
+        "p95_ms": 127.38276
+      },
+      "analysis": {
+        "median_ms": 128.897604,
+        "p95_ms": 133.782292
+      },
+      "acquisition": [
+        {
+          "time_ms": 0,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 120,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 240,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 360,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 480,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 600,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 720,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 840,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 960,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1080,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1200,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1320,
+          "visible": true,
+          "fresh": true
+        }
+      ],
+      "device": "M2012K11AC / arm64-v8a, armeabi-v7a, armeabi",
+      "debuggable": true
+    },
+    "after": {
+      "quad": [
+        [
+          0.13271291553974152,
+          0.35800692439079285
+        ],
+        [
+          0.8013898730278015,
+          0.345192015171051
+        ],
+        [
+          0.8736571669578552,
+          0.7033226490020752
+        ],
+        [
+          0.11683139204978943,
+          0.7452217936515808
+        ]
+      ],
+      "cold_analysis_ms": 664.029063,
+      "detector": {
+        "median_ms": 124.392656,
+        "p95_ms": 130.453489
+      },
+      "analysis": {
+        "median_ms": 133.883489,
+        "p95_ms": 137.541614
+      },
+      "acquisition": [
+        {
+          "time_ms": 0,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 120,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 240,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 360,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 480,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 600,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 720,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 840,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 960,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1080,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1200,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1320,
+          "visible": true,
+          "fresh": true
+        }
+      ],
+      "device": "M2012K11AC / arm64-v8a, armeabi-v7a, armeabi",
+      "debuggable": true
+    },
+    "ours": {
+      "quad": [
+        [
+          0.23006168007850647,
+          0.45888248085975647
+        ],
+        [
+          0.7228001952171326,
+          0.44237181544303894
+        ],
+        [
+          0.7605538964271545,
+          0.7114264369010925
+        ],
+        [
+          0.18620263040065765,
+          0.7206199169158936
+        ]
+      ],
+      "cold_analysis_ms": 646.908021,
+      "detector": {
+        "median_ms": 135.007343,
+        "p95_ms": 141.56375
+      },
+      "analysis": {
+        "median_ms": 138.824896,
+        "p95_ms": 146.744114
+      },
+      "acquisition": [
+        {
+          "time_ms": 0,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 120,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 240,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 360,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 480,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 600,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 720,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 840,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 960,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1080,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1200,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1320,
+          "visible": true,
+          "fresh": true
+        }
+      ],
+      "device": "M2012K11AC / arm64-v8a, armeabi-v7a, armeabi",
+      "debuggable": true
+    },
+    "ours-90": {
+      "quad": [
+        [
+          0.2761825621128082,
+          0.186528742313385
+        ],
+        [
+          0.5399903059005737,
+          0.2298148274421692
+        ],
+        [
+          0.5574285387992859,
+          0.7216668128967285
+        ],
+        [
+          0.29046058654785156,
+          0.7603885531425476
+        ]
+      ],
+      "cold_analysis_ms": 707.686614,
+      "detector": {
+        "median_ms": 142.938854,
+        "p95_ms": 146.282708
+      },
+      "analysis": {
+        "median_ms": 145.996719,
+        "p95_ms": 152.108385
+      },
+      "acquisition": [
+        {
+          "time_ms": 0,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 120,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 240,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 360,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 480,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 600,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 720,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 840,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 960,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1080,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1200,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1320,
+          "visible": true,
+          "fresh": true
+        }
+      ],
+      "device": "M2012K11AC / arm64-v8a, armeabi-v7a, armeabi",
+      "debuggable": true
+    },
+    "comparison-clean": {
+      "quad": [
+        [
+          0.25268110632896423,
+          0.5197914242744446
+        ],
+        [
+          0.7005751132965088,
+          0.4997953772544861
+        ],
+        [
+          0.7395575046539307,
+          0.7465018630027771
+        ],
+        [
+          0.21389608085155487,
+          0.7520375847816467
+        ]
+      ],
+      "cold_analysis_ms": 628.962239,
+      "detector": {
+        "median_ms": 128.939948,
+        "p95_ms": 134.387916
+      },
+      "analysis": {
+        "median_ms": 133.959531,
+        "p95_ms": 139.606927
+      },
+      "acquisition": [
+        {
+          "time_ms": 0,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 120,
+          "visible": true,
+          "fresh": false
+        },
+        {
+          "time_ms": 240,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 360,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 480,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 600,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 720,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 840,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 960,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1080,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1200,
+          "visible": true,
+          "fresh": true
+        },
+        {
+          "time_ms": 1320,
+          "visible": true,
+          "fresh": true
+        }
+      ],
+      "device": "M2012K11AC / arm64-v8a, armeabi-v7a, armeabi",
+      "debuggable": true
+    }
+  },
+  "stability": {
+    "before": {
+      "frames": 48,
+      "visible": 48,
+      "held_or_provisional": 3,
+      "max_corner_step": 0.011518286028415807,
+      "max_area_step": 0.009416967241748342,
+      "corner_steps_over_0_08": 0,
+      "area_steps_over_35_percent": 0
+    },
+    "after": {
+      "frames": 48,
+      "visible": 48,
+      "held_or_provisional": 3,
+      "max_corner_step": 0.011518286028415807,
+      "max_area_step": 0.009424911694558613,
+      "corner_steps_over_0_08": 0,
+      "area_steps_over_35_percent": 0
+    },
+    "max_same_frame_corner_difference": 0.002508128191002209,
+    "coordinates_identical": false
+  },
+  "retained_input_manifest": {
+    "sources_sha256": {
+      "core/imaging/DocumentDetector.kt": "3043b8e2a543519c234089a0dc989e078e46cf34f8f441ac9a883241b217a76a",
+      "core/imaging/DocumentEdges.kt": "0a7477b48c73163536c0502958704fa9deed231e7b5752fc8757c46b65d1fa34",
+      "core/imaging/CaptureAnalysis.kt": "187732d7de11486a47482608f1b2c1d021c9e91414d8d87a9c955b1d2920c8ef",
+      "core/imaging/CapturePreviewAnalyzer.kt": "89924922d2777eb5e8ed50b9cf64c71f0062e7527b480f4157cc898b160136e9",
+      "core/imaging/PerspectiveWarp.kt": "ae45f73d61cc9aa33e340c389cbc5a806007c3a48bdb7b6cc56adf3a59b4f410",
+      "core/imaging/BinaryMorphology.kt": "db7af67a0b0f11da54262d95decccf8d3f66a39e61f7d864891e499f57b3de5f"
+    },
+    "input": "/Users/bytedance/workspace/kingOfScan/verification/evidence/document-edges/camera-screenshot-crop.png",
+    "input_sha256": "bbe279891c936dd827cdede5ce4c41324728142a308ed4aafff0dc75aaea5ffc",
+    "frames": {
+      "frame-001.png": "d99078a38aaf439d51008a3a35a0b0f16579b7321453b776d2751a53aeb55d81",
+      "frame-002.png": "244a9b84c944e4d5211f38419df7c8ca8dc5b4ff2cd0d04a8ae6019b61bd34eb",
+      "frame-003.png": "2f4c203780a2d3c620702f84608758d21d3e1d538f75cb3a25da33f374f287d7",
+      "frame-004.png": "573b367059cba691a7a746c92dc764a5d75b24bfd67666a4fec6c753abe86dc9",
+      "frame-005.png": "83f4dc921dbfd6f94be9bb33406e25b86d50c35785f13c1da546319dac50f610",
+      "frame-006.png": "5fe0d6eda7482e691739c24726cc2160d786168e31fc78d116a806cb6b47770f",
+      "frame-007.png": "b56a5737130b0a2c75833a54126a5e962919adf3efa80812dfac710cb9fcdc08",
+      "frame-008.png": "0a1242791474be3ba23a24acebd27f0ab727fd945416b2a6af53592c2b004039",
+      "frame-009.png": "4f1832775f2fd07e7ea10cf7a477e5d872ab27d8a609ffea7c45bbb2c7b4fb25",
+      "frame-010.png": "d4db70224fae5e56774a9a4404ce8158eb7f61e82fa7f7e128dcc1e903d02ff1",
+      "frame-011.png": "7a4b90063f951838a0b728fa528d906904cd1ec551836a73b07c3d34de6f9423",
+      "frame-012.png": "05abcea7b96fc6bea4d457e5707441528748ddd8a457401813d5810fae1351f1",
+      "frame-013.png": "0eb3001941e1bc9e9c0734337804e7280d305986f259631e362c2382d2aa4600",
+      "frame-014.png": "b5a6ff8f5a538522e467f67e6883bd701fe2466f86048ef2a5fd9a3a99d687db",
+      "frame-015.png": "706a154273b9c9c697a00f06d0b596f01a15d5afb88714b9a802655ce3008f0a",
+      "frame-016.png": "2d889298cc0d2d58fcf1f1f44e735cf7e3c2c7a2a0ab73fafa8b04b150ef9570",
+      "frame-017.png": "18e010f8fde1e7c9f21ee66c82c66beb3e58826890e869872e7f47089895cc41",
+      "frame-018.png": "47f066dae7d7484f4a20f42ecc9398e49942afb74195f0a5f9202ffde4f880ba",
+      "frame-019.png": "ac1ad622e0492468ae6115eb4ed87950a48696c2735d6bfa0d636d277f77a428",
+      "frame-020.png": "746eff5e56fa81db2fa00801cdb577f57930d807f12650fcf2da40e1b132c035",
+      "frame-021.png": "975d9d75c2e8f32b4fb51a808c7bfa1b5c3e12d2732a7379fa1fde946294bd75",
+      "frame-022.png": "53b67c1030f68c19bb94529fba621e02982faca8b7b3f591ed973bea7a65d467",
+      "frame-023.png": "a4c2c9842ccff35439d71a484d61158d297ab6d88075ac2703e69f0ae981cf1c",
+      "frame-024.png": "d524ae8b9d25cc5853b20f0bdc2cf2fe146203d36ec38f7dcb0689a4c66fe402",
+      "frame-025.png": "467e22997eb61de447a29140fa5c06400b7d944df0b19de82ed6ee708c848c04",
+      "frame-026.png": "449876b906a63bcf3e65a3cd56a3ee649b5dba7641efe3d5ab71f0f6d25818f8",
+      "frame-027.png": "e9e16dbfd313383a3805e2abc421ca9e5dbe803dcd9a07960dbc1cf90c058251",
+      "frame-028.png": "6e1d0fa38f9dd9c012730ca7b90b33f18a984ad7bee3acb78b88c8820e953a39",
+      "frame-029.png": "79d8bc3f1ee18f18431ee9c763c615a5fb5eec96115d198765d5ecc7a6c94aff",
+      "frame-030.png": "b1b7f03725bb3219a9323d05677d1a835c4bc4bf9473807967ac7b0510195016",
+      "frame-031.png": "2aaa52ad553aaba6eb22203ac79657eaafa4abddad957ebe74b4dcf82ddda36b",
+      "frame-032.png": "d035e1089475ffe6b11561e9d7cfa9ae48d4faea13448a26b0fb8d4090217640",
+      "frame-033.png": "3e9461d3b53a5ea59d10a9ca576da321558779d6acc55c9fff2fa99b1890d3c3",
+      "frame-034.png": "c08255154c16f997cd81873dc99a532b146551ce33828919e175b6857aa372e3",
+      "frame-035.png": "e696092f053c81176e33d44542e73ec1d8876b193afe87a3ff597dc75cffcf36",
+      "frame-036.png": "4ee6851d40e111a7337fd757964f0990fcfad1160dc07d2a7e771c671532b22d",
+      "frame-037.png": "a185b73c0dbd6ece9923c5e7a99b15e60f1fbb9ed514c119ee71a6e7bb398bfa",
+      "frame-038.png": "329a284a263c08b9e8909c2d83313fe3bd71616e6388f36ff56296f388adc84a",
+      "frame-039.png": "38f60bf44a30ac522466dc528fc718c1a084d9a2ee3b58cd2567125102d75957",
+      "frame-040.png": "dd82eed3aa12d7b3c50d0709f35821f47e57efff168a01477b78aa93bc735f79",
+      "frame-041.png": "7bc0c8b7c3f58e57a9e0e1edfa8a2e1038024c707e876fb9fa839edcebb6ec73",
+      "frame-042.png": "e7eaa950092200e73feba27bb1e921e381c1cf22892bb5439a31343561d65e7b",
+      "frame-043.png": "08463e409e33ab9e61a8e9669c14867f877fc82b1e161e6c7343e5eef322af5b",
+      "frame-044.png": "961ed75d4d6a7f42e4e02c57c8c55e95a52d636b484843ca1ea5c58fc36cfb61",
+      "frame-045.png": "79975497f1595470e71a8aa9ea94dc46f168190841c05556fc8c7837fbba224e",
+      "frame-046.png": "44be6044a20ee0caf1bc85fd73f211b7d09bb822ef832ee9d068604ab9dc6466",
+      "frame-047.png": "36740f5968aac08600882189604e307d8d78309ae89b850e373c8ae46253d13f",
+      "frame-048.png": "58c5a674c47ff371d8bedad3be6b74d38e289ac13fe94474088359423d74e9c6"
+    }
+  },
+  "before_source_manifest": {
+    "sources_sha256": {
+      "core/imaging/DocumentDetector.kt": "3043b8e2a543519c234089a0dc989e078e46cf34f8f441ac9a883241b217a76a",
+      "core/imaging/DocumentEdges.kt": "7f580027f9df40305c34bae08c3e7a9e77f9241c009bcf3674490b39ed20e73e",
+      "core/imaging/CaptureAnalysis.kt": "187732d7de11486a47482608f1b2c1d021c9e91414d8d87a9c955b1d2920c8ef",
+      "core/imaging/CapturePreviewAnalyzer.kt": "89924922d2777eb5e8ed50b9cf64c71f0062e7527b480f4157cc898b160136e9",
+      "core/imaging/PerspectiveWarp.kt": "ae45f73d61cc9aa33e340c389cbc5a806007c3a48bdb7b6cc56adf3a59b4f410",
+      "core/imaging/BinaryMorphology.kt": "db7af67a0b0f11da54262d95decccf8d3f66a39e61f7d864891e499f57b3de5f"
+    },
+    "input": "/Users/bytedance/workspace/kingOfScan/verification/evidence/document-edges/camera-screenshot-crop.png",
+    "input_sha256": "bbe279891c936dd827cdede5ce4c41324728142a308ed4aafff0dc75aaea5ffc",
+    "frames": {
+      "frame-001.png": "d99078a38aaf439d51008a3a35a0b0f16579b7321453b776d2751a53aeb55d81",
+      "frame-002.png": "244a9b84c944e4d5211f38419df7c8ca8dc5b4ff2cd0d04a8ae6019b61bd34eb",
+      "frame-003.png": "2f4c203780a2d3c620702f84608758d21d3e1d538f75cb3a25da33f374f287d7",
+      "frame-004.png": "573b367059cba691a7a746c92dc764a5d75b24bfd67666a4fec6c753abe86dc9",
+      "frame-005.png": "83f4dc921dbfd6f94be9bb33406e25b86d50c35785f13c1da546319dac50f610",
+      "frame-006.png": "5fe0d6eda7482e691739c24726cc2160d786168e31fc78d116a806cb6b47770f",
+      "frame-007.png": "b56a5737130b0a2c75833a54126a5e962919adf3efa80812dfac710cb9fcdc08",
+      "frame-008.png": "0a1242791474be3ba23a24acebd27f0ab727fd945416b2a6af53592c2b004039",
+      "frame-009.png": "4f1832775f2fd07e7ea10cf7a477e5d872ab27d8a609ffea7c45bbb2c7b4fb25",
+      "frame-010.png": "d4db70224fae5e56774a9a4404ce8158eb7f61e82fa7f7e128dcc1e903d02ff1",
+      "frame-011.png": "7a4b90063f951838a0b728fa528d906904cd1ec551836a73b07c3d34de6f9423",
+      "frame-012.png": "05abcea7b96fc6bea4d457e5707441528748ddd8a457401813d5810fae1351f1",
+      "frame-013.png": "0eb3001941e1bc9e9c0734337804e7280d305986f259631e362c2382d2aa4600",
+      "frame-014.png": "b5a6ff8f5a538522e467f67e6883bd701fe2466f86048ef2a5fd9a3a99d687db",
+      "frame-015.png": "706a154273b9c9c697a00f06d0b596f01a15d5afb88714b9a802655ce3008f0a",
+      "frame-016.png": "2d889298cc0d2d58fcf1f1f44e735cf7e3c2c7a2a0ab73fafa8b04b150ef9570",
+      "frame-017.png": "18e010f8fde1e7c9f21ee66c82c66beb3e58826890e869872e7f47089895cc41",
+      "frame-018.png": "47f066dae7d7484f4a20f42ecc9398e49942afb74195f0a5f9202ffde4f880ba",
+      "frame-019.png": "ac1ad622e0492468ae6115eb4ed87950a48696c2735d6bfa0d636d277f77a428",
+      "frame-020.png": "746eff5e56fa81db2fa00801cdb577f57930d807f12650fcf2da40e1b132c035",
+      "frame-021.png": "975d9d75c2e8f32b4fb51a808c7bfa1b5c3e12d2732a7379fa1fde946294bd75",
+      "frame-022.png": "53b67c1030f68c19bb94529fba621e02982faca8b7b3f591ed973bea7a65d467",
+      "frame-023.png": "a4c2c9842ccff35439d71a484d61158d297ab6d88075ac2703e69f0ae981cf1c",
+      "frame-024.png": "d524ae8b9d25cc5853b20f0bdc2cf2fe146203d36ec38f7dcb0689a4c66fe402",
+      "frame-025.png": "467e22997eb61de447a29140fa5c06400b7d944df0b19de82ed6ee708c848c04",
+      "frame-026.png": "449876b906a63bcf3e65a3cd56a3ee649b5dba7641efe3d5ab71f0f6d25818f8",
+      "frame-027.png": "e9e16dbfd313383a3805e2abc421ca9e5dbe803dcd9a07960dbc1cf90c058251",
+      "frame-028.png": "6e1d0fa38f9dd9c012730ca7b90b33f18a984ad7bee3acb78b88c8820e953a39",
+      "frame-029.png": "79d8bc3f1ee18f18431ee9c763c615a5fb5eec96115d198765d5ecc7a6c94aff",
+      "frame-030.png": "b1b7f03725bb3219a9323d05677d1a835c4bc4bf9473807967ac7b0510195016",
+      "frame-031.png": "2aaa52ad553aaba6eb22203ac79657eaafa4abddad957ebe74b4dcf82ddda36b",
+      "frame-032.png": "d035e1089475ffe6b11561e9d7cfa9ae48d4faea13448a26b0fb8d4090217640",
+      "frame-033.png": "3e9461d3b53a5ea59d10a9ca576da321558779d6acc55c9fff2fa99b1890d3c3",
+      "frame-034.png": "c08255154c16f997cd81873dc99a532b146551ce33828919e175b6857aa372e3",
+      "frame-035.png": "e696092f053c81176e33d44542e73ec1d8876b193afe87a3ff597dc75cffcf36",
+      "frame-036.png": "4ee6851d40e111a7337fd757964f0990fcfad1160dc07d2a7e771c671532b22d",
+      "frame-037.png": "a185b73c0dbd6ece9923c5e7a99b15e60f1fbb9ed514c119ee71a6e7bb398bfa",
+      "frame-038.png": "329a284a263c08b9e8909c2d83313fe3bd71616e6388f36ff56296f388adc84a",
+      "frame-039.png": "38f60bf44a30ac522466dc528fc718c1a084d9a2ee3b58cd2567125102d75957",
+      "frame-040.png": "dd82eed3aa12d7b3c50d0709f35821f47e57efff168a01477b78aa93bc735f79",
+      "frame-041.png": "7bc0c8b7c3f58e57a9e0e1edfa8a2e1038024c707e876fb9fa839edcebb6ec73",
+      "frame-042.png": "e7eaa950092200e73feba27bb1e921e381c1cf22892bb5439a31343561d65e7b",
+      "frame-043.png": "08463e409e33ab9e61a8e9669c14867f877fc82b1e161e6c7343e5eef322af5b",
+      "frame-044.png": "961ed75d4d6a7f42e4e02c57c8c55e95a52d636b484843ca1ea5c58fc36cfb61",
+      "frame-045.png": "79975497f1595470e71a8aa9ea94dc46f168190841c05556fc8c7837fbba224e",
+      "frame-046.png": "44be6044a20ee0caf1bc85fd73f211b7d09bb822ef832ee9d068604ab9dc6466",
+      "frame-047.png": "36740f5968aac08600882189604e307d8d78309ae89b850e373c8ae46253d13f",
+      "frame-048.png": "58c5a674c47ff371d8bedad3be6b74d38e289ac13fe94474088359423d74e9c6"
+    }
+  },
+  "retained_rotations": {
+    "before": [
+      {
+        "kind": "rotation",
+        "degrees": 0,
+        "quad": [
+          [
+            0.13271292,
+            0.35800692
+          ],
+          [
+            0.8013899,
+            0.34519202
+          ],
+          [
+            0.87365717,
+            0.70332265
+          ],
+          [
+            0.11683139,
+            0.7452218
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 90,
+        "quad": [
+          [
+            0.25406197,
+            0.117223024
+          ],
+          [
+            0.6413942,
+            0.13192292
+          ],
+          [
+            0.65411025,
+            0.801971
+          ],
+          [
+            0.2959766,
+            0.8733617
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 180,
+        "quad": [
+          [
+            0.1260819,
+            0.29554808
+          ],
+          [
+            0.8805211,
+            0.25435913
+          ],
+          [
+            0.86706877,
+            0.64130205
+          ],
+          [
+            0.19701837,
+            0.65407354
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 270,
+        "quad": [
+          [
+            0.3449003,
+            0.19688082
+          ],
+          [
+            0.70343405,
+            0.12583911
+          ],
+          [
+            0.74547833,
+            0.88156617
+          ],
+          [
+            0.35817844,
+            0.86663723
+          ]
+        ]
+      }
+    ],
+    "after": [
+      {
+        "kind": "rotation",
+        "degrees": 0,
+        "quad": [
+          [
+            0.13271292,
+            0.35800692
+          ],
+          [
+            0.8013899,
+            0.34519202
+          ],
+          [
+            0.87365717,
+            0.70332265
+          ],
+          [
+            0.11683139,
+            0.7452218
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 90,
+        "quad": [
+          [
+            0.25406197,
+            0.117223024
+          ],
+          [
+            0.6413942,
+            0.13192292
+          ],
+          [
+            0.65411025,
+            0.801971
+          ],
+          [
+            0.2959766,
+            0.8733617
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 180,
+        "quad": [
+          [
+            0.12608501,
+            0.2960375
+          ],
+          [
+            0.87982893,
+            0.25395656
+          ],
+          [
+            0.86787266,
+            0.64128673
+          ],
+          [
+            0.19694117,
+            0.65407497
+          ]
+        ]
+      },
+      {
+        "kind": "rotation",
+        "degrees": 270,
+        "quad": [
+          [
+            0.3449003,
+            0.19688082
+          ],
+          [
+            0.70343405,
+            0.12583911
+          ],
+          [
+            0.74547833,
+            0.88156617
+          ],
+          [
+            0.35817844,
+            0.86663723
+          ]
+        ]
+      }
+    ]
+  },
+  "apk": {
+    "bytes": 198553447,
+    "sha256": "605abce2706376d1d2cc33e625b4ac9cafed243054e9434fb220772c68171c85",
+    "signing_certificate_sha256": "76108db64501a5ee1bdd2b7a3cd43c7c0698b6a62214ca0f87f4bc97ffcd8c7c",
+    "certificate_matches_previous": true,
+    "models": {
+      "fingers": {
+        "bytes": 118926324,
+        "sha256": "6d4ae6ee82effb666d6bb03f29d00f1dab6d92581b47739b087142035f60e108"
+      },
+      "docres": {
+        "bytes": 16275304,
+        "sha256": "642407d7d8f18291604b35a41f7aabccfc7ae47dbe69619c240e176922f67854"
+      },
+      "esdnet": {
+        "bytes": 6302213,
+        "sha256": "7decb6e44c05e241aab44848ed7310cf48a504e20afa036a192e0dd107f66329"
+      },
+      "handwriting": {
+        "bytes": 44259967,
+        "sha256": "e4f50aaeae8a078a199938ba7f56fddd2b7ff001773ac1f38a3461769371c2df"
+      },
+      "watermark": {
+        "bytes": 8580292,
+        "sha256": "53f2e69206554bd510a5cbae1c80cbca9c87cbc0803953c81f19740ae2c49ce0"
+      }
+    },
+    "native_abis": [
+      "arm64-v8a"
+    ],
+    "installed_device": "55814895 / M2012K11AC",
+    "install_success": true,
+    "launch_success": true,
+    "debuggable": false,
+    "installed_sha256_matches": null,
+    "installed_sha256_note": "Phone disconnected after successful install, launch and package flag verification; remote APK hash was not collected.",
+    "installed_update_time": "2026-11-26 17:41:24"
+  },
+  "limits": [
+    "Screenshot crops and stroke-removed crops contain rendered UI; neither is a raw camera frame.",
+    "Manual corner references are approximate; CamScanner screenshots use a different viewpoint.",
+    "Runtime timing uses Debug on this phone; no Release or camera end-to-end latency claim.",
+    "This is geometric/content ranking, not semantic document recognition.",
+    "Cold-analysis times include first-run ART work; only warmed medians are compared."
+  ]
+}

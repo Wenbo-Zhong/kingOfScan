@@ -1,5 +1,5 @@
-import com.kingscan.app.imaging.DocumentDetector
-import com.kingscan.app.imaging.RgbaImage
+import com.kingscan.app.core.imaging.DocumentDetector
+import com.kingscan.app.core.imaging.RgbaImage
 import java.io.File
 import javax.imageio.ImageIO
 

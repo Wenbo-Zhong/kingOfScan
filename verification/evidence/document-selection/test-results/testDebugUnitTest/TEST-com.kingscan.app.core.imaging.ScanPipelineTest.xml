@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.imaging.ScanPipelineTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:19" hostname="HM4W6KN6XD" time="0.057">
+  <properties/>
+  <testcase name="detectsBrightPageOnDarkDesk" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.011"/>
+  <testcase name="fullFrameSkipsWarp" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.0"/>
+  <testcase name="rotatesPixelsAndQuadTogether" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.0"/>
+  <testcase name="filtersKeepSizeAndGrayIsNeutral" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.002"/>
+  <testcase name="pdfEmbedsJpegAndHasATrailer" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.005"/>
+  <testcase name="detectsDarkCardOnLightTable" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.031"/>
+  <testcase name="warpsTheRightHalfWithoutMixingTheLeftColor" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.0"/>
+  <testcase name="repositoryStoresRenamesReordersAndExports" classname="com.kingscan.app.core.imaging.ScanPipelineTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

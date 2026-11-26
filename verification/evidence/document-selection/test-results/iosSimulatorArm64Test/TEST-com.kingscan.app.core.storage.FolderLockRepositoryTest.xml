@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.storage.FolderLockRepositoryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:06" hostname="HM4W6KN6XD" time="0.057">
+  <properties/>
+  <testcase name="lockedFolderHidesTitlesOcrFavoritesAndTrashButKeepsUnprotectedDocumentsVisible[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.012"/>
+  <testcase name="retainedPathsAndExportsCannotBypassRelocking[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.01"/>
+  <testcase name="movingIntoLockedFolderAndDeletingItsAssociationAreBlocked[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.008"/>
+  <testcase name="ordinarySettingsSaveCannotChangeLockPolicy[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.0"/>
+  <testcase name="appendAndSourceRollbackStillCleanOnlyOwnedFilesAfterAccessIsRevoked[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.009"/>
+  <testcase name="unpublishedNewDocumentRollbackWorksWhileAppIsLocked[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.002"/>
+  <testcase name="duplicateAndMergeWithinProtectedFolderKeepProtection[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.014"/>
+  <testcase name="legacyFoldersRemainUnlockedAndSavedPoliciesSurviveRestart[iosSimulatorArm64]" classname="com.kingscan.app.core.storage.FolderLockRepositoryTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

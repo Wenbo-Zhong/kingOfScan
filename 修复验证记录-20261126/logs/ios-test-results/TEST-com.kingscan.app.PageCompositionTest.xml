@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.PageCompositionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:40" hostname="HM4W6KN6XD" time="3.767">
+  <properties/>
+  <testcase name="idPrintMaintainsPhysicalSizeAndBothSides[iosSimulatorArm64]" classname="com.kingscan.app.PageCompositionTest" time="2.246"/>
+  <testcase name="registeredOverlapReconstructsSharedTextureAndRejectsBlankImages[iosSimulatorArm64]" classname="com.kingscan.app.PageCompositionTest" time="1.496"/>
+  <testcase name="composedCopiesRetainAllRealOriginalsAfterSourceDeletion[iosSimulatorArm64]" classname="com.kingscan.app.PageCompositionTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

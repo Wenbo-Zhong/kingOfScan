@@ -1,5 +1,7 @@
 package com.kingscan.app
 
+import com.kingscan.app.navigation.Screen
+
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -7,12 +9,12 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.kingscan.app.imaging.PageMarkup
-import com.kingscan.app.imaging.RgbaImage
-import com.kingscan.app.model.*
-import com.kingscan.app.ocr.OcrLanguage
-import com.kingscan.app.ocr.createOcrEngine
-import com.kingscan.app.pdf.AndroidPdfResources
+import com.kingscan.app.core.imaging.PageMarkup
+import com.kingscan.app.core.imaging.RgbaImage
+import com.kingscan.app.core.document.*
+import com.kingscan.app.core.ocr.OcrLanguage
+import com.kingscan.app.core.ocr.createOcrEngine
+import com.kingscan.app.core.pdf.AndroidPdfResources
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.pdmodel.encryption.InvalidPasswordException
@@ -29,10 +31,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.first
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.snapshots.Snapshot
-import com.kingscan.app.ui.Navigator
-import com.kingscan.app.ui.importFiles
-import com.kingscan.app.ui.processNextImport
-import com.kingscan.app.ui.openEditor
+import com.kingscan.app.navigation.Navigator
+import com.kingscan.app.feature.scan.importFiles
+import com.kingscan.app.feature.scan.processNextImport
+import com.kingscan.app.feature.scan.openEditor
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith

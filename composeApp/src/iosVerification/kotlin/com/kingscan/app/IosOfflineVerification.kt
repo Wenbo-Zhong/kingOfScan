@@ -2,10 +2,10 @@
 
 package com.kingscan.app
 
-import com.kingscan.app.imaging.toByteArray
-import com.kingscan.app.model.*
-import com.kingscan.app.ocr.OcrLanguage
-import com.kingscan.app.ocr.createOcrEngine
+import com.kingscan.app.core.imaging.toByteArray
+import com.kingscan.app.core.document.*
+import com.kingscan.app.core.ocr.OcrLanguage
+import com.kingscan.app.core.ocr.createOcrEngine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,12 +57,12 @@ fun runIosOfflineVerification(root: String, completion: (String) -> Unit) {
             val preview = pdf.pageAtIndex(0u)!!.thumbnailOfSize(CGSizeMake(595.0, 842.0), kPDFDisplayBoxMediaBox)
             FileSystem.SYSTEM.write("$root/pdf-page.jpg".toPath()) { write(UIImageJPEGRepresentation(preview, 0.95)!!.toByteArray()) }
             FileSystem.SYSTEM.copy(path.toPath(), "$root/encrypted-searchable.pdf".toPath())
-            val barcode = com.kingscan.app.codes.createBarcodeCodec()
+            val barcode = com.kingscan.app.core.codes.createBarcodeCodec()
             val payload = "离线二维码 KingOfScan 2026\nhttps://example.org/doc?id=123&name=合同"
             val qrBytes = AppGraph.codec.encodeJpeg(barcode.generate(payload), 100)
             FileSystem.SYSTEM.write("$root/qr-generated.jpg".toPath()) { write(qrBytes) }
             check(barcode.decode(AppGraph.codec.decode(qrBytes, 2400).rotate90CW()).single().text == payload)
-            check(barcode.decode(com.kingscan.app.imaging.RgbaImage.filled(600, 600, -1)).isEmpty())
+            check(barcode.decode(com.kingscan.app.core.imaging.RgbaImage.filled(600, 600, -1)).isEmpty())
             "PASS Chinese offline OCR\nPASS incorrect PDF password rejected\nPASS correct password accepted\nPASS CJK searchable PDF text\nPASS PDF page rendering\nPASS Unicode rotated QR JPEG round trip\nPASS blank QR image rejected"
         }.fold({ it }, { "FAIL ${it.stackTraceToString()}" })
         FileSystem.SYSTEM.write("$root/result.txt".toPath()) { writeUtf8(result) }

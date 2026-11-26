@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.imaging.DocumentEdgesTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:32:57" hostname="HM4W6KN6XD" time="5.953">
+  <properties/>
+  <testcase name="printedGrayPageOnSimilarDeskUsesOuterEdges[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="1.154"/>
+  <testcase name="lowContrastOutlineSurvivesDarkPrintedContent[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.282"/>
+  <testcase name="roundedCornersAndSideNotchUseExtendedStraightEdges[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.185"/>
+  <testcase name="strongBackgroundRectangleDoesNotDisplaceThePrintedCard[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.844"/>
+  <testcase name="backgroundRectangleCannotExcludeTheBetterSupportedDocumentInsideIt[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="1.49"/>
+  <testcase name="centeredBlankPageStillWinsWithoutPrintedContent[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="1.122"/>
+  <testcase name="printedRuleAcrossThePageDoesNotCutTheDetectedOutlineInHalf[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.281"/>
+  <testcase name="blankGradientAndRoundObjectHaveNoDocumentOutline[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.417"/>
+  <testcase name="pageMissingAnOuterEdgeDoesNotSelectTheDesk[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.DocumentEdgesTest" time="0.176"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

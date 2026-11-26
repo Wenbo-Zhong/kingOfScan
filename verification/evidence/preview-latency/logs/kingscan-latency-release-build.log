@@ -1,0 +1,87 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Type-safe project accessors is an incubating feature.
+> Task :composeApp:preBuild UP-TO-DATE
+> Task :composeApp:preReleaseBuild UP-TO-DATE
+> Task :composeApp:mergeReleaseJniLibFolders
+> Task :composeApp:buildKotlinToolingMetadata
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForCommonMain SKIPPED
+> Task :composeApp:generateActualResourceCollectorsForAndroidMain SKIPPED
+> Task :composeApp:generateComposeResClass SKIPPED
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain SKIPPED
+> Task :composeApp:convertXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :composeApp:copyNonXmlValueResourcesForAndroidRelease NO-SOURCE
+> Task :composeApp:prepareComposeResourcesTaskForAndroidRelease NO-SOURCE
+> Task :composeApp:generateResourceAccessorsForAndroidRelease SKIPPED
+> Task :composeApp:generateReleaseResValues FROM-CACHE
+> Task :composeApp:checkReleaseDuplicateClasses
+> Task :composeApp:checkReleaseAarMetadata
+> Task :composeApp:mapReleaseSourceSetPaths
+> Task :composeApp:generateReleaseResources
+> Task :composeApp:mergeReleaseNativeLibs
+> Task :composeApp:packageReleaseResources
+> Task :composeApp:parseReleaseLocalResources FROM-CACHE
+> Task :composeApp:createReleaseCompatibleScreenManifests
+> Task :composeApp:extractDeepLinksRelease FROM-CACHE
+
+> Task :composeApp:stripReleaseDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libimage_processing_util_jni.so, libmlkit_google_ocr_pipeline.so, libonnxruntime.so, libonnxruntime4j_jni.so, libsurface_util_jni.so.
+
+> Task :composeApp:processReleaseMainManifest
+> Task :composeApp:extractReleaseNativeSymbolTables
+> Task :composeApp:processReleaseManifest
+> Task :composeApp:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :composeApp:javaPreCompileRelease FROM-CACHE
+> Task :composeApp:extractProguardFiles
+> Task :composeApp:mergeReleaseStartupProfile
+> Task :composeApp:mergeReleaseArtProfile
+> Task :composeApp:mergeReleaseShaders
+> Task :composeApp:compileReleaseShaders NO-SOURCE
+> Task :composeApp:copyReleaseComposeResourcesToAndroidAssets
+> Task :composeApp:generateReleaseAssets UP-TO-DATE
+> Task :composeApp:releaseAssetsCopyForAGP NO-SOURCE
+> Task :composeApp:mergeReleaseAssets
+> Task :composeApp:mergeReleaseResources
+> Task :composeApp:extractReleaseVersionControlInfo
+> Task :composeApp:collectReleaseDependencies
+> Task :composeApp:sdkReleaseDependencyData
+> Task :composeApp:writeReleaseAppMetadata
+> Task :composeApp:writeReleaseSigningConfigVersions
+> Task :composeApp:processReleaseManifestForPackage
+> Task :composeApp:processReleaseResources
+> Task :composeApp:convertLinkedResourcesToProtoRelease
+> Task :composeApp:compressReleaseAssets
+
+> Task :composeApp:compileReleaseKotlinAndroid
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:99:45 'fun setTargetAspectRatio(p0: Int): Preview.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:104:18 'fun setTargetAspectRatio(p0: Int): ImageCapture.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidCamera.kt:107:18 'fun setTargetResolution(p0: Size): ImageAnalysis.Builder' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDeviceSecurity.kt:7:8 'class FingerprintManager : Any' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/androidMain/kotlin/com/kingscan/app/core/platform/AndroidDeviceSecurity.kt:55:34 'fun hasEnrolledFingerprints(): Boolean' is deprecated. Deprecated in Java.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/codes/CodeScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///Users/bytedance/workspace/kingOfScan/composeApp/src/commonMain/kotlin/com/kingscan/app/feature/ocr/OcrScreen.kt:46:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+
+> Task :composeApp:compileReleaseJavaWithJavac NO-SOURCE
+> Task :composeApp:mergeReleaseGeneratedProguardFiles
+> Task :composeApp:processReleaseJavaRes
+> Task :composeApp:expandReleaseArtProfileWildcards
+> Task :composeApp:mergeReleaseJavaResource
+> Task :composeApp:minifyReleaseWithR8
+> Task :composeApp:compileReleaseArtProfile
+> Task :composeApp:shrinkReleaseRes
+> Task :composeApp:convertShrunkResourcesToBinaryRelease
+> Task :composeApp:optimizeReleaseResources
+> Task :composeApp:packageRelease
+> Task :composeApp:createReleaseApkListingFileRedirect
+> Task :composeApp:assembleRelease
+
+BUILD SUCCESSFUL in 1m 21s
+45 actionable tasks: 41 executed, 4 from cache

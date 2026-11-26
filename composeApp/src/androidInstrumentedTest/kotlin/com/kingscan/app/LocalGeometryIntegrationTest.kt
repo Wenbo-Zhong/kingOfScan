@@ -2,9 +2,9 @@ package com.kingscan.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.kingscan.app.imaging.*
-import com.kingscan.app.model.*
-import com.kingscan.app.pdf.AndroidPdfResources
+import com.kingscan.app.core.imaging.*
+import com.kingscan.app.core.document.*
+import com.kingscan.app.core.pdf.AndroidPdfResources
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import org.junit.Assert.*

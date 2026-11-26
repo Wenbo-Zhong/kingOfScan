@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.ScanWriteCancellationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:44" hostname="HM4W6KN6XD" time="0.028">
+  <properties/>
+  <testcase name="cancellationAfterCaptureCommitBeforeUiDeliveryRollsBackOwnedPages[iosSimulatorArm64]" classname="com.kingscan.app.ScanWriteCancellationTest" time="0.017"/>
+  <testcase name="activeCapturePublishesCommittedDocument[iosSimulatorArm64]" classname="com.kingscan.app.ScanWriteCancellationTest" time="0.002"/>
+  <testcase name="cancelledPdfResultDeliveryRollsBackItsOriginalAndAppendedPages[iosSimulatorArm64]" classname="com.kingscan.app.ScanWriteCancellationTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

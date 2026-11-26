@@ -1,9 +1,8 @@
 package com.kingscan.app
 
-import com.kingscan.app.data.PageOperations
-import com.kingscan.app.data.DocumentRepository
-import com.kingscan.app.imaging.*
-import com.kingscan.app.model.*
+import com.kingscan.app.core.storage.DocumentRepository
+import com.kingscan.app.core.imaging.*
+import com.kingscan.app.core.document.*
 import kotlin.math.abs
 import okio.FileSystem
 import okio.Buffer
@@ -69,14 +68,14 @@ suspend fun verifyDocumentAi(root: String): String {
         ocr = OcrResult("must become stale"))))
     var page = document.pages.single()
     val originalPath = AppGraph.repository.originalPath(document.id, page)!!
-    PageOperations.rotate(document.id, page)
+    AppGraph.pageOperations.rotate(document.id, page)
     page = AppGraph.repository.load(document.id)!!.pages.single()
-    PageOperations.filter(document.id, page, FilterType.Gray)
+    AppGraph.pageOperations.filter(document.id, page, FilterType.Gray)
     page = DocumentRepository(originalPath.substringBefore("/documents/")).load(document.id)!!.pages.single()
     require(page.ocr == null)
     require(bytes(originalPath).contentEquals(sourceBytes))
     require(page.edit!!.retouches.single().modelVersion == DocumentModel.VERSION && page.edit!!.outputQuarterTurns == 1)
-    val rerender = PageRetouch.apply(PageOperations.geometricSource(document.id, page), page.edit!!.retouches, 1)
+    val rerender = PageRetouch.apply(AppGraph.pageOperations.geometricSource(document.id, page), page.edit!!.retouches, 1)
     require(rerender.pixels.contentEquals(restored.rotate90CW().pixels)) { "rotation changed model-selected pixels" }
     lines += "PASS original bytes, model parameters, rotated rerender and OCR invalidation survive repository reload"
     // A clean page must not silently succeed with a fabricated selection.

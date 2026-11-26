@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.DocumentEdgesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-26T03:29:31" hostname="HM4W6KN6XD" time="8.598">
+  <properties/>
+  <testcase name="printedGrayPageOnSimilarDeskUsesOuterEdges[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="3.05"/>
+  <testcase name="lowContrastOutlineSurvivesDarkPrintedContent[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="1.042"/>
+  <testcase name="roundedCornersAndSideNotchUseExtendedStraightEdges[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="0.526"/>
+  <testcase name="printedRuleAcrossThePageDoesNotCutTheDetectedOutlineInHalf[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="0.878"/>
+  <testcase name="blankGradientAndRoundObjectHaveNoDocumentOutline[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="2.26"/>
+  <testcase name="pageMissingAnOuterEdgeDoesNotSelectTheDesk[iosSimulatorArm64]" classname="com.kingscan.app.DocumentEdgesTest" time="0.84"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

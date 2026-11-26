@@ -1,0 +1,215 @@
+Activity Resolver Table:
+  Full MIME Types:
+      application/pdf:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+      image/*:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+
+  Base MIME Types:
+      application:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+
+  Wild MIME Types:
+      image:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        f0c9e2e com.kingscan.app/.MainActivity filter 6258dcf
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+  MIME Typed Actions:
+      android.intent.action.SEND:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+      android.intent.action.SEND_MULTIPLE:
+        f0c9e2e com.kingscan.app/.MainActivity filter c4ca35c
+          Action: "android.intent.action.SEND"
+          Action: "android.intent.action.SEND_MULTIPLE"
+          Category: "android.intent.category.DEFAULT"
+          StaticType: "image"
+          StaticType: "application/pdf"
+          mPriority=0, mOrder=0, mHasStaticPartialTypes=true, mHasDynamicPartialTypes=false
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        b8fc665 com.kingscan.app/androidx.profileinstaller.ProfileInstallReceiver filter 8ae9948
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        b8fc665 com.kingscan.app/androidx.profileinstaller.ProfileInstallReceiver filter 1c86f3a
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      androidx.profileinstaller.action.SKIP_FILE:
+        b8fc665 com.kingscan.app/androidx.profileinstaller.ProfileInstallReceiver filter 51737eb
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        b8fc665 com.kingscan.app/androidx.profileinstaller.ProfileInstallReceiver filter abb63e1
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+
+Domain verification status:
+
+Permissions:
+  Permission [com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (afe77d9):
+    sourcePackage=com.kingscan.app
+    uid=10276 gids=[] type=0 prot=signature
+    perm=PermissionInfo{1b3559e com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    flags=0x0
+
+Registered ContentProviders:
+  com.kingscan.app/androidx.startup.InitializationProvider:
+    Provider{3a5c87f com.kingscan.app/androidx.startup.InitializationProvider}
+  com.kingscan.app/androidx.core.content.FileProvider:
+    Provider{1e7404c com.kingscan.app/androidx.core.content.FileProvider}
+  com.kingscan.app/com.google.mlkit.common.internal.MlKitInitProvider:
+    Provider{bd5b895 com.kingscan.app/com.google.mlkit.common.internal.MlKitInitProvider}
+
+ContentProvider Authorities:
+  [com.kingscan.app.mlkitinitprovider]:
+    Provider{bd5b895 com.kingscan.app/com.google.mlkit.common.internal.MlKitInitProvider}
+      applicationInfo=ApplicationInfo{7d86d9b com.kingscan.app}
+  [com.kingscan.app.fileprovider]:
+    Provider{1e7404c com.kingscan.app/androidx.core.content.FileProvider}
+      applicationInfo=ApplicationInfo{96e1538 com.kingscan.app}
+  [com.kingscan.app.androidx-startup]:
+    Provider{3a5c87f com.kingscan.app/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{fa64911 com.kingscan.app}
+
+Key Set Manager:
+  [com.kingscan.app]
+      Signing KeySets: 99
+
+Packages:
+  Package [com.kingscan.app] (b6d2449):
+    appId=10276
+    pccId=-1
+    pkg=Package{5c64877 com.kingscan.app}
+    codePath=/data/app/~~-PNURr8PkEAc2GE0Ca0R7w==/com.kingscan.app-OrWiar0QqwbbThQ-fU7STg==
+    resourcePath=/data/app/~~-PNURr8PkEAc2GE0Ca0R7w==/com.kingscan.app-OrWiar0QqwbbThQ-fU7STg==
+    legacyNativeLibraryDir=/data/app/~~-PNURr8PkEAc2GE0Ca0R7w==/com.kingscan.app-OrWiar0QqwbbThQ-fU7STg==/lib
+    extractNativeLibs=true
+    primaryCpuAbi=arm64-v8a
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=1 minSdk=26 targetSdk=35
+    minExtensionVersions=[]
+    versionName=1.0.0
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=3
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    pageSizeCompat=0
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-11-26 17:41:23
+    lastUpdateTime=2026-11-26 17:41:24
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    appMetadataSource=0
+    signatures=PackageSignatures{a0a8685 version:3, signatures:[150b00db], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    declared permissions:
+      com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature
+    requested permissions:
+      android.permission.CAMERA
+      com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+      android.permission.USE_BIOMETRIC
+    install permissions:
+      com.kingscan.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.USE_BIOMETRIC: granted=true
+    User 0: ceDataInode=135234 deDataInode=135207 pccCeDataInode=0 pccDeDataInode=0 installed=true hidden=false suspended=false appLockEnabled=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=0
+      dataDir=/data/user/0/com.kingscan.app
+      firstInstallTime=2026-10-20 14:22:29
+      uninstallReason=0
+      overlay paths:
+        /product/overlay/TransparentNavigationBar/TransparentNavigationBarOverlay.apk
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+        /data/resource-cache/com.android.systemui-accent-wjdb.frro
+        /data/resource-cache/com.android.systemui-dynamic-OT7H.frro
+        /data/resource-cache/com.android.systemui-neutral-yR3e.frro
+      legacy overlay paths:
+        /product/overlay/TransparentNavigationBar/TransparentNavigationBarOverlay.apk
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      runtime permissions:
+        android.permission.CAMERA: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+    com.kingscan.app.test:
+      com.kingscan.app
+    com.kingscan.app:
+      com.kingscan.app.test
+  queries via component:
+    com.intsig.camscanner:
+      com.kingscan.app
+    com.android.camera:
+      com.kingscan.app
+    com.google.android.settings.intelligence:
+      com.kingscan.app
+    com.google.android.as.oss:
+      com.kingscan.app
+    com.android.settings.intelligence:
+      com.kingscan.app
+    com.google.android.as:
+      com.kingscan.app
+    com.google.android.apps.maps:
+      com.kingscan.app
+    com.google.android.apps.photos:
+      com.kingscan.app
+    com.ss.android.lark:
+      com.kingscan.app
+    com.tencent.gamehelper.smoba:
+      com.kingscan.app
+  queryable via interaction:
+    User 0:
+      [android,com.android.dynsystem,org.lineageos.dspvolume.xiaomi,com.android.DeviceAsWebcam,org.lineageos.settings,com.android.providers.settings,com.android.settings,org.ifaa.aidl.manager,com.android.inputdevices,com.android.server.telecom,com.android.localtransport,co.aospa.dolby,com.android.location.fused,com.android.touch.gestures,org.protonaosp.columbus,com.android.keychain]:
+        com.kingscan.app
+  queryable via uses-library:
+
+Dexopt state:
+  [com.kingscan.app]
+    path: /data/app/~~-PNURr8PkEAc2GE0Ca0R7w==/com.kingscan.app-OrWiar0QqwbbThQ-fU7STg==/base.apk
+      arm64: [status=verify] [reason=install] [primary-abi]
+        [location is /data/app/~~-PNURr8PkEAc2GE0Ca0R7w==/com.kingscan.app-OrWiar0QqwbbThQ-fU7STg==/oat/arm64/base.odex]

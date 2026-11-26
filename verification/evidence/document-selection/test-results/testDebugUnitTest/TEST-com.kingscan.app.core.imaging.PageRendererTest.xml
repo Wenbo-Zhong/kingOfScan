@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.imaging.PageRendererTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:19" hostname="HM4W6KN6XD" time="0.005">
+  <properties/>
+  <testcase name="adjustedBaseSkipsGeometryRetouchAndFilter" classname="com.kingscan.app.core.imaging.PageRendererTest" time="0.0"/>
+  <testcase name="originalAndGeometricStagesProduceTheSameOutput" classname="com.kingscan.app.core.imaging.PageRendererTest" time="0.002"/>
+  <testcase name="encodingKeepsUnmarkedBaseAndOriginalButInvalidatesOcr" classname="com.kingscan.app.core.imaging.PageRendererTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

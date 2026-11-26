@@ -2,8 +2,8 @@ package com.kingscan.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.kingscan.app.codes.createBarcodeCodec
-import com.kingscan.app.imaging.RgbaImage
+import com.kingscan.app.core.codes.createBarcodeCodec
+import com.kingscan.app.core.imaging.RgbaImage
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith

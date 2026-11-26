@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.feature.scan.ScanPublicationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:20" hostname="HM4W6KN6XD" time="0.005">
+  <properties/>
+  <testcase name="bookAddsBothPagesAndEditingDoesNotIncrementOrNotify" classname="com.kingscan.app.feature.scan.ScanPublicationTest" time="0.003"/>
+  <testcase name="modeListsContainOnlyOwnedPages" classname="com.kingscan.app.feature.scan.ScanPublicationTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

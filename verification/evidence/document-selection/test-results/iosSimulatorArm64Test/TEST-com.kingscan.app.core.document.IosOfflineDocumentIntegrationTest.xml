@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.document.IosOfflineDocumentIntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:33:06" hostname="HM4W6KN6XD" time="1.126">
+  <properties/>
+  <testcase name="chineseSearchablePasswordPdf[iosSimulatorArm64]" classname="com.kingscan.app.core.document.IosOfflineDocumentIntegrationTest" time="1.126"/>
+  <system-out><![CDATA[KMP_OFFLINE_IOS_EVIDENCE=/var/folders/3y/ty3t406j1x9b7y4z3lcr5g040000gn/T/com.apple.CoreSimulator.SimDevice.7B194997-E06A-4554-A26B-83C6A89EC1D1.Standalone.03EAA744-81FF-49C1-BBD7-C73651361C5A/kingscan-offline-evidence
+CoreGraphics PDF has logged an error. Set environment variable "CG_PDF_VERBOSE" to learn more.
+KMP_OFFLINE_IOS_EVIDENCE=/var/folders/3y/ty3t406j1x9b7y4z3lcr5g040000gn/T/com.apple.CoreSimulator.SimDevice.7B194997-E06A-4554-A26B-83C6A89EC1D1.Standalone.03EAA744-81FF-49C1-BBD7-C73651361C5A/kingscan-offline-evidence
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

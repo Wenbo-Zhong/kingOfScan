@@ -2,8 +2,8 @@ package com.kingscan.app
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.kingscan.app.imaging.AndroidDocumentModels
-import com.kingscan.app.imaging.DocumentModel
+import com.kingscan.app.core.imaging.AndroidDocumentModels
+import com.kingscan.app.core.imaging.DocumentModel
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith

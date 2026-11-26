@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-26T09:32:57" hostname="HM4W6KN6XD" time="0.001">
+  <properties/>
+  <testcase name="shortMissesAndIsolatedWrongRegionsDoNotFlash[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="missingPageExpiresAndRequiresNewConfirmation[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="steadyMotionFollowsWithoutFreezingAndSmallJitterIsReduced[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="consistentNewPositionReplacesOldOutline[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="heldOutlineCannotCompleteAutomaticCapture[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.001"/>
+  <testcase name="firstCandidateIsVisibleButCannotBecomePreferredOrTriggerCapture[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="isolatedFirstCandidateIsNeverHeldAndMissRestartsConfirmation[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <testcase name="fasterSamplesStillRequireThreeFramesAndMinimumConfirmationTime[iosSimulatorArm64]" classname="com.kingscan.app.core.imaging.CapturePreviewTrackerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
